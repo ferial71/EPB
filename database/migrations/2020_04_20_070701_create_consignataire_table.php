@@ -15,7 +15,7 @@ class CreateConsignataireTable extends Migration
     {
         Schema::create('consignataire', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('id');
+            $table->string('nom');
             $table->timestamps();
         });
     }

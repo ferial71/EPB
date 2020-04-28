@@ -19,6 +19,16 @@ class CreateNavireTable extends Migration
             $table->string('lastName');
             $table->string('contractType');
             $table->string('aslireEmpl');
+            $table->date('date');
+            $table->float('IMO');
+            $table->string('flag');
+            $table->float('loa');
+            $table->float('beam');
+            $table->float('DWT');
+            $table->float('draft');
+            $table->float('tonnage');
+            $table->string('type');
+
             $table->timestamps();
         });
     }

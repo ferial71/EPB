@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="" />
+    <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/address.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/compte.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/consignataire.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/demandePoste.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/direction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/document.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/employee.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/entreprise.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/escale.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/formulaire.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/marchandise.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/navire.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/notification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/quai.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/role.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_04_28_074530_create_demande_postes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_20_064156_create_navire_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_20_064156_create_navire_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_20_070701_create_consignataire_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_20_070701_create_consignataire_table.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,6 +191,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="470" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587628860343" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1588059987916">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1588059987916" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
