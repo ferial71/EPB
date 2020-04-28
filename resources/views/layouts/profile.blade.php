@@ -266,9 +266,94 @@
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
                                 Charts
+<<<<<<< HEAD
                                 <i class="right fas"></i>
                             </p>
                         </a>
+=======
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="../charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>ChartJS</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Flot</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../charts/inline.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Inline</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tree"></i>
+                            <p>
+                                UI Elements
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="../UI/general.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>General</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/icons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Icons</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/buttons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Buttons</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/sliders.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sliders</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/modals.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Modals & Alerts</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/navbar.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Navbar & Tabs</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/timeline.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Timeline</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../UI/ribbons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ribbons</p>
+                                </a>
+                            </li>
+                        </ul>
+>>>>>>> 5f1c31921b90028257c117b91d1f82aa11744ea0
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -344,7 +429,18 @@
                             </p>
                         </a>
                     </li>
+<<<<<<< HEAD
 
+=======
+                    <li class="nav-item">
+                        <a href="../gallery.html" class="nav-link">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                                Gallery
+                            </p>
+                        </a>
+                    </li>
+>>>>>>> 5f1c31921b90028257c117b91d1f82aa11744ea0
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-envelope"></i>
