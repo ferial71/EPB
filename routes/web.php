@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/annoncenav', 'HomeController@annoncenav')->name('annoncenav');
+Route::get('/dpostequai', 'HomeController@dpostequai')->name('dpostequai');

@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function annoncenav()
+    {
+        return view('annonceNav');
+    }
+    public function dpostequai()
+    {
+        return view('dpostequai');
+    }
 }
