@@ -17,9 +17,6 @@ class CreateEntrepriseTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('code');
-            $table->foreign('address_id')
-                ->references('id')->on('address')
-                ->onDelete('cascade');
             $table->timestamps();
         });
     }

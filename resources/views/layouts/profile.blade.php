@@ -176,7 +176,7 @@
                     <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">nom d'utilisateur</a>
                 </div>
             </div>
 
@@ -187,18 +187,9 @@
                          with font-awesome or any other icon font library -->
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                                <i class="right fas"></i>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                Charts
+                                Statistique
                                 <i class="right fas"></i>
                             </p>
                         </a>
@@ -207,7 +198,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                Forms
+                                Formulaires
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -215,13 +206,13 @@
                             <li class="nav-item">
                                 <a href="../forms/general.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>General Elements</p>
+                                    <p>formualire 1</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="../forms/advanced.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Advanced Elements</p>
+                                    <p>formualire 2</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -233,7 +224,7 @@
                             <li class="nav-item">
                                 <a href="../forms/validation.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Validation</p>
+                                    <p>formualire 3</p>
                                 </a>
                             </li>
                         </ul>
@@ -242,7 +233,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Tables
+                                Historique
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>

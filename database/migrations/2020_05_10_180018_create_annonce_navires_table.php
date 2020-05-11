@@ -15,7 +15,12 @@ class CreateAnnonceNaviresTable extends Migration
     {
         Schema::create('annonce_navires', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('consignataire_id')->unsigned();
+            $table->foreign('consignataire_id')->references('id')->on('consignataire');
+            $table->integer('navire_id')->unsigned();
+            $table->foreign('navire_id')->references('id')->on('navire');
             $table->timestamps();
+
         });
     }
 

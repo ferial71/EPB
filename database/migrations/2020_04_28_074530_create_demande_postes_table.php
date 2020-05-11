@@ -15,15 +15,15 @@ class CreateDemandePostesTable extends Migration
     {
         Schema::create('demande_postes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreign('consignataire_id')
-                ->references('id')->on('consignataire')
-                ->onDelete('cascade');
-            $table->foreign('transitaire_id')
-                ->references('id')->on('transitaire')
-                ->onDelete('cascade');
-            $table->foreign('navire_id')
-                ->references('id')->on('navire')
-                ->onDelete('cascade');
+            $table->integer('consignataire_id')->unsigned();
+            $table->foreign('consignataire_id')->references('id')->on('consignataire');
+            $table->integer('navire_id')->unsigned();
+            $table->foreign('navire_id')->references('id')->on('navire');
+            $table->integer('transitaires_id')->unsigned();
+            $table->foreign('transitaires_id')->references('id')->on('transitaires');
+            $table->date('date');
+            $table->time('ETA');
+            $table->string('rade');
 
             $table->timestamps();
         });

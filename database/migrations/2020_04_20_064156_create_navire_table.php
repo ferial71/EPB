@@ -15,13 +15,10 @@ class CreateNavireTable extends Migration
     {
         Schema::create('navire', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('contractType');
+            $table->string('nom');
+            $table->string('pavillon');
             $table->string('aslireEmpl');
-            $table->date('date');
             $table->float('IMO');
-            $table->string('flag');
             $table->float('loa');
             $table->float('beam');
             $table->float('DWT');

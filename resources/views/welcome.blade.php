@@ -60,10 +60,13 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                background-color: ghostwhite;
+                opacity: 0.7;
+
             }
         </style>
     </head>
-    <body>
+    <body style="background-image: url('/img/porte-conteneurs.jpg');">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -80,14 +83,13 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" >
                     <div img src="/svg/EntreprisePortuaireBejaiaLogo.svg" style="height: 25px;" class="pr-3"></div>
-                    <div>Entreprise Portuaire de Bejaia</div>
+                    <div style="height: 130px;">Entreprise Portuaire de Bejaia</div>
                 </div>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
                     <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
