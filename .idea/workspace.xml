@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AnnonceNavController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsignataireController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsignataireController_.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/consignataire/AnnonceNavController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/transitaire/TransitaireController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Consignataire/AnnonceNav/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Consignataire/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Transitaire/home.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/permission.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_15_143430_create_permission_tables.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_20_070701_create_consignataire_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_20_070701_create_consignataires_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -126,6 +122,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
     </include_path>
   </component>
   <component name="ProjectId" id="1YKKfwKQqdMUincREpzxmH92EHb" />
@@ -141,11 +138,12 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/Admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\feria\project\resources\views" />
       <recent name="C:\Users\feria\project\resources\views\Admin" />
       <recent name="C:\Users\feria\project\resources\views\Transitaire" />
       <recent name="C:\Users\feria\project\resources\views\Consignataire" />
@@ -179,7 +177,7 @@
       <workItem from="1589274650689" duration="1353000" />
       <workItem from="1589363492949" duration="994000" />
       <workItem from="1589366230440" duration="15794000" />
-      <workItem from="1589472655265" duration="5569000" />
+      <workItem from="1589472655265" duration="9072000" />
     </task>
     <servers />
   </component>

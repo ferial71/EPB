@@ -6,9 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-use Illuminate\Http\Request;
-
-
 class LoginController extends Controller
 {
     /*
@@ -24,24 +21,12 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-    // check if authenticated, then redirect to dashboard
-    protected function authenticated(Request $request, $user) {
-        if ($user->role_id == 1) {
-            return redirect('/Consignataire');
-        } else if ($user->role_id == 2) {
-            return redirect('/Transitaire');
-        } else {
-            return redirect('/Admin');
-        }
-    }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
