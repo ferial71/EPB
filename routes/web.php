@@ -21,6 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/annoncenav', 'HomeController@annoncenav')->name('annoncenav');
+//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/annoncenav', 'HomeController@annoncenav')->name('annoncenav');
 Route::get('/dpostequai', 'HomeController@dpostequai')->name('dpostequai');
+//Route::get('/Consignataire/AnnonceNav', 'ConsignataireController@index')->name('annonce');
+Route::resource('/Consignataire', 'ConsignataireController');
+Route::resource('/Transitaire', 'transitaire\TransitaireController');
+Route::resource('/Admin', 'Admin\AdminController');
+
+Route::resource('/Consignataire/AnnonceNav', 'consignataire\AnnonceNavController');
