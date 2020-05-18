@@ -14,7 +14,7 @@ class ConsignataireController extends Controller
     public function index()
     {
         $arr['consignataire'] = Consignataire::all();
-        return view('Consignataire.AnnonceNav.index')->with($arr);
+        return view('Consignataire.annonceNav.index')->with($arr);
     }
 
 }

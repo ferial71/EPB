@@ -20,6 +20,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class='form-group'>
+                        @foreach ($roles as $role)
+                            {{ Form::checkbox('roles[]',  $role->id ) }}
+                            {{ Form::label($role->name, ucfirst($role->name)) }}<br>
+
+                        @endforeach
+                    </div>
+
                     <div class="col-sm-6">
                         <div class="form-group">
                             <div class="form-group">

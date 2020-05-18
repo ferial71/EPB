@@ -29,4 +29,16 @@ Route::resource('/Consignataire', 'ConsignataireController');
 Route::resource('/Transitaire', 'transitaire\TransitaireController');
 Route::resource('/Admin', 'Admin\AdminController');
 
-Route::resource('/Consignataire/AnnonceNav', 'consignataire\AnnonceNavController');
+//Route::resource('/Consignataire/annonceNav', 'consignataire\AnnonceNavController');
+
+Route::resource('annonceNav','AnnonceNavController');
+Route::resource('users','UserController');
+Route::resource('permissions','PermissionController');
+Route::resource('roles','RoleController');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+    Route::resource('products','ProductController');
+});
+

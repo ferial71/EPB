@@ -5,90 +5,168 @@ namespace App\Http\Controllers;
 use App\annonceNav;
 use App\consignataire;
 use Illuminate\Http\Request;
+use Auth;
+use Session;
 
 class AnnonceNavController extends Controller
+
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth']);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 
 
     public function index()
     {
-        $arr['annoncenav'] = annonceNav::all();
-        return view('Consignataire.AnnonceNav.index')->with($arr);
+        $annonceNavs = annonceNav::orderby('id', 'desc')->paginate(10); //show only 5 items at a time in descending order
+
+        return view('annonceNav.index', compact('annonceNavs'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('annonceNav.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+
+        //Validating title and body field
+        $this->validate($request, [
+            'date_dentree' => 'required',
+            'IMO' => 'required',
+          /*  'LOA' => 'required',
+            'BEAM' => 'required',
+            'DWT' => 'required',
+            'DRAFT' => 'required',*/
+
+        ]);
+
+
+        $date_dentree = $request['date_dentree'];
+        $imo = $request['IMO'];
+        $loa = $request['LOA'];
+        $beam = $request['BEAM'];
+        $dwt = $request['DWT'];
+        $draft = $request['DRAFT'];
+
+        $annonceNav = annonceNav::create($request->only( 'date_dentree', 'IMO','LOA','BEAM','DWT','DRAFT'));
+
+        //Display a successful message upon save
+        return redirect()->route('annonceNav.index')
+            ->with('flash_message', 'Annonce navire pour le ,
+             ' . $annonceNav->date_entree . ' created');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $annonceNav = annonceNav::findOrFail($id); //Find post of id = $id
+
+        return view('annonceNav.show', compact('annonceNav'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $annonceNav = annonceNav::findOrFail($id);
+
+        return view('annonceNav.edit', compact('annonceNav'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'navire_id'  => 'required',
+            'date_dentree' => 'required',
+            'IMO' => 'required',
+            'LOA' => 'required',
+            'BEAM' => 'required',
+            'DWT' => 'required',
+            'DRAFT' => 'required',
+        ]);
+
+        $annonceNav = annonceNav::findOrFail($id);
+        $annonceNav->navire_id = $request->input('navire_id');
+        $annonceNav->date_dentree = $request->input('date_dentree');
+        $annonceNav->IMO = $request->input('IMO');
+        $annonceNav->LOA = $request->input('LOA');
+        $annonceNav->BEAM = $request->input('BEAM');
+        $annonceNav->DWT = $request->input('DWT');
+        $annonceNav->DRAFT = $request->input('DRAFT');
+        $annonceNav->save();
+
+        return redirect()->route('annonceNav.show',
+            $annonceNav->id)->with('flash_message',
+            'Annonce navire pour le , ' . $annonceNav->date_dentree . ' updated');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $annonceNav = annonceNav::findOrFail($id);
+        $annonceNav->delete();
+
+        return redirect()->route('annonceNav.index')
+            ->with('flash_message',
+                'Annonce navire successfully deleted');
+
     }
 }
+
+
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
+
+
+    /*public function index()
+    {
+        $arr['annoncenav'] = annonceNav::all();
+        return view('Consignataire.annonceNav.index')->with($arr);
+    }*/
+
+

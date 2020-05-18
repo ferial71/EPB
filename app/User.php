@@ -5,9 +5,20 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\User;
+use Spatie\Permission\Models\Role;
+use DB;
+use Hash;
+
+
 
 class User extends Authenticatable
 {
+    use HasRoles;
     use Notifiable;
 
     /**
