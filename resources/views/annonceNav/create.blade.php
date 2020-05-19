@@ -16,6 +16,7 @@
                     <!-- text input -->
                     <div class="form-group">
                         <div class="form-group">
+
                             <label for="nom_consignataire">Nom du consignataire</label>
                             <input type="text" class="form-control" placeholder="Entrer le nom de consignataire">
                         </div>
@@ -24,8 +25,9 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="nom_navire">Nom du navire</label>
-                            <input type="text" class="form-control" placeholder="Entrer le nom de navire">
+                            {{ Form::label('nom', 'Nom du navire') }}
+                            {{ Form::text('nom', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de navire")) }}
+
                         </div>
                     </div>
                 </div>
@@ -35,8 +37,9 @@
                     <!-- textarea -->
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="Provenance">Provenance</label>
-                            <input type="text" class="form-control" placeholder="Entrer le Provenance du navire">
+                            {{ Form::label('pavillon', 'Pavillon') }}
+                            {{ Form::text('pavillon', null, array('class' => 'form-control','placeholder'=>"Entrer le pavillon de navire")) }}
+
                         </div>
 
 
@@ -76,8 +79,9 @@
                     <!-- text input -->
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="Type-Navire">Type-Navire</label>
-                            <input type="text" class="form-control" placeholder="Entrer le Type de navire">
+                            {{ Form::label('type', 'type du navire') }}
+                            {{ Form::text('type', null, array('class' => 'form-control','placeholder'=>"Entrer le type de navire")) }}
+
                         </div>
                     </div>
                 </div>
@@ -86,8 +90,8 @@
                 <div class="col-3">
                     <div class="form-group">
                         <label for="IMO-Number">numéro IMO</label>
-                        {{ Form::label('IMO', 'numéro IMO') }}
-                        {{ Form::text('IMO', null, array('class' => 'form-control', 'placeholder'=>"Entrer le numéro IMO")) }}
+                        {{ Form::label('imo', 'numéro IMO') }}
+                        {{ Form::text('imo', null, array('class' => 'form-control', 'placeholder'=>"Entrer le numéro IMO")) }}
                     </div>
                 </div>
                 <div class="col-4">
@@ -98,8 +102,8 @@
                 </div>
                 <div class="col-5">
                     <div class="form-group">
-                        {{ Form::label('LOA', 'LOA') }}
-                        {{ Form::text('LOA', null, array('class' => 'form-control','placeholder'=>'Entrer le LOA')) }}
+                        {{ Form::label('loa', 'LOA') }}
+                        {{ Form::text('loa', null, array('class' => 'form-control','placeholder'=>'Entrer le LOA')) }}
 
                     </div>
                 </div>
@@ -107,22 +111,22 @@
             <div class="row">
                 <div class="col-3">
                     <div class="form-group">
-                        {{ Form::label('BEAM', 'BEAM') }}
-                        {{ Form::text('BEAM', null, array('class' => 'form-control','placeholder'=>'Entrer le BEAM')) }}
+                        {{ Form::label('beam', 'BEAM') }}
+                        {{ Form::text('beam', null, array('class' => 'form-control','placeholder'=>'Entrer le BEAM')) }}
 
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        {{ Form::label('DWT', 'DWT') }}
-                        {{ Form::text('DWT', null, array('class' => 'form-control','placeholder'=>'Entrer le DWT')) }}
+                        {{ Form::label('dwt', 'DWT') }}
+                        {{ Form::text('dwt', null, array('class' => 'form-control','placeholder'=>'Entrer le DWT')) }}
 
                     </div>
                 </div>
                 <div class="col-5">
                     <div class="form-group">
-                        {{ Form::label('DRAFT', 'DRAFT') }}
-                        {{ Form::text('DRAFT', null, array('class' => 'form-control','placeholder'=>'Entrer le DRAFT')) }}
+                        {{ Form::label('draft', 'DRAFT') }}
+                        {{ Form::text('draft', null, array('class' => 'form-control','placeholder'=>'Entrer le DRAFT')) }}
 
                     </div>
                 </div>

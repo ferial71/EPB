@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\annonceNav;
 use App\consignataire;
+use App\navire;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
@@ -53,7 +54,7 @@ class AnnonceNavController extends Controller
         //Validating title and body field
         $this->validate($request, [
             'date_dentree' => 'required',
-            'IMO' => 'required',
+            'imo' => 'required',
           /*  'LOA' => 'required',
             'BEAM' => 'required',
             'DWT' => 'required',
@@ -61,15 +62,25 @@ class AnnonceNavController extends Controller
 
         ]);
 
+        $nom =$request['nom'];
+        $pavillon =$request['pavillon'];
+        $type =$request['type'];
+
 
         $date_dentree = $request['date_dentree'];
-        $imo = $request['IMO'];
-        $loa = $request['LOA'];
-        $beam = $request['BEAM'];
-        $dwt = $request['DWT'];
-        $draft = $request['DRAFT'];
+        $imo = $request['imo'];
+        $loa = $request['loa'];
+        $beam = $request['beam'];
+        $dwt = $request['dwt'];
+        $draft = $request['draft'];
 
-        $annonceNav = annonceNav::create($request->only( 'date_dentree', 'IMO','LOA','BEAM','DWT','DRAFT'));
+        $navire = navire::create($request->only('nom','pavillon','imo','loa','beam','dwt','draft','type'));
+        $navire_id  =$navire->id;
+        $annonceNav = annonceNav::create($request->only( 4,'date_dentree', 'imo','loa','beam','dwt','draft'));
+
+
+
+
 
         //Display a successful message upon save
         return redirect()->route('annonceNav.index')

@@ -15,14 +15,14 @@ class CreateAnnonceNavsTable extends Migration
     {
         Schema::create('annonce_navs', function (Blueprint $table) {
             $table->bigIncrements('id');
-          //  $table->integer('navire_id')->unsigned();
-//            $table->foreign('navire_id')->references('id')->on('navire');
+            $table->bigInteger('navire_id')->unsigned();
+            $table->foreign('navire_id')->references('id')->on('navire');
             $table->date('date_dentree');
-            $table->float('IMO');
-            $table->float('LOA');
-            $table->float('BEAM');
-            $table->float('DWT');
-            $table->float('DRAFT');
+            $table->float('imo');
+            $table->float('loa');
+            $table->float('beam');
+            $table->float('dwt');
+            $table->float('draft');
             $table->timestamps();
         });
     }

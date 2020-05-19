@@ -32,7 +32,7 @@ Route::resource('/Admin', 'Admin\AdminController');
 //Route::resource('/Consignataire/annonceNav', 'consignataire\AnnonceNavController');
 
 Route::resource('annonceNav','AnnonceNavController');
-Route::resource('users','UserController');
+Route::resource('users','UserController')->middleware('admin');
 Route::resource('permissions','PermissionController');
 Route::resource('roles','RoleController');
 

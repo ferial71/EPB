@@ -12,8 +12,6 @@ class annonceNav extends Model
 
 
     protected $fillable = [
-
-           'navire_id',
             'date_dentree',
             'IMO',
             'LOA',
@@ -23,5 +21,10 @@ class annonceNav extends Model
     ];
 
     protected $table = 'annonce_navs';
+
+    public function navire()
+    {
+        return $this->belongsTo('App\navire');
+    }
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNavireTable extends Migration
+class CreateNaviresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,20 @@ class CreateNavireTable extends Migration
      */
     public function up()
     {
-        Schema::create('navire', function (Blueprint $table) {
+        Schema::create('navires', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
             $table->string('pavillon');
-            $table->string('aslireEmpl');
-            $table->float('IMO');
+           // $table->string('aslireEmpl');
+            $table->float('imo');
             $table->float('loa');
             $table->float('beam');
-            $table->float('DWT');
+            $table->float('dwt');
             $table->float('draft');
-            $table->float('tonnage');
+           // $table->float('tonnage');
             $table->string('type');
+//            $table->integer('annonceNav_id')->unsigned();
+//            $table->foreign('annonceNav_id')->references('id')->on('annonce_navs');
 
             $table->timestamps();
         });
@@ -37,6 +39,6 @@ class CreateNavireTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('navire');
+        Schema::dropIfExists('navires');
     }
 }
