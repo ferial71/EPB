@@ -47,4 +47,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function consignataire()
+    {
+        return $this->hasMany('App/consignataire');
+
+    }
+
+    protected function transitaire()
+    {
+        return $this->hasMany('App/transitaire');
+
+    }
 }

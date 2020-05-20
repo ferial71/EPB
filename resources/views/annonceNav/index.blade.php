@@ -36,7 +36,8 @@
                         <thead>
                         <tr>
                             <th>id </th>
-                            <th>Nom navire </th>
+                            <th>nom </th>
+
                             <th>date_dentree</th>
                             <th>IMO</th>
                             <th>LOA</th>
@@ -54,11 +55,12 @@
                             <td > <a href="{{ route('annonceNav.show', $annonceNav->id ) }}">{{ $annonceNav->id }} </a></td>
                             <td>{{ $annonceNav->navire->nom }}</td>
                             <td>{{ $annonceNav->date_dentree }}</td>
-                            <td>{{ $annonceNav->IMO }}</td>
-                            <td> {{ $annonceNav->BEAM }}</td>
-                            <td>{{ $annonceNav->DWT }}</td>
-                            <td>{{ $annonceNav->DRAFT }}</td>
-                            <td>{{ $annonceNav->DWT }}</td>
+                            <td>{{ $annonceNav->imo }}</td>
+                            <td>{{ $annonceNav->loa }}</td>
+                            <td> {{ $annonceNav->beam }}</td>
+                            <td>{{ $annonceNav->dwt }}</td>
+                            <td>{{ $annonceNav->draft}}</td>
+
                             <td>
                                 {!! Form::open(['method' => 'DELETE', 'route' => ['annonceNav.destroy', $annonceNav->id] ]) !!}
                                 <a href="{{ route('annonceNav.edit', $annonceNav->id) }}" class="btn btn-info" role="button">Edit</a>

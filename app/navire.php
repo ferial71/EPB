@@ -24,5 +24,10 @@ class navire extends Model
     {
         return $this->hasMany('App\annonceNav');
     }
+    public  function armateur()
+    {
+        return $this->belongsTo('App/armateur');
+
+    }
 
 }

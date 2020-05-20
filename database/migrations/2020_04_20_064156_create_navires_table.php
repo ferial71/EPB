@@ -13,22 +13,75 @@ class CreateNaviresTable extends Migration
      */
     public function up()
     {
+
+        Schema::create('adresses', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('rue');
+            $table->string('cite');
+            $table->string('etat');
+            $table->string('paye');
+            $table->string('code_postale');
+            $table->timestamps();
+        });
+
+
+        Schema::create('armateurs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nom')->unique();
+            $table->string('nationalite')->nullable();
+            $table->timestamps();
+        });
+
+
         Schema::create('navires', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nom');
+            $table->unsignedBigInteger('armateur_id');
+            $table->string('nom')->unique();
             $table->string('pavillon');
-           // $table->string('aslireEmpl');
+            $table->string('longeur');
+            $table->string('largeur');
             $table->float('imo');
-            $table->float('loa');
-            $table->float('beam');
-            $table->float('dwt');
-            $table->float('draft');
-           // $table->float('tonnage');
+            $table->float('port_lourd');
+            $table->float('tire_eau');
+            $table->float('poids');
             $table->string('type');
-//            $table->integer('annonceNav_id')->unsigned();
-//            $table->foreign('annonceNav_id')->references('id')->on('annonce_navs');
-
             $table->timestamps();
+
+            $table->foreign('armateur_id')->references('id')->on('armateurs');
+        });
+
+
+
+        Schema::create('consignataires', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('adresse_id')->nullable();
+
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('numero_tel')->nullable();
+            $table->string('numero_tel_fix')->nullable();
+            $table->string('numero_fax')->nullable();
+            $table->timestamps();
+
+            $table->foreign('adresse_id')->references('id')->on('adresses');
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+
+
+        Schema::create('annonce_navs', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('navire_id');
+            $table->unsignedBigInteger('consignataire_id');
+            $table->unsignedBigInteger('armateur_id');
+            $table->unsignedBigInteger('cargaison_id');
+            $table->date('date_dentree');
+            $table->timestamps();
+
+            $table->foreign('navire_id')->references('id')->on('navires');
+            $table->foreign('consignataire_id')->references('id')->on('consignataires');
+            $table->foreign('armateur_id')->references('id')->on('armateurs');
+            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
         });
     }
 
@@ -39,6 +92,10 @@ class CreateNaviresTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('adresses');
         Schema::dropIfExists('navires');
+        Schema::dropIfExists('consignataires');
+        Schema::dropIfExists('armateurs');
+        Schema::dropIfExists('annonce_navs');
     }
 }

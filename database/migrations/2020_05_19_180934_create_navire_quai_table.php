@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuaiTable extends Migration
+class CreateNavireQuaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateQuaiTable extends Migration
      */
     public function up()
     {
-        Schema::create('quai', function (Blueprint $table) {
+        Schema::create('navire_quai', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('navire_id')->unsignedBigInteger();
+            $table->bigInteger('quai_id')->unsignedBigInteger();
+
             $table->timestamps();
+
+            $table->foreign('navire_id')->references('id')->on('navires');
+            $table->foreign('quai_id')->references('id')->on('quais');
         });
     }
 
@@ -26,6 +32,6 @@ class CreateQuaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quai');
+        Schema::dropIfExists('navire_quai');
     }
 }

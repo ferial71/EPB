@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCPNSTable extends Migration
+class CreateCpnDpquaiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateCPNSTable extends Migration
      */
     public function up()
     {
-        Schema::create('c_p_n_s', function (Blueprint $table) {
+        Schema::create('cpn_dpquai', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('heur_entree');
-            $table->dateTime('heur_sortie');
-            $table->text('consignes');
+            $table->bigInteger('cpn_id')->unsignedBigInteger();
+            $table->bigInteger('dpquai_id')->unsignedBigInteger();
             $table->timestamps();
+
+            $table->foreign('cpn_id')->references('id')->on('cpns');
+            $table->foreign('dpquai_id')->references('id')->on('dpquais');
         });
     }
 
@@ -29,6 +31,6 @@ class CreateCPNSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('c_p_n_s');
+        Schema::dropIfExists('cpn_dpquai');
     }
 }

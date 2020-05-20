@@ -47,6 +47,7 @@ class AnnonceNavController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
     {
@@ -75,8 +76,20 @@ class AnnonceNavController extends Controller
         $draft = $request['draft'];
 
         $navire = navire::create($request->only('nom','pavillon','imo','loa','beam','dwt','draft','type'));
-        $navire_id  =$navire->id;
-        $annonceNav = annonceNav::create($request->only( 4,'date_dentree', 'imo','loa','beam','dwt','draft'));
+
+
+
+
+        $annonceNav =new annonceNav();
+        $annonceNav->navire_id =$navire->id;
+        $annonceNav->date_dentree =$date_dentree;
+        $annonceNav->imo = $imo;
+        $annonceNav->loa =$loa;
+        $annonceNav->beam =$beam;
+        $annonceNav->dwt = $dwt;
+        $annonceNav->draft = $draft ;
+        $annonceNav->save();
+        //$annonceNav = annonceNav::create($request->only( 'date_dentree', 'imo','loa','beam','dwt','draft'));
 
 
 
@@ -92,7 +105,7 @@ class AnnonceNavController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
@@ -105,7 +118,7 @@ class AnnonceNavController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -119,7 +132,8 @@ class AnnonceNavController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function update(Request $request, $id)
     {
@@ -153,7 +167,7 @@ class AnnonceNavController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {

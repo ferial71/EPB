@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressTable extends Migration
+class CreateCpnNavireTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('cpn_navire', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('street');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
-            $table->string('zipCode');
+            $table->bigInteger('cpn_id')->unsignedBigInteger();
+            $table->bigInteger('navire_id')->unsignedBigInteger();
             $table->timestamps();
+
+            $table->foreign('cpn_id')->references('id')->on('cpns');
+            $table->foreign('navire_id')->references('id')->on('navires');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('cpn_navire');
     }
 }

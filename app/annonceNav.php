@@ -12,6 +12,10 @@ class annonceNav extends Model
 
 
     protected $fillable = [
+            'navire_id',
+            'consignataire_id',
+            'armateur_id',
+            'cargaison_id',
             'date_dentree',
             'IMO',
             'LOA',
@@ -26,5 +30,17 @@ class annonceNav extends Model
     {
         return $this->belongsTo('App\navire');
     }
+
+    protected function consignataire()
+    {
+        return $this->belongsTo('App/consignataire');
+    }
+
+    protected function cargaison()
+    {
+        return $this->hasMany('App/cargaison');
+    }
+
+
 
 }
