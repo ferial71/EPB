@@ -42,8 +42,8 @@ class CreateNaviresTable extends Migration
             $table->string('largeur');
             $table->float('imo');
             $table->float('port_lourd');
-            $table->float('tire_eau');
-            $table->float('poids');
+            $table->float('tirant_eau');
+            $table->float('poids')->nullable();
             $table->string('type');
             $table->timestamps();
 
@@ -58,7 +58,7 @@ class CreateNaviresTable extends Migration
             $table->unsignedBigInteger('adresse_id')->nullable();
 
             $table->string('nom');
-            $table->string('prenom');
+            $table->string('prenom')->nullable();
             $table->string('numero_tel')->nullable();
             $table->string('numero_tel_fix')->nullable();
             $table->string('numero_fax')->nullable();

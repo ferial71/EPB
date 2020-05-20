@@ -17,16 +17,17 @@
                     <div class="form-group">
                         <div class="form-group">
 
-                            <label for="nom_consignataire">Nom du consignataire</label>
-                            <input type="text" class="form-control" placeholder="Entrer le nom de consignataire">
+                            {{ Form::label('nom_consignataire', 'Nom du consignataire') }}
+                            {{ Form::text('nom_consignataire', null, array('class' => 'form-control','placeholder'=>"Entrer le nom du consignataire")) }}
+
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <div class="form-group">
-                            {{ Form::label('nom', 'Nom du navire') }}
-                            {{ Form::text('nom', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de navire")) }}
+                            {{ Form::label('nom_navire', 'Nom du navire') }}
+                            {{ Form::text('nom_navire', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de navire")) }}
 
                         </div>
                     </div>
@@ -70,8 +71,9 @@
                     <!-- text input -->
                     <div class="form-group">
                         <div class="form-group">
-                            <label for="Tonnage">Tonnage</label>
-                            <input type="text" class="form-control" placeholder="Entrer le Poids transporté par le navire">
+                            {{ Form::label('tonnage', 'Tonnage') }}
+                            {{ Form::text('tonnage', null, array('class' => 'form-control','placeholder'=>"Entrer le Poids transporté par le navire")) }}
+
                         </div>
                     </div>
                 </div>
@@ -96,14 +98,14 @@
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label for="FLAG">FLAG</label>
-                        <input type="text" class="form-control" placeholder="Entrer le Pavillon du navire">
+                        {{ Form::label('nom_armateur', 'Nom de l armateur') }}
+                        {{ Form::text('nom_armateur', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de l armateur")) }}
                     </div>
                 </div>
                 <div class="col-5">
                     <div class="form-group">
-                        {{ Form::label('loa', 'LOA') }}
-                        {{ Form::text('loa', null, array('class' => 'form-control','placeholder'=>'Entrer le LOA')) }}
+                        {{ Form::label('longeur', 'Longeur') }}
+                        {{ Form::text('longeur', null, array('class' => 'form-control','placeholder'=>'Entrer le longeur')) }}
 
                     </div>
                 </div>
@@ -111,22 +113,22 @@
             <div class="row">
                 <div class="col-3">
                     <div class="form-group">
-                        {{ Form::label('beam', 'BEAM') }}
-                        {{ Form::text('beam', null, array('class' => 'form-control','placeholder'=>'Entrer le BEAM')) }}
+                        {{ Form::label('largeur', 'Largeur') }}
+                        {{ Form::text('largeur', null, array('class' => 'form-control','placeholder'=>'Entrer le largeur')) }}
 
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        {{ Form::label('dwt', 'DWT') }}
-                        {{ Form::text('dwt', null, array('class' => 'form-control','placeholder'=>'Entrer le DWT')) }}
+                        {{ Form::label('port_lourd', 'Le port en lourd') }}
+                        {{ Form::text('port_lourd', null, array('class' => 'form-control','placeholder'=>'Entrer le port en lourd')) }}
 
                     </div>
                 </div>
                 <div class="col-5">
                     <div class="form-group">
-                        {{ Form::label('draft', 'DRAFT') }}
-                        {{ Form::text('draft', null, array('class' => 'form-control','placeholder'=>'Entrer le DRAFT')) }}
+                        {{ Form::label('tirant_eau', 'Le tirant d eau') }}
+                        {{ Form::text('tirant_eau', null, array('class' => 'form-control','placeholder'=>'Entrer le DRAFT')) }}
 
                     </div>
                 </div>

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\annonceNav;
+use App\armateur;
+use App\cargaison;
 use App\consignataire;
 use App\navire;
 use Illuminate\Http\Request;
 use Auth;
+use phpDocumentor\Reflection\Types\Null_;
 use Session;
 
 class AnnonceNavController extends Controller
@@ -64,30 +67,91 @@ class AnnonceNavController extends Controller
         ]);
 
         $nom =$request['nom'];
-        $pavillon =$request['pavillon'];
-        $type =$request['type'];
 
+        //armateur
 
-        $date_dentree = $request['date_dentree'];
+        $nom_armateur =$request['nom_armateur'];//
+
+        //navire
+        $pavillon =$request['pavillon'];//
+        $type =$request['type']; //
+        $nom_navire = $request['nom_navire']; //
+        $longeur = $request['longeur'];
+        $largeur = $request['largeur'];
         $imo = $request['imo'];
-        $loa = $request['loa'];
-        $beam = $request['beam'];
-        $dwt = $request['dwt'];
-        $draft = $request['draft'];
+        $port_lourd = $request['port_lourd'];
+        $tirant_eau = $request['tirant_eau'];
+        //$poids = $request['poids'];
 
-        $navire = navire::create($request->only('nom','pavillon','imo','loa','beam','dwt','draft','type'));
+        //consignataire
+        $nom_consignataire =$request['nom_consignataire'];
+
+        //cargaison
+        $tonnage =$request['tonnage'];
+
+        //annonceNav
+        $date_dentree = $request['date_dentree'];
+
+
+        //cree armateur
+        $armateur = armateur::where('nom', '=', $nom_armateur )->first();
+        if ($armateur=== null) {
+            $armateur = new armateur();
+            $armateur->nom = $nom_armateur;
+            $armateur->save();
+        }
+
+        //$armateur =armateur::create($request->only('nom_armateur'));
+
+
+        //création de navire
+        $navire = navire::where('nom', '=', $nom_navire )->first();
+        if ($navire === null){
+            $navire = new navire();
+            $navire->armateur_id = $armateur->id;
+            $navire->pavillon = $pavillon;
+            $navire->type = $type;
+            $navire->nom = $nom_navire;
+            $navire->longeur = $longeur;
+            $navire->largeur = $largeur;
+            $navire->imo = $imo;
+            $navire->port_lourd= $port_lourd;
+            $navire->tirant_eau= $tirant_eau;
+            //$navire->poids= $poids;
+            $navire->save();
+        }
 
 
 
+
+        //création de con
+
+        $consignataire = consignataire::where('nom','=',$nom_consignataire)->first();
+        if ($consignataire === null){
+            $consignataire =new consignataire();
+            $consignataire->nom = $nom_consignataire;
+            $consignataire->save();
+        }
+
+
+        //creation cargo
+
+        $cargo =cargaison::where('tonnage','=',$tonnage)->first();
+        if ($cargo===null){
+            $cargo = new cargaison();
+            $cargo->tonnage = $tonnage;
+            $cargo->navire_id = $navire->id;
+            $cargo->save();
+        }
+
+        //creation d l'annonceNav
 
         $annonceNav =new annonceNav();
         $annonceNav->navire_id =$navire->id;
         $annonceNav->date_dentree =$date_dentree;
-        $annonceNav->imo = $imo;
-        $annonceNav->loa =$loa;
-        $annonceNav->beam =$beam;
-        $annonceNav->dwt = $dwt;
-        $annonceNav->draft = $draft ;
+        $annonceNav->consignataire_id = $consignataire->id;
+        $annonceNav->cargaison_id =$cargo->id;
+        $annonceNav->armateur_id =$armateur->id;
         $annonceNav->save();
         //$annonceNav = annonceNav::create($request->only( 'date_dentree', 'imo','loa','beam','dwt','draft'));
 

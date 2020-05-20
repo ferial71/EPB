@@ -15,7 +15,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^1.2",
         "laravelcollective/html": "^6.1",
-        "spatie/laravel-permission": "^3.12"
+        "spatie/laravel-permission": "^3.12",
+        "tcg/voyager": "^1.4"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
