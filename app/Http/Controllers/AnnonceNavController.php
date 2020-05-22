@@ -66,8 +66,6 @@ class AnnonceNavController extends Controller
 
         ]);
 
-        $nom =$request['nom'];
-
         //armateur
 
         $nom_armateur =$request['nom_armateur'];//
@@ -140,7 +138,6 @@ class AnnonceNavController extends Controller
         if ($cargo===null){
             $cargo = new cargaison();
             $cargo->tonnage = $tonnage;
-            $cargo->navire_id = $navire->id;
             $cargo->save();
         }
 

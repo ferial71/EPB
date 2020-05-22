@@ -15,11 +15,11 @@ class cargaison extends Model
 
     protected function annonceNav()
     {
-        return $this->hasMany('App/annonceNav');
+        return $this->hasOne('App\annonceNav');
     }
 
     protected function marchandise()
     {
-        return $this->hasMany('App/marchandise');
+        return $this->hasMany('App\marchandise');
     }
 }

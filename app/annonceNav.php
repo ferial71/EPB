@@ -33,12 +33,12 @@ class annonceNav extends Model
 
     protected function consignataire()
     {
-        return $this->belongsTo('App/consignataire');
+        return $this->belongsTo('App\consignataire');
     }
 
     protected function cargaison()
     {
-        return $this->hasMany('App/cargaison');
+        return $this->belongsTo('App\cargaison');
     }
 
 

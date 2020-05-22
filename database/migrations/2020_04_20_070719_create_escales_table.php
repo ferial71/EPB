@@ -19,10 +19,8 @@ class CreateEscalesTable extends Migration
             $table->bigIncrements('id');
             $table->integer('tonnage')->nullable();
             $table->integer('nombreColis')->nullable();
-            $table->unsignedBigInteger('navire_id');
             $table->timestamps();
 
-            $table->foreign('navire_id')->references('id')->on('navires');
         });
 
         Schema::create('marchandises', function (Blueprint $table) {

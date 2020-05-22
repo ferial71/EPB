@@ -35,6 +35,8 @@ Route::resource('annonceNav','AnnonceNavController');
 Route::resource('users','UserController')->middleware('admin');
 Route::resource('permissions','PermissionController');
 Route::resource('roles','RoleController');
+Route::resource('poste_quais','Poste_quaiController');
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');

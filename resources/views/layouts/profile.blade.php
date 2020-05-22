@@ -156,18 +156,18 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4 " style="opacity :0.8; background-image: url('dist/img/07.jpg');" >
         <!-- Brand Logo -->
         <a href="{{route('home')}}" class="brand-link">
-            <img src="{{ asset('dist/img/ENTREPRISE-PORTUAIRE-DE-BEJAIA-EPB.jpg') }}"
+            <img src="{{ asset('dist/img/logo.jpg') }}"
                  alt="EPB Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: 1">
-            <span class="brand-text font-weight-light">Entreprise portuaire </br> de Bejaia</span>
+            <span class="brand-text font-weight-light">EPB</span>
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" >
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
@@ -297,11 +297,11 @@
         @yield('content')
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.0.4
         </div>
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+        <strong>Copyright &copy; 2020 <a href="https://portdebejaia.dz">Entreprise Portuaire de Béjaia</a>.</strong> All rights
         reserved.
     </footer>
 
