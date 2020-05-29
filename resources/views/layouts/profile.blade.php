@@ -156,7 +156,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4 " style="opacity :0.8; background-image: url('dist/img/07.jpg');" >
+    <aside class="main-sidebar sidebar-dark-primary elevation-4 " style="opacity :0.8;" >
         <!-- Brand Logo -->
         <a href="{{route('home')}}" class="brand-link">
             <img src="{{ asset('dist/img/logo.jpg') }}"
@@ -201,30 +201,70 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            @can('annonce_navire-list')
                             <li class="nav-item">
-                                <a href="../forms/general.html" class="nav-link">
+                                <a  href={{route('annonce_navires.index')}}  class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>formualire 1</p>
+                                    <p>Annonce navire  </p>
                                 </a>
                             </li>
+                            @endcan
+                            @can('demande_de_poste_a_quai-list')
                             <li class="nav-item">
-                                <a href="../forms/advanced.html" class="nav-link">
+                                <a href={{route('poste_quais.index')}} class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>formualire 2</p>
+                                    <p>Demande de poste à quai</p>
                                 </a>
                             </li>
+                            @endcan
+                            @can('manifest-list')
                             <li class="nav-item">
-                                <a href="../forms/editors.html" class="nav-link">
+                                <a href={{route('manifestes.index')}} class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Editors</p>
+                                    <p>Manifeste</p>
                                 </a>
                             </li>
+                            @endcan
+                            @can('bon_de_commande-list')
                             <li class="nav-item">
-                                <a href="../forms/validation.html" class="nav-link">
+                                <a href={{route('bon_de_commandes.index')}} class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>formualire 3</p>
+                                    <p>Bon de commande</p>
                                 </a>
                             </li>
+                            @endcan
+                            @can('bon_a_enlever-list')
+                            <li class="nav-item">
+                                <a href={{route('bon_a_enlevers.index')}} class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Bon à enlever</p>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('demande_de_mise_a_quai-list')
+                                <li class="nav-item">
+                                    <a href={{route('mise_a_quais.index')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Demande de mise à quai</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('bon_a_delivrer-list')
+                                <li class="nav-item">
+                                    <a href={{route('bon_a_delivrers.index')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bon à délivrer</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('cpn-list')
+                                <li class="nav-item">
+                                    <a href={{route('home')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Consulter la CPN</p>
+                                    </a>
+                                </li>
+                            @endcan
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
@@ -278,7 +318,7 @@
                                                             document.getElementById('logout-form').submit();"
                         >
                         <i class="nav-icon far fa-circle text-danger"></i>
-                            {{ __('Logout') }}
+                            <p class="text">Logout</p>
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -318,20 +358,25 @@
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Select2 -->
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- Bootstrap4 Duallistbox -->
-<script src="../../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="{{ asset('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}"></script>
 <!-- InputMask -->
-<script src="../../plugins/moment/moment.min.js"></script>
-<script src="../../plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
 <!-- date-range-picker -->
-<script src="../../plugins/daterangepicker/daterangepicker.js"></script>
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- bootstrap color picker -->
-<script src="../../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="{{ asset('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="../../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <!-- Bootstrap Switch -->
-<script src="../../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+
+
+@yield('scripts')
+
+
 
 
 <!-- AdminLTE App -->

@@ -9,7 +9,7 @@
             <hr>
 
             {{-- Using the Laravel HTML Form Collective to create our form --}}
-            {{ Form::open(array('route' => 'annonceNav.store')) }}
+            {{ Form::open(array('route' => 'annonce_navire.store')) }}
 
             <div class="form-group">
                 {{ Form::label('title', 'Title') }}

@@ -6,7 +6,7 @@
     <section class="content" style="padding-bottom: 2%">
         <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
             <section class="content">
-                {{ Form::open(array('route' => 'annonceNav.store')) }}
+                {{ Form::open(array('route' => 'annonce_navires.store')) }}
                 <div class="wrapper">
                     <section class="content-header">
                         <div class="container-fluid">

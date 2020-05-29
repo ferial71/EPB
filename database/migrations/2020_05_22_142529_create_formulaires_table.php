@@ -15,10 +15,13 @@ class CreateFormulairesTable extends Migration
     {
         Schema::create('formulaires', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('champ');
-            $table->json('réponce');
-            $table->boolean('valide');
+            $table->string('titre')->nullable();
+            $table->json('champs');
+            $table->boolean('valide')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

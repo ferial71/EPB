@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class annonceNav extends Model
+class AnnonceNavire extends Model
 {
 
 

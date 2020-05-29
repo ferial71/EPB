@@ -63,50 +63,10 @@
 
                                                 </tr>
                                                 </thead>
-                                                <tbody>
-                                                @foreach ($annonceNavs as $annonceNav)
-                                                <tr>
 
-                                                    <td > <a href="{{ route('annonceNav.show', $annonceNav->id ) }}">{{ $annonceNav->id }} </a></td>
-                                                    <td>{{ $annonceNav->navire->nom }}</td>
-                                                    <td>{{ $annonceNav->navire->type}}</td>
-                                                    <td>{{ $annonceNav->date_dentree }}</td>
-                                                    <td>{{ $annonceNav->navire->tirant_eau }}</td>
-                                                    <td> {{$annonceNav->cargaison_id }}</td>
-                                                    <td>{{ $annonceNav->cargaison->tonnage }}</td>
-                                                    <td>{{ $annonceNav->navire->pavillon}}</td>
-                                                    <td>{{ $annonceNav->consignataire->nom}}</td>
-
-                                                    <td>
-                                                        {!! Form::open(['method' => 'DELETE', 'route' => ['annonceNav.destroy', $annonceNav->id] ]) !!}
-                                                        <a href="{{ route('annonceNav.edit', $annonceNav->id) }}" class="btn btn-info" role="button">Edit</a>
-                                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                                        {!! Form::close() !!}
-
-                                                    </td>
-
-                                                </tr>
-                                                @endforeach
-
-                                                </tbody>
-                                                <tfoot>
-                                                <tr>
-                                                    <th>id </th>
-                                                    <th>Navire</th>
-                                                    <th>Type</th>
-                                                    <th>ETA</th>
-                                                    <th>TED</th>
-                                                    <th>Cargaison </th>
-                                                    <th>Tonnage </th>
-                                                    <th>Provenance</th>
-                                                    <th>Agent</th>
-                                                    <th></th>
-                                                </tr>
-                                                </tfoot>
-                                                {!! $annonceNavs->links() !!}
                                             </table>
                                             <div
-                                                class="panel-footer">Page {{ $annonceNavs->currentPage() }} of {{ $annonceNavs->lastPage() }}
+                                                class="panel-footer">Page {{ $formulaires->currentPage() }} of {{ $formulaires->lastPage() }}
                                             </div>
                                         </div>
 
@@ -114,7 +74,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ route('annonceNav.create') }}" class="btn btn-info" role="button">Nouveau annonce</a>
+                                <a href="{{ route('annonce_navires.create') }}" class="btn btn-info" role="button">Nouveau annonce</a>
 
                             </div>
                         </div>

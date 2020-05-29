@@ -20,9 +20,9 @@ class navire extends Model
         'pavillon'
     ];
 
-    public function annonceNav()
+    public function annonce_navire()
     {
-        return $this->hasMany('App\annonceNav');
+        return $this->hasMany('App\annonce_navire');
     }
     public  function armateur()
     {

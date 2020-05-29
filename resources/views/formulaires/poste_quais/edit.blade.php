@@ -6,18 +6,19 @@
     <section class="content" style="padding-bottom: 2%">
         <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
             <section class="content">
-                {{ Form::open(array('route' => 'annonceNav.store')) }}
+                {{ Form::model($formulaire, array('route' => array('poste_quais.update', $formulaire->id), 'method' => 'PUT')) }}
+
                 <div class="wrapper">
                     <section class="content-header">
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1>Annonces navire</h1>
+                                    <h1>Demande de poste à quai</h1>
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                        <li class="breadcrumb-item active">Annonces navire</li>
+                                        <li class="breadcrumb-item active">Demande de poste à quai</li>
                                     </ol>
                                 </div>
                             </div>
@@ -36,8 +37,35 @@
                                         <div class="form-group">
                                             <div class="form-group">
 
-                                                {{ Form::label('nom_consignataire', 'Nom du consignataire') }}
-                                                {{ Form::text('nom_consignataire', null, array('class' => 'form-control','placeholder'=>"Entrer le nom du consignataire")) }}
+                                                <label for="nom_navire">Nom du navire</label>
+                                                <input type="text" name="nom_navire" class="form-control" placeholder="Entrer le nom du navire"" >
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <div class="form-group">
+
+                                                <label for="transitaire">Transitaire</label>
+                                                <input type="text" name="transitaire" class="form-control" placeholder="Entrer le nom du transitaire" >
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <div class="form-group">
+
+                                                <label for="nom_armateur">Nom de l armateur</label>
+                                                <input type="text" name="nom_armateur" class="form-control" placeholder="Entrer le nom de l armateur" >
+
+
 
                                             </div>
                                         </div>
@@ -45,8 +73,9 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <div class="form-group">
-                                                {{ Form::label('nom_navire', 'Nom du navire') }}
-                                                {{ Form::text('nom_navire', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de navire")) }}
+
+                                                <label for="consignataire">consignataire</label>
+                                                <input type="text" name="consignataire" class="form-control" placeholder="Entrer le nom du consignataire" >
 
                                             </div>
                                         </div>
@@ -57,8 +86,9 @@
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <div class="form-group">
-                                                {{ Form::label('pavillon', 'Pavillon') }}
-                                                {{ Form::text('pavillon', null, array('class' => 'form-control','placeholder'=>"Entrer le pavillon de navire")) }}
+                                                <label for="provenance">Provenance</label>
+                                                <input type="text" name="provenance" class="form-control" placeholder="Entrer la provenance du navire" >
+
 
                                             </div>
 
@@ -69,13 +99,12 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <div class="form-group">
-
-                                                {{ Form::label('date_dentree', 'Date d’entrée du navire:') }}
+                                                <label for="date">Date d’entrée du navire: </label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
-                                                    {{ Form::text('date_dentree', null, array('class' => 'form-control','data-inputmask-alias'=>'datetime','data-inputmask-inputformat'=>"dd/mm/yyyy",'data-mask')) }}
+                                                    <input type="text" name="date" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
 
                                                 </div>
                                                 <!-- /.input group -->
@@ -83,6 +112,28 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="cargaison">Cargaisone</label>
+                                            <input type="text" name="cargaison" class="form-control" placeholder="Entrer la Cargaison" >
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label for="marchandise">Nature des marchandises</label>
+                                            <input type="text" name="marchandise" class="form-control" placeholder="Entrer la nature des marchandises" >
+
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <label for="m_conditionnement">Mode de conditionnement</label>
+                                            <input type="text" name="m_conditionnement" class="form-control" placeholder="Entrer le mode de conditionnement" >
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 <div class="row">
@@ -90,8 +141,8 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
-                                                {{ Form::label('tonnage', 'Tonnage') }}
-                                                {{ Form::text('tonnage', null, array('class' => 'form-control','placeholder'=>"Entrer le Poids transporté par le navire")) }}
+                                                <label for="tonnage">Tonnage </label>
+                                                <input type="text" name="tonnage" class="form-control" placeholder="Entrer le Poids transporté par le navire" >
 
                                             </div>
                                         </div>
@@ -100,9 +151,8 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
-                                                {{ Form::label('type', 'type du navire') }}
-                                                {{ Form::text('type', null, array('class' => 'form-control','placeholder'=>"Entrer le type de navire")) }}
-
+                                                <label for="type">type du navire </label>
+                                                <input type="text" name="type" class="form-control" placeholder="Entrer le type du navire" >
                                             </div>
                                         </div>
                                     </div>
@@ -110,48 +160,57 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="form-group">
-                                            <label for="IMO-Number">numéro IMO</label>
-                                            {{ Form::label('imo', 'numéro IMO') }}
-                                            {{ Form::text('imo', null, array('class' => 'form-control', 'placeholder'=>"Entrer le numéro IMO")) }}
+                                            <label for="imo">numéro IMO</label>
+                                            <input type="text" name="imo" class="form-control" placeholder="Entrer le numéro IMO" >
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            {{ Form::label('nom_armateur', 'Nom de l armateur') }}
-                                            {{ Form::text('nom_armateur', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de l armateur")) }}
+                                            <label for="rade">La rade actuelle</label>
+                                            <input type="text" name="rade" class="form-control" placeholder="Entrer la rade actuelle du navire" >
                                         </div>
                                     </div>
                                     <div class="col-5">
                                         <div class="form-group">
-                                            {{ Form::label('longeur', 'Longeur') }}
-                                            {{ Form::text('longeur', null, array('class' => 'form-control','placeholder'=>'Entrer le longeur')) }}
+
+                                            <label for="pavillon">Pavillon </label>
+                                            <input type="text" name="pavillon" class="form-control" placeholder="Entrer le pavillon du navire" >
 
                                         </div>
                                     </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="longeur_navire">Longeur du navire</label>
+                                            <input type="text" name="longeur_navire" class="form-control" placeholder="Entrer le longeur du navire" >
+
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="form-group">
-                                            {{ Form::label('largeur', 'Largeur') }}
-                                            {{ Form::text('largeur', null, array('class' => 'form-control','placeholder'=>'Entrer le largeur')) }}
+                                            <label for="largeur_navire">Largeur du navire</label>
+                                            <input type="text" name="largeur_navire" class="form-control" placeholder="Entrer le largeur du navire" >
 
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            {{ Form::label('port_lourd', 'Le port en lourd') }}
-                                            {{ Form::text('port_lourd', null, array('class' => 'form-control','placeholder'=>'Entrer le port en lourd')) }}
+                                            <label for="port_lourd">Le port en lourd</label>
+                                            <input type="text" name="port_lourd" class="form-control" placeholder="Entrer le port en lourd" >
 
                                         </div>
                                     </div>
                                     <div class="col-5">
                                         <div class="form-group">
-                                            {{ Form::label('tirant_eau', 'Le tirant d eau') }}
-                                            {{ Form::text('tirant_eau', null, array('class' => 'form-control','placeholder'=>'Entrer le DRAFT')) }}
-
+                                            <label for="tirant_eau">Le tirant d'eau</label>
+                                            <input type="text" name="tirant_eau" class="form-control" placeholder="Entrer le tirant d'eau" >
                                         </div>
                                     </div>
                                 </div>
+
+
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">Ou bien sélectionner une fichier CSV</label>
@@ -172,7 +231,7 @@
 
                     </div>
                     <div class="card-footer">
-                        {{ Form::submit('Crée annonce', array('class' => 'btn btn-primary')) }}
+                        {{ Form::submit('update', array('class' => 'btn btn-primary')) }}
                         {{ Form::close() }}
                     </div>
                 </div>

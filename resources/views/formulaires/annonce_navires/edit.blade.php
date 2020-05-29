@@ -10,7 +10,7 @@
 
             <h1>Edit Post</h1>
             <hr>
-            {{ Form::model($annonceNav, array('route' => array('annonceNav.update', $annonceNav->id), 'method' => 'PUT')) }}
+            {{ Form::model($annonce_navires, array('route' => array('annonce_navires.update', $annonce_navires->id), 'method' => 'PUT')) }}
             <div class="form-group">
                 {{ Form::label('title', 'Title') }}
                 {{ Form::text('title', null, array('class' => 'form-control')) }}<br>

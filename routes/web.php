@@ -22,20 +22,38 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/annoncenav', 'HomeController@annoncenav')->name('annoncenav');
+//Route::get('/annonce_navire', 'HomeController@annonce_navire')->name('annonce_navire');
 Route::get('/dpostequai', 'HomeController@dpostequai')->name('dpostequai');
-//Route::get('/Consignataire/AnnonceNav', 'ConsignataireController@index')->name('annonce');
+//Route::get('/Consignataire/annonce_navire', 'ConsignataireController@index')->name('annonce');
 Route::resource('/Consignataire', 'ConsignataireController');
 Route::resource('/Transitaire', 'transitaire\TransitaireController');
 Route::resource('/Admin', 'Admin\AdminController');
 
-//Route::resource('/Consignataire/annonceNav', 'consignataire\AnnonceNavController');
+//Route::resource('/Consignataire/annonce_navire', 'consignataire\annonce_navireController');
 
-Route::resource('annonceNav','AnnonceNavController');
+
 Route::resource('users','UserController')->middleware('admin');
 Route::resource('permissions','PermissionController');
 Route::resource('roles','RoleController');
-Route::resource('poste_quais','Poste_quaiController');
+
+
+Route::group(['prefix'=>'formulaires'],function(){
+    Route::resource('annonce_navires','AnnonceNavireController');
+    Route::resource('poste_quais','PosteQuaiController');
+    Route::resource('manifestes','ManifesteController');
+    Route::resource('bon_de_commandes','BonCommandeController');
+    Route::resource('bon_a_delivrers','BonDelivrerController');
+    Route::resource('bon_a_enlevers','BonEnleverController');
+    Route::resource('mise_a_quais','MiseQuaiController');
+
+});
+
+
+
+
+
+Route::resource('test','FormulaireController');
+
 
 
 Route::group(['middleware' => ['auth']], function() {

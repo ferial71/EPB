@@ -28,55 +28,55 @@ class RolesAndPermissionsSeeder extends Seeder
         $permissions = [
             'role-list',
             'role-create',
-            'role-edit',
+            'role-validate',
             'role-delete',
 
             'user-create',
             'user-list',
-            'user-edit',
+            'user-validate',
             'user-delete',
 
 
-            'dpostequai-list',
-            'dpostequai-create',
-            'dpostequai-edit',
-            'dpostequai-delete',
+            'demande_de_poste_a_quai-list',
+            'demande_de_poste_a_quai-create',
+            'demande_de_poste_a_quai-validate',
+            'demande_de_poste_a_quai-delete',
 
-            'dmisequai-list',
-            'dmisequai-create',
-            'dmisequai-edit',
-            'dmisequai-delete',
+            'demande_de_mise_a_quai-list',
+            'demande_de_mise_a_quai-create',
+            'demande_de_mise_a_quai-validate',
+            'demande_de_mise_a_quai-delete',
 
             'cpn-list',
             'cpn-create',
-            'cpn-edit',
+            'cpn-validate',
             'cpn-delete',
 
-            'manifest-list',
-            'manifest-create',
-            'manifest-edit',
-            'manifest-delete',
+            'manifeste-list',
+            'manifeste-create',
+            'manifeste-validate',
+            'manifeste-delete',
 
 
-            'bonCommande-list',
-            'bonCommande-create',
-            'bonCommande-edit',
-            'bonCommande-delete',
+            'bon_de_commande-list',
+            'bon_de_commande-create',
+            'bon_de_commande-validate',
+            'bon_de_commande-delete',
 
-            'bonEnlever-list',
-            'bonEnlever-create',
-            'bonEnlever-edit',
-            'bonEnlever-delete',
+            'bon_a_enlever-list',
+            'bon_a_enlever-create',
+            'bon_a_enlever-validate',
+            'bon_a_enlever-delete',
 
-            'bondelivrer-list',
-            'bondelivrer-create',
-            'bondelivrer-edit',
-            'bondelivrer-delete',
+            'bon_a_delivrer-list',
+            'bon_a_delivrer-create',
+            'bon_a_delivrer-validate',
+            'bon_a_delivrer-delete',
 
-            'annonceNav-list',
-            'annonceNav-create',
-            'annonceNav-edit',
-            'annonceNav-delete'
+            'annonce_navire-list',
+            'annonce_navire-create',
+            'annonce_navire-validate',
+            'annonce_navire-delete'
         ];
 
 
@@ -106,7 +106,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour Chef de service de sécurité maritime et mouvement
         $role = Role::create(['name' => 'CSSMM']);
-        $role->syncPermissions('annonceNav-list','annonceNav-edit','dpostequai-list','annonceNav-delete');
+        $role->syncPermissions('annonce_navire-list','annonce_navire-validate','demande_de_poste_a_quai-list','annonce_navire-delete');
 
         /** @var \App\User $user */
         $admin = factory(\App\User::class)->create([
@@ -120,12 +120,12 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour Préséednt de la CPN
         $role = Role::create(['name' => 'PCPN']);
-        $role->syncPermissions('dpostequai-list',
-            'dpostequai-edit',
-            'dpostequai-delete',
+        $role->syncPermissions('demande_de_poste_a_quai-list',
+            'demande_de_poste_a_quai-validate',
+            'demande_de_poste_a_quai-delete',
             'cpn-list',
             'cpn-create',
-            'cpn-edit',
+            'cpn-validate',
             'cpn-delete');
 
         /** @var \App\User $user */
@@ -140,10 +140,10 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour Chef de section traitement navire
         $role = Role::create(['name' => 'CSTN']);
-        $role->syncPermissions('manifest-list',
-            'manifest-edit',
-            'bonCommande-list',
-            'bonCommande-edit'
+        $role->syncPermissions('manifeste-list',
+            'manifeste-validate',
+            'bon_de_commande-list',
+            'bon_de_commande-validate'
             );
 
         /** @var \App\User $user */
@@ -158,16 +158,15 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour Chef de section de pointage
         $role = Role::create(['name' => 'CSP']);
-        $role->syncPermissions('bonEnlever-list',
-            'bonEnlever-create',
-            'bonEnlever-edit',
-            'bonEnlever-delete',
+        $role->syncPermissions('bon_a_enlever-list',
+            'bon_a_enlever-validate',
+            'bon_a_enlever-delete',
 
-            'bondelivrer-list',
-            'bondelivrer-edit',
+            'bon_a_delivrer-list',
+            'bon_a_delivrer-validate',
 
-            'dmisequai-list',
-            'dmisequai-edit');
+            'demande_de_mise_a_quai-list',
+            'demande_de_mise_a_quai-validate');
 
 
         /** @var \App\User $user */
@@ -182,30 +181,26 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour le Transitaire
         $role = Role::create(['name' => 'Transitaire']);
-        $role->syncPermissions('dpostequai-list',
-            'dpostequai-create',
-            'dpostequai-edit',
-            'dpostequai-delete',
+        $role->syncPermissions('demande_de_poste_a_quai-list',
+            'demande_de_poste_a_quai-create',
+            'demande_de_poste_a_quai-delete',
 
             'cpn-list',
 
-            'bonCommande-list',
-            'bonCommande-create',
-            'bonCommande-edit',
-            'bonCommande-delete',
+            'bon_de_commande-list',
+            'bon_de_commande-create',
+            'bon_de_commande-delete',
 
-            'bonEnlever-list',
+            'bon_a_enlever-list',
 
-            'bondelivrer-list',
-            'bondelivrer-create',
-            'bondelivrer-edit',
-            'bondelivrer-delete',
+            'bon_a_delivrer-list',
+            'bon_a_delivrer-create',
+            'bon_a_delivrer-delete',
 
 
-            'dmisequai-list',
-            'dmisequai-create',
-            'dmisequai-edit',
-            'dmisequai-delete');
+            'demande_de_mise_a_quai-list',
+            'demande_de_mise_a_quai-create',
+            'demande_de_mise_a_quai-delete');
         /** @var \App\User $user */
         $admin = factory(\App\User::class)->create([
             'name' => 'Transitaire',
@@ -218,10 +213,13 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour le Consignatiare
         $role = Role::create(['name' => 'Consignataire']);
-        $role->syncPermissions('annonceNav-list',
-            'annonceNav-create',
-            'annonceNav-edit',
-            'annonceNav-delete');
+        $role->syncPermissions('annonce_navire-list',
+            'annonce_navire-create',
+            'annonce_navire-delete',
+            'manifeste-list',
+            'manifeste-create',
+            'manifeste-delete'
+        );
 
         /** @var \App\User $user */
         $admin = factory(\App\User::class)->create([

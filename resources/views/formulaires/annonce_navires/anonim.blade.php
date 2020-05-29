@@ -7,7 +7,7 @@
     <!-- /.card-header -->
     <!-- form start -->
 
-    {{ Form::open(array('route' => 'annonceNav.store')) }}
+    {{ Form::open(array('route' => 'annonce_navire.store')) }}
     <form role="form">
         <div class="card-body">
             <div class="row">

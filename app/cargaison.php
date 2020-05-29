@@ -13,9 +13,9 @@ class cargaison extends Model
         'navire_id'
         ];
 
-    protected function annonceNav()
+    protected function annonce_navire()
     {
-        return $this->hasOne('App\annonceNav');
+        return $this->hasOne('App\annonce_navire');
     }
 
     protected function marchandise()

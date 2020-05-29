@@ -2,27 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\dpquai;
+use App\formulaire;
 use Illuminate\Http\Request;
 
-class Poste_quaiController extends Controller
+class FormulaireController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
-
     public function index()
     {
-        $dpquais = dpquai::orderby('id', 'desc')->paginate(10); //show only 5 items at a time in descending order
-
-        return view('poste_quais.index', compact('dpquais'));
+        return view('test');
     }
 
     /**
@@ -32,24 +24,19 @@ class Poste_quaiController extends Controller
      */
     public function create()
     {
-        return view('poste_quais.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'date_dentree' => 'required',
-
-        ]);
-
-
-
+        $formulaire = formulaire::create($request->all());
+        return redirect()->route('test');
     }
 
     /**

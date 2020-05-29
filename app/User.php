@@ -9,7 +9,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -57,6 +56,11 @@ class User extends Authenticatable
     protected function transitaire()
     {
         return $this->hasMany('App/transitaire');
+
+    }
+    protected function formulaire()
+    {
+        return $this->hasOne('App/formualaire');
 
     }
 }

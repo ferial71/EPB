@@ -28,9 +28,9 @@ class consignataire extends Model
 
     }
 
-    protected function annonceNav()
+    protected function annonce_navire()
     {
-        return $this->hasMany('App/annonceNav');
+        return $this->hasMany('App/annonce_navire');
     }
 
     protected function manifeste()
