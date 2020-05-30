@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PosteQuaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PosteQuaiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +201,7 @@
       <workItem from="1590143019313" duration="7680000" />
       <workItem from="1590245199478" duration="122308000" />
       <workItem from="1590832851032" duration="7043000" />
-      <workItem from="1590842754080" duration="4658000" />
+      <workItem from="1590842754080" duration="11707000" />
     </task>
     <task id="LOCAL-00001" summary="this is new">
       <created>1589871823920</created>

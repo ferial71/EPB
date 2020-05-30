@@ -24,7 +24,7 @@
                         <!-- /.card-header -->
                         <div class="card">
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped ">
+                                <table id="example1" class="table table-bordered table-hover ">
                                     <thead>
                                         <tr>
                                             <th>Navire</th>
@@ -74,7 +74,7 @@
                                                    <span class="badge badge-success">valide</span>
                                                    @else
                                                    <span class="badge badge-dark">non valide</span>
-                                                       @endif
+                                                   @endif
                                                </td>
                                             <td>
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['poste_quais.destroy', $formulaire->id] ]) !!}
@@ -94,11 +94,11 @@
                                 </table>
                             </div>
                         </div>
-                    @can('demande_de_poste_a_quai-create')
-                        <div class="card-footer">
-                            <a href="{{ route('poste_quais.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
+                        @can('demande_de_poste_a_quai-create')
+                            <div class="card-footer">
+                                <a href="{{ route('poste_quais.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
 
-                         </div>
+                             </div>
                         @endcan
                 </div>
             </section>

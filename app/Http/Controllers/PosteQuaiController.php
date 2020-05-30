@@ -24,17 +24,15 @@ class PosteQuaiController extends Controller
 
     public function index()
     {
-        $formulaires = formulaire::where('titre', 'poste_quai')->latest('id')->paginate(10); //show only 5 items at a time in descending order
+        //tout les formulaire avec le titre 'poste_quai'
+        $formulaires = formulaire::where(['titre', 'poste_quai'],['user_id',Auth::id()])->latest('id')->paginate(10);
+
         if ($formulaires->total()==0){
             $array=null;
-
-
         }
         else{
             $array=array_keys($formulaires[0]->champs);
         }
-
-
 
         return view('formulaires/poste_quais.index', compact('formulaires','array'));
     }
@@ -82,7 +80,7 @@ class PosteQuaiController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -101,8 +99,24 @@ class PosteQuaiController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
+    public function validatation(Request $request,$id)
     {
+        $formulaire =formulaire::findOrFail($id);
+
+        //vérifier si une demande de validation
+
+        if ($request->input('valide')!=null)
+        {
+            return redirect()->route('poste_quais.show',$id)->with('alert', 'Cette formulaire a été déja validé!');
+
+        }
+        else
+        {
+            $formulaire->valide =$request->valide;
+            $formulaire->update();
+            return redirect()->back()->with('alert', 'Formulaire validé!');
+        }
+
 
 
     }
@@ -112,23 +126,11 @@ class PosteQuaiController extends Controller
 
         $formulaire = formulaire::findOrFail($id);
 
-        //vérifier si une demande de validation
-        if ($request->input('valide')!=null && $formulaire->valide)
-        {
-            return redirect()->route('poste_quais.show',$id)->with('alert', 'Cette formulaire a été déja validé!');
 
-        }elseif($request->input('valide')){
-            $formulaire->valide =$request->valide;
-            $formulaire->update();
-        }
+        // création d'un variable champs pour stocker les valeurs modifier avec les valeurs originale
+        //$array_key représente les valeurs index de champs et request
 
-//        $nom_nav =$request['nom_navire'];
-//        if ($nom_nav ===null)
-//        {
-//            $nom_nav = $formulaire->champs['nom_navire'];
-//        }
 
-        // création d'un variable champ pour stoqué les valeurs modifier avec les valeurs originale
         $champs = $formulaire->champs;
         $array = $request->except('_token','_method');
         $array_key = array_keys($request->except('_token','_method'));
@@ -140,11 +142,18 @@ class PosteQuaiController extends Controller
                 $champs[$array_key[$i]] =$array[$array_key[$i]];
             }
         }
-        // maj de la table formulaires avec les nouveaux valeurs $champs
+
+
+        // mise à jour de la table formulaires avec les nouveaux valeurs $champs
+
+
         DB::table('formulaires')
             ->where('id', $id)
             ->update(['champs' => $champs
                 ]);
+
+
+        //redirection vers le tableau des demande de poste à quai
 
         return redirect()->route('poste_quais.index');
     }

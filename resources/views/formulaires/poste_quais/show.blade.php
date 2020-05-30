@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ Form::model($formulaire, array('route' => array('poste_quais.update', $formulaire->id,true), 'method' => 'PUT')) }}
+                    {{ Form::model($formulaire, array('route' => array('validatation', $formulaire->id), 'method' => 'PUT')) }}
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>
