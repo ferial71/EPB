@@ -94,10 +94,12 @@
                                 </table>
                             </div>
                         </div>
+                    @can('demande_de_poste_a_quai-create')
                         <div class="card-footer">
-                    <a href="{{ route('poste_quais.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
+                            <a href="{{ route('poste_quais.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
 
                          </div>
+                        @endcan
                 </div>
             </section>
         </div>

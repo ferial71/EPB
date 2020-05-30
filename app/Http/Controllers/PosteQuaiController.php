@@ -104,6 +104,7 @@ class PosteQuaiController extends Controller
     public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
     {
 
+
     }
 
     public function update(Request $request, $id)
@@ -114,7 +115,7 @@ class PosteQuaiController extends Controller
         //vérifier si une demande de validation
         if ($request->input('valide')!=null && $formulaire->valide)
         {
-            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+            return redirect()->route('poste_quais.show',$id)->with('alert', 'Cette formulaire a été déja validé!');
 
         }elseif($request->input('valide')){
             $formulaire->valide =$request->valide;
@@ -144,7 +145,7 @@ class PosteQuaiController extends Controller
             ->where('id', $id)
             ->update(['champs' => $champs
                 ]);
-        
+
         return redirect()->route('poste_quais.index');
     }
 

@@ -23,13 +23,96 @@
                     </div><!-- /.container-fluid -->
                 </section>
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body p-0">
                         <div >
-                            <ul class="list-group">
-
-                                <li class="list-group-item">  Nom du navire:<span class="label label-default"> {{$formulaire->champs['nom_navire']}}  </span></li>
-
-                            </ul>
+                            <div class="card-body p-0">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Indication</th>
+                                        <th>Valeur</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Nom du navire</td>
+                                        <td><span>{{$formulaire->champs['nom_navire']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Transitaire</td>
+                                        <td><span>{{$formulaire->champs['transitaire']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Armateur</td>
+                                        <td><span >{{$formulaire->champs['nom_armateur']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Consignataire</td>
+                                        <td><span>{{$formulaire->champs['consignataire']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.</td>
+                                        <td>Provenance</td>
+                                        <td><span>{{$formulaire->champs['provenance']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6.</td>
+                                        <td>E.T.D</td>
+                                        <td><span>{{$formulaire->champs['date']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7.</td>
+                                        <td>Cargaison</td>
+                                        <td><span>{{$formulaire->champs['cargaison']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8.</td>
+                                        <td>Marchandise</td>
+                                        <td><span>{{$formulaire->champs['marchandise']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9.</td>
+                                        <td>Mode de conditionnement</td>
+                                        <td><span>{{$formulaire->champs['m_conditionnement']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10.</td>
+                                        <td>Tonnage</td>
+                                        <td><span>{{$formulaire->champs['tonnage']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>11.</td>
+                                        <td>Type</td>
+                                        <td><span>{{$formulaire->champs['type']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.</td>
+                                        <td>IMO</td>
+                                        <td><span>{{$formulaire->champs['imo']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>13.</td>
+                                        <td>La rade actuelle</td>
+                                        <td><span>{{$formulaire->champs['rade']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>14.</td>
+                                        <td>Paviollon du navire</td>
+                                        <td><span>{{$formulaire->champs['pavillon']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>15.</td>
+                                        <td>Longeur du navire</td>
+                                        <td><span>{{$formulaire->champs['longeur_navire']}}</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -41,13 +124,6 @@
 
 
                 </div>
-                @if (session('alert'))
-
-                        <button type="button" class="btn btn-success swalDefaultSuccess">
-                            {{ session('alert') }}
-                        </button>
-
-                @endif
 
             </div>
         </section>
@@ -67,7 +143,8 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    {{ Form::submit('Valider', array('class' => 'btn btn-primary ' ,'name'=>'valide', 'value'=>'true')) }}
+                    {{ Form::submit('Valider', array('class' => 'btn btn-success' ,'name'=>'valide', 'value'=>'true')) }}
+
                     {{ Form::close() }}
                 </div>
             </div>
