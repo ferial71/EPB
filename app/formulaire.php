@@ -14,7 +14,7 @@ class formulaire extends Model
     ];
     protected $casts = [
         'champs' => 'array',
-
+        'valide' => 'boolean'
     ];
     public function user()
     {

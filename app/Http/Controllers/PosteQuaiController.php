@@ -100,41 +100,51 @@ class PosteQuaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id, $valide = false)
+
+    public function validate(Request $request, array $rules, array $messages = [], array $customAttributes = [])
     {
-        dd($valide);
+
+    }
+
+    public function update(Request $request, $id)
+    {
 
         $formulaire = formulaire::findOrFail($id);
-        //$champs = $formulaire->champs;
-        if ($valide){
-        $formulaire->valide =$valide;
-        $formulaire->save();
+
+        //vérifier si une demande de validation
+        if ($request->input('valide')!=null && $formulaire->valide)
+        {
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
+        }elseif($request->input('valide')){
+            $formulaire->valide =$request->valide;
+            $formulaire->update();
         }
+
 //        $nom_nav =$request['nom_navire'];
 //        if ($nom_nav ===null)
 //        {
 //            $nom_nav = $formulaire->champs['nom_navire'];
 //        }
-        $champs_f=$formulaire->champs;
-        $champs= array_keys($formulaire->champs);
-        $array=$request->except('_token','_method');
+
+        // création d'un variable champ pour stoqué les valeurs modifier avec les valeurs originale
+        $champs = $formulaire->champs;
+        $array = $request->except('_token','_method');
         $array_key = array_keys($request->except('_token','_method'));
 
         for($i=0;$i<sizeof($array_key);$i++)
         {
             if ($array[$array_key[$i]])
             {
-                $champs_f[$champs[$i]] =$array[$array_key[$i]];
+                $champs[$array_key[$i]] =$array[$array_key[$i]];
             }
         }
-
-        //dd($champs_f);
-
+        // maj de la table formulaires avec les nouveaux valeurs $champs
         DB::table('formulaires')
             ->where('id', $id)
-            ->update(['champs' => $champs_f
-
+            ->update(['champs' => $champs
                 ]);
+        
         return redirect()->route('poste_quais.index');
     }
 

@@ -31,6 +31,11 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -374,15 +379,18 @@
 <script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
 
 
+
+<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('dist/js/demo.js') }}"></script>
+
 @yield('scripts')
 
 
 
 
 <!-- AdminLTE App -->
-<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('dist/js/demo.js') }}"></script>
+
 
 
 

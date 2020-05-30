@@ -2,72 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AnnonceNavireController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BonCommandeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BonDelivrerController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BonEnleverController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ManifesteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MiseQuaiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PosteQuaiController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dist/img/08.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/manifestes/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/manifestes/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/manifestes/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnnonceNavController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsignataireController_.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsignataireController_.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Poste_quaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FormulaireController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/annonceNav.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/AnnonceNavire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/cargaison.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/cargaison.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/consignataire.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/consignataire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/dpquai.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/dpquai.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PosteQuaiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PosteQuaiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/formulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/formulaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/navire.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/navire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_22_142529_create_formulaires_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_22_142529_create_formulaires_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/RolesAndPermissionsSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/hooks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/img/user3-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Consignataire/annonce/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Consignataire/annonce/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Consignataire/annonce/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Consignataire/annonce/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/annonceNav/anonim.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/anonim.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/annonceNav/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/annonceNav/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/annonceNav/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/annonceNav/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/poste_quais/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/manifestes/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/poste_quais/edit.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/poste_quais/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/poste_quais/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +199,8 @@
       <workItem from="1589871454083" duration="49309000" />
       <workItem from="1590060367960" duration="15028000" />
       <workItem from="1590143019313" duration="7680000" />
-      <workItem from="1590245199478" duration="119419000" />
+      <workItem from="1590245199478" duration="122308000" />
+      <workItem from="1590832851032" duration="7043000" />
     </task>
     <task id="LOCAL-00001" summary="this is new">
       <created>1589871823920</created>
@@ -317,10 +257,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="568" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1590587831437" />
-    <state x="558" y="158" key="com.intellij.ide.util.TipDialog" timestamp="1590245512267">
+    <state x="558" y="158" key="com.intellij.ide.util.TipDialog" timestamp="1590834776392">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="558" y="158" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590245512267" />
+    <state x="558" y="158" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590834776392" />
     <state x="463" y="10" width="738" height="804" key="find.popup" timestamp="1590764509814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -339,7 +279,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layouts/profile.blade.php</url>
-          <line>35</line>
+          <line>40</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
