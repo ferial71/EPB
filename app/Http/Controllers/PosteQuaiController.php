@@ -24,8 +24,11 @@ class PosteQuaiController extends Controller
 
     public function index()
     {
+
+
         //tout les formulaire avec le titre 'poste_quai'
-        $formulaires = formulaire::where(['titre', 'poste_quai'],['user_id',Auth::id()])->latest('id')->paginate(10);
+
+        $formulaires = formulaire::where('titre', 'poste_quai')->where('user_id',Auth::id())->latest('id')->paginate(10);
 
         if ($formulaires->total()==0){
             $array=null;
@@ -33,6 +36,7 @@ class PosteQuaiController extends Controller
         else{
             $array=array_keys($formulaires[0]->champs);
         }
+
 
         return view('formulaires/poste_quais.index', compact('formulaires','array'));
     }

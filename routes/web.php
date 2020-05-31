@@ -37,21 +37,21 @@ Route::resource('permissions','PermissionController');
 Route::resource('roles','RoleController');
 
 
-Route::middleware(['auth:api'])->group(function () {
 
 
-    Route::group(['prefix'=>'formulaires'],function(){
-        Route::resource('annonce_navires','AnnonceNavireController');
-        Route::put('poste_quais/validatation/{id}','PosteQuaiController@validatation')->name('validatation');
-        Route::resource('poste_quais','PosteQuaiController');
-        Route::resource('manifestes','ManifesteController');
-        Route::resource('bon_de_commandes','BonCommandeController');
-        Route::resource('bon_a_delivrers','BonDelivrerController');
-        Route::resource('bon_a_enlevers','BonEnleverController');
-        Route::resource('mise_a_quais','MiseQuaiController');
 
-    });
+Route::group(['prefix'=>'formulaires'],function(){
+    Route::resource('annonce_navires','AnnonceNavireController');
+    Route::put('poste_quais/validatation/{id}','PosteQuaiController@validatation')->name('validatation');
+    Route::resource('poste_quais','PosteQuaiController');
+    Route::resource('manifestes','ManifesteController');
+    Route::resource('bon_de_commandes','BonCommandeController');
+    Route::resource('bon_a_delivrers','BonDelivrerController');
+    Route::resource('bon_a_enlevers','BonEnleverController');
+    Route::resource('mise_a_quais','MiseQuaiController');
+
 });
+
 
 
 
@@ -63,6 +63,5 @@ Route::resource('test','FormulaireController');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
-    Route::resource('products','ProductController');
 });
 
