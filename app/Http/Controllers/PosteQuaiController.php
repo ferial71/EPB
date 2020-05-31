@@ -28,8 +28,8 @@ class PosteQuaiController extends Controller
 
         //tout les formulaire avec le titre 'poste_quai'
 
-        $formulaires = formulaire::where('titre', 'poste_quai')->where('user_id',Auth::id())->latest('id')->paginate(10);
 
+        $formulaires = formulaire::where('titre', 'poste_quai')->latest('id')->paginate(10);
         if ($formulaires->total()==0){
             $array=null;
         }
