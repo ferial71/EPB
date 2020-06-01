@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AnnonceNavire;
 use App\dpquai;
 use App\formulaire;
+use App\navire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -117,6 +118,10 @@ class PosteQuaiController extends Controller
         }
         else
         {
+
+            if (!navire::with('nom',$formulaire->champs->nom_navire)){
+                navire::create('nom_navire');
+            }
             $formulaire->valide =$request->valide;
 
 
