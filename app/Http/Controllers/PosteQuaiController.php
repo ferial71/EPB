@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\annonce_navire;
+use App\AnnonceNavire;
 use App\dpquai;
 use App\formulaire;
 use Illuminate\Http\Request;
@@ -109,7 +109,8 @@ class PosteQuaiController extends Controller
 
         //vérifier si une demande de validation
 
-        if ($request->input('valide')!=null)
+
+        if ($formulaire->valide!=null)
         {
             return redirect()->route('poste_quais.show',$id)->with('alert', 'Cette formulaire a été déja validé!');
 
@@ -117,8 +118,10 @@ class PosteQuaiController extends Controller
         else
         {
             $formulaire->valide =$request->valide;
+
+
             $formulaire->update();
-            return redirect()->back()->with('alert', 'Formulaire validé!');
+            return redirect()->route('poste_quais.show',$id)->with('alert', 'Formulaire validé!');
         }
 
 
