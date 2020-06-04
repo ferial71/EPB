@@ -41,13 +41,19 @@ Route::resource('roles','RoleController');
 
 
 Route::group(['prefix'=>'formulaires'],function(){
+    Route::put('annonce_navires/validatation/{id}','AnnonceNavireController@validatation')->name('annonce_navires.validatation');
     Route::resource('annonce_navires','AnnonceNavireController');
-    Route::put('poste_quais/validatation/{id}','PosteQuaiController@validatation')->name('validatation');
+    Route::put('poste_quais/validatation/{id}','PosteQuaiController@validatation')->name('poste_quais.validatation');
     Route::resource('poste_quais','PosteQuaiController');
+    Route::put('manifestes/validatation/{id}','ManifesteController@validatation')->name('manifestes.validatation');
     Route::resource('manifestes','ManifesteController');
+    Route::put('bon_de_commandes/validatation/{id}','BonCommandeController@validatation')->name('bon_de_commandes.validatation');
     Route::resource('bon_de_commandes','BonCommandeController');
+    Route::put('bon_a_delivrers/validatation/{id}','BonDelivrerController@validatation')->name('bon_a_delivrers.validatation');
     Route::resource('bon_a_delivrers','BonDelivrerController');
+    Route::put('bon_a_enlevers/validatation/{id}','BonEnleverController@validatation')->name('bon_a_enlevers.validatation');
     Route::resource('bon_a_enlevers','BonEnleverController');
+    Route::put('mise_a_quais/validatation/{id}','MiseQuaiController@validatation')->name('mise_a_quais.validatation');
     Route::resource('mise_a_quais','MiseQuaiController');
 
 });

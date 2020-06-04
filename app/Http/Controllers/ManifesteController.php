@@ -48,7 +48,7 @@ class ManifesteController extends Controller
         $formulaire->save();
 
 
-        return redirect()->route('formulaires/manifestes.index');
+        return redirect()->route('manifestes.index');
     }
 
     /**
@@ -59,9 +59,33 @@ class ManifesteController extends Controller
      */
     public function show($id)
     {
-        //
+        $formulaire= formulaire::findOrFail($id);
+        return view('formulaires/manifestes.show',compact('formulaire'));
     }
 
+    public function validatation(Request $request,$id)
+    {
+        $formulaire =formulaire::findOrFail($id);
+
+        //vérifier si une demande de validation
+
+
+        if ($formulaire->valide!=null)
+        {
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
+        }
+        elseif ($request->valide)
+        {
+            $formulaire->valide ='valide';
+            $formulaire->update();
+
+            return redirect()->route('manifestes.index')->with('alert', 'Formulaire validé!');
+        }
+
+
+
+    }
     /**
      * Show the form for editing the specified resource.
      *

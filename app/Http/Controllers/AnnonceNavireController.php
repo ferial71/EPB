@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\annonce_navire;
+use App\AnnonceNavire;
 use App\armateur;
 use App\cargaison;
 use App\consignataire;
 use App\formulaire;
 use App\navire;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Null_;
 use Session;
 
@@ -31,8 +31,18 @@ class AnnonceNavireController extends Controller
 
     public function index()
     {
-        $formulaires = formulaire::where('titre', 'annonce_navire')->latest('id')->paginate(10); //show only 5 items at a time in descending order
-        return view('formulaires/annonce_navires.index', compact('formulaires'));
+        $formulaires = formulaire::where('titre', 'annonce_navire')->latest('id')->paginate(10);
+
+        //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
+        //sinon tableau array est null
+        if ($formulaires->total()==0){
+            $array=null;
+        }
+        else{
+            $array=array_keys($formulaires[0]->champs);
+        }
+
+        return view('formulaires/annonce_navires.index', compact('formulaires','array'));
     }
 
     /**
@@ -55,11 +65,14 @@ class AnnonceNavireController extends Controller
     public function store(Request $request)
     {
 
+
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre ='annonce_navire';
+        $formulaire->titre = 'annonce_navire';
+        $formulaire->user_id = Auth::id();
         $formulaire->save();
 
-        return redirect()->route('formulaires/annonce_navires.index');
+
+        return redirect()->route('annonce_navires.index');
 //        //Validating title and body field
 //        $this->validate($request, [
 //            'date_dentree' => 'required',
@@ -175,9 +188,33 @@ class AnnonceNavireController extends Controller
      */
     public function show($id)
     {
-//        $annonce_navire = annonce_navire::findOrFail($id); //Find post of id = $id
-//
-//        return view('annonce_navire.show', compact('annonce_navire'));
+        $formulaire= formulaire::findOrFail($id);
+        return view('formulaires/annonce_navires.show',compact('formulaire'));
+    }
+
+
+    public function validatation(Request $request,$id)
+    {
+        $formulaire =formulaire::findOrFail($id);
+
+        //vérifier si une demande de validation
+
+
+        if ($formulaire->valide!=null)
+        {
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
+        }
+        elseif ($request->valide)
+        {
+            $formulaire->valide ='valide';
+            $formulaire->update();
+
+            return redirect()->route('annonce_navires.index')->with('alert', 'Formulaire validé!');
+        }
+
+
+
     }
 
     /**
@@ -201,6 +238,8 @@ class AnnonceNavireController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
+
+
     public function update(Request $request, $id)
     {
 //        $this->validate($request, [

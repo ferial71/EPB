@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
                                         <li class="breadcrumb-item active">Annonces navire</li>
                                     </ol>
                                 </div>
@@ -36,17 +36,17 @@
                                             <div class="form-group">
                                                 <div class="form-group">
 
-                                                    {{ Form::label('nom_consignataire', 'Nom du consignataire') }}
-                                                    {{ Form::text('nom_consignataire', null, array('class' => 'form-control','placeholder'=>"Entrer le nom du consignataire")) }}
 
+                                                    <label for="champs">Consignataire</label>
+                                                    <input type="text" name="champs[consignataire]" class="form-control" placeholder="Entrer le nom du transitaire" >
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    {{ Form::label('nom_navire', 'Nom du navire') }}
-                                                    {{ Form::text('nom_navire', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de navire")) }}
+                                                    <label for="champs">Nom du navire</label>
+                                                    <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"" >
 
                                                 </div>
                                             </div>
@@ -57,8 +57,8 @@
                                             <!-- textarea -->
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    {{ Form::label('pavillon', 'Pavillon') }}
-                                                    {{ Form::text('pavillon', null, array('class' => 'form-control','placeholder'=>"Entrer le pavillon de navire")) }}
+                                                    <label for="champs">Pavillon </label>
+                                                    <input type="text" name="champs[pavillon]" class="form-control" placeholder="Entrer le pavillon du navire" >
 
                                                 </div>
 
@@ -69,13 +69,12 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-group">
-
-                                                    {{ Form::label('date_dentree', 'Date d’entrée du navire:') }}
+                                                    <label for="champs">Date d’entrée du navire: </label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                         </div>
-                                                        {{ Form::text('date_dentree', null, array('class' => 'form-control','data-inputmask-alias'=>'datetime','data-inputmask-inputformat'=>"dd/mm/yyyy",'data-mask')) }}
+                                                        <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
 
                                                     </div>
                                                     <!-- /.input group -->
@@ -90,8 +89,8 @@
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    {{ Form::label('tonnage', 'Tonnage') }}
-                                                    {{ Form::text('tonnage', null, array('class' => 'form-control','placeholder'=>"Entrer le Poids transporté par le navire")) }}
+                                                    <label for="champs">Tonnage </label>
+                                                    <input type="text" name="champs[tonnage]" class="form-control" placeholder="Entrer le Poids transporté par le navire" >
 
                                                 </div>
                                             </div>
@@ -100,8 +99,8 @@
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    {{ Form::label('type', 'type du navire') }}
-                                                    {{ Form::text('type', null, array('class' => 'form-control','placeholder'=>"Entrer le type de navire")) }}
+                                                    <label for="champs">type du navire </label>
+                                                    <input type="text" name="champs[type]" class="form-control" placeholder="Entrer le type du navire" >
 
                                                 </div>
                                             </div>
@@ -111,20 +110,20 @@
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label for="IMO-Number">numéro IMO</label>
-                                                {{ Form::label('imo', 'numéro IMO') }}
-                                                {{ Form::text('imo', null, array('class' => 'form-control', 'placeholder'=>"Entrer le numéro IMO")) }}
+                                                <label for="champs">numéro IMO</label>
+                                                <input type="text" name="champs[imo]" class="form-control" placeholder="Entrer le numéro IMO" >
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
-                                                {{ Form::label('nom_armateur', 'Nom de l armateur') }}
-                                                {{ Form::text('nom_armateur', null, array('class' => 'form-control','placeholder'=>"Entrer le nom de l armateur")) }}
+                                                <label for="champs">Nom de l armateur</label>
+                                                <input type="text" name="champs[nom_armateur]" class="form-control" placeholder="Entrer le nom de l armateur" >
                                             </div>
                                         </div>
                                         <div class="col-5">
                                             <div class="form-group">
-                                                {{ Form::label('longeur', 'Longeur') }}
-                                                {{ Form::text('longeur', null, array('class' => 'form-control','placeholder'=>'Entrer le longeur')) }}
+                                                <label for="champs">Longeur du navire</label>
+                                                <input type="text" name="champs[longeur_navire]" class="form-control" placeholder="Entrer le longeur du navire" >
 
                                             </div>
                                         </div>
@@ -132,22 +131,23 @@
                                     <div class="row">
                                         <div class="col-3">
                                             <div class="form-group">
-                                                {{ Form::label('largeur', 'Largeur') }}
-                                                {{ Form::text('largeur', null, array('class' => 'form-control','placeholder'=>'Entrer le largeur')) }}
+                                                <label for="champs">Largeur du navire</label>
+                                                <input type="text" name="champs[largeur_navire]" class="form-control" placeholder="Entrer le largeur du navire" >
 
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="form-group">
-                                                {{ Form::label('port_lourd', 'Le port en lourd') }}
-                                                {{ Form::text('port_lourd', null, array('class' => 'form-control','placeholder'=>'Entrer le port en lourd')) }}
+                                                <label for="champs">Le port en lourd</label>
+                                                <input type="text" name="champs[port_lourd]" class="form-control" placeholder="Entrer le port en lourd" >
+
 
                                             </div>
                                         </div>
                                         <div class="col-5">
                                             <div class="form-group">
-                                                {{ Form::label('tirant_eau', 'Le tirant d eau') }}
-                                                {{ Form::text('tirant_eau', null, array('class' => 'form-control','placeholder'=>'Entrer le DRAFT')) }}
+                                                <label for="champs">Le tirant d'eau</label>
+                                                <input type="text" name="champs[tirant_eau]" class="form-control" placeholder="Entrer le tirant d'eau" >
 
                                             </div>
                                         </div>

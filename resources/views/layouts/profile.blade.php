@@ -222,7 +222,7 @@
                                 </a>
                             </li>
                             @endcan
-                            @can('manifest-list')
+                            @can('manifeste-list')
                             <li class="nav-item">
                                 <a href={{route('manifestes.index')}} class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>

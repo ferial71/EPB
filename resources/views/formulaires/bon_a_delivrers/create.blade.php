@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
                                         <li class="breadcrumb-item active">Bon à délivrer</li>
                                     </ol>
                                 </div>
@@ -114,14 +114,14 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="form-group">
-                                            <label for="champs">Marchandise délivrée </label>
+                                            <label for="champs">Marchandise délivrée</label>
                                             <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la Cargaison" >
 
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="champs">Quantité marchandise</label>
+                                            <label for="champs">Quantité de marchandise</label>
                                             <input type="text" name="champs[q_marchandise]" class="form-control" placeholder="Entrer la nature des marchandises" >
 
                                         </div>
@@ -201,7 +201,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
 
-                                                <label for="champs">Numéro du poste  </label>
+                                                <label for="champs">Numéro du poste</label>
                                                 <input type="text" name="champs[nb_poste]" class="form-control" placeholder="Entrer le Poids transporté par le navire" >
                                             </div>
                                         </div>

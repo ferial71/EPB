@@ -21,7 +21,7 @@ class PermissionController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
         $permissions = Permission::all(); //Get all permissions
@@ -32,7 +32,7 @@ class PermissionController extends Controller {
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
         $roles = Role::get(); //Get all roles

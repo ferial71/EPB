@@ -61,6 +61,7 @@ class PosteQuaiController extends Controller
     public function store(Request $request)
     {
         $formulaire = formulaire::create($request->all());
+        dd($formulaire);
         $formulaire->titre = 'poste_quai';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
@@ -113,20 +114,16 @@ class PosteQuaiController extends Controller
 
         if ($formulaire->valide!=null)
         {
-            return redirect()->route('poste_quais.show',$id)->with('alert', 'Cette formulaire a été déja validé!');
+            return redirect()->route('poste_quais.index',$id)->with('alert', 'Cette formulaire a été déja validé!');
 
         }
-        else
+        elseif ($request->valide)
         {
-
-            if (!navire::with('nom',$formulaire->champs->nom_navire)){
-                navire::create('nom_navire');
-            }
-            $formulaire->valide =$request->valide;
+            $formulaire->valide ='valide';
 
 
             $formulaire->update();
-            return redirect()->route('poste_quais.show',$id)->with('alert', 'Formulaire validé!');
+            return redirect()->route('poste_quais.index')->with('alert', 'Formulaire validé!');
         }
 
 

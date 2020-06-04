@@ -69,20 +69,20 @@ class CreateNaviresTable extends Migration
         });
 
 
-        Schema::create('annonce_navs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('navire_id');
-            $table->unsignedBigInteger('consignataire_id');
-            $table->unsignedBigInteger('armateur_id');
-            $table->unsignedBigInteger('cargaison_id');
-            $table->date('date_dentree');
-            $table->timestamps();
-
-            $table->foreign('navire_id')->references('id')->on('navires');
-            $table->foreign('consignataire_id')->references('id')->on('consignataires');
-            $table->foreign('armateur_id')->references('id')->on('armateurs');
-            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
-        });
+//        Schema::create('annonce_navs', function (Blueprint $table) {
+//            $table->bigIncrements('id');
+//            $table->unsignedBigInteger('navire_id');
+//            $table->unsignedBigInteger('consignataire_id');
+//            $table->unsignedBigInteger('armateur_id');
+//            $table->unsignedBigInteger('cargaison_id');
+//            $table->date('date_dentree');
+//            $table->timestamps();
+//
+//            $table->foreign('navire_id')->references('id')->on('navires');
+//            $table->foreign('consignataire_id')->references('id')->on('consignataires');
+//            $table->foreign('armateur_id')->references('id')->on('armateurs');
+//            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
+//        });
     }
 
     /**

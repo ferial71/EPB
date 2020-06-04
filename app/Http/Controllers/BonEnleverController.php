@@ -41,7 +41,7 @@ class BonEnleverController extends Controller
         $formulaire->titre ='bon_a_enlever';
         $formulaire->save();
 
-        return redirect()->route('formulaires/bon_a_enlevers.index');
+        return redirect()->route('bon_a_enlevers.index');
     }
 
     /**
@@ -52,7 +52,31 @@ class BonEnleverController extends Controller
      */
     public function show($id)
     {
-        //
+        $formulaire= formulaire::findOrFail($id);
+        return view('formulaires/bon_a_enlevers.show',compact('formulaire'));
+    }
+    public function validatation(Request $request,$id)
+    {
+        $formulaire =formulaire::findOrFail($id);
+
+        //vérifier si une demande de validation
+
+
+        if ($formulaire->valide!=null)
+        {
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
+        }
+        elseif ($request->valide)
+        {
+            $formulaire->valide ='valide';
+            $formulaire->update();
+
+            return redirect()->route('bon_a_enlevers.index')->with('alert', 'Formulaire validé!');
+        }
+
+
+
     }
 
     /**

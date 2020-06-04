@@ -45,18 +45,43 @@ class BonDelivrerController extends Controller
         $formulaire->save();
 
 
-        return redirect()->route('formulaires/bon_a_delivrers.index');
+        return redirect()->route('bon_a_delivrers.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $formulaire= formulaire::findOrFail($id);
+        return view('formulaires/bon_a_delivrers.show',compact('formulaire'));
+    }
+
+    public function validatation(Request $request,$id)
+    {
+        $formulaire =formulaire::findOrFail($id);
+
+        //vérifier si une demande de validation
+
+
+        if ($formulaire->valide!=null)
+        {
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
+        }
+        elseif ($request->valide)
+        {
+            $formulaire->valide ='valide';
+            $formulaire->update();
+
+            return redirect()->route('bon_a_delivrers.index')->with('alert', 'Formulaire validé!');
+        }
+
+
+
     }
 
     /**

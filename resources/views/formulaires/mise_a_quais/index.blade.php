@@ -10,12 +10,12 @@
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1>Bon à délivrer</h1>
+                                    <h1>Demande de mise à quai</h1>
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href={{route('home')}}>Home</a></li>
-                                        <li class="breadcrumb-item active">Bon à délivrer</li>
+                                        <li class="breadcrumb-item"><a href={{route('home')}}>page d'accueil</a></li>
+                                        <li class="breadcrumb-item active">Demande de mise à quai</li>
                                     </ol>
                                 </div>
                             </div>
@@ -50,11 +50,17 @@
                                     <table id="example1" class="table table-bordered table-striped ">
                                         <thead>
                                             <tr>
-                                                <?php $array =array_keys( $formulaires[0]->champs )
-                                                ?>
-                                                @for($i=0;$i<count($array);$i++)
-                                                    <th>{{$array[$i]}}</th>
-                                                    @endfor
+
+
+
+                                                <th>Navire</th>
+                                                <th>Transitaire</th>
+                                                <th>réceptionnaire</th>
+                                                <th>Marchandises</th>
+                                                <th>Nombre d’entités</th>
+                                                <th>Nature des colis</th>
+                                                <th>Poids de la marchandise</th>
+                                                <th>Valide</th>
                                                 <th>  </th>
                                             </tr>
                                         </thead>
@@ -67,9 +73,21 @@
                                                     @endfor
 
                                                 <td>
+                                                    @if($formulaire->valide)
+                                                        <span class="badge badge-success">valide</span>
+                                                    @else
+                                                        <span class="badge badge-dark">non valide</span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['mise_a_quais.destroy', $formulaire->id] ]) !!}
 
-                                                    <a href="{{ route('mise_a_quais.edit', $formulaire->id) }}" class="btn btn-info" role="button">Edit</a>
+                                                    @can('demande_de_mise_a_quai-validate')
+                                                        <a href="{{ route('mise_a_quais.show', $formulaire->id) }}" class="btn btn-primary" role="button">Consulter</a>
+                                                    @endcan
+                                                    @can('demande_de_mise_a_quai-create')
+                                                        <a href="{{ route('mise_a_quais.edit', $formulaire->id) }}" class="btn btn-info" role="button">Modifier</a>
+                                                    @endcan
                                                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                                                     {!! Form::close() !!}
 

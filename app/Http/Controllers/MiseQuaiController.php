@@ -21,10 +21,22 @@ class MiseQuaiController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
-    {
-        $formulaires = formulaire::where('titre', 'mise_a_quai')->latest('id')->paginate(10); //show only 5 items at a time in descending order
 
-        return view('formulaires/mise_a_quais.index', compact('formulaires'));
+
+    {
+        $formulaires = formulaire::where('titre', 'mise_a_quai')->latest('id')->paginate(10);
+
+        //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
+        //sinon tableau array est null
+        if ($formulaires->total()==0){
+            $array=null;
+        }
+        else{
+            $array=array_keys($formulaires[0]->champs);
+        }
+
+        return view('formulaires/mise_a_quais.index', compact('formulaires','array'));
+
     }
 
     public function create()
@@ -45,18 +57,39 @@ class MiseQuaiController extends Controller
         $formulaire->save();
 
 
-        return redirect()->route('formulaires/mise_a_quais.index');
+        return redirect()->route('mise_a_quais.index');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $formulaire= formulaire::findOrFail($id);
+        return view('formulaires/mise_a_quais.show',compact('formulaire'));
+    }
+
+    public function validatation(Request $request,$id)
+    {
+        $formulaire =formulaire::findOrFail($id);
+
+        //vérifier si une demande de validation
+
+        if ($formulaire->valide!=null)
+        {
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
+        }
+        elseif ($request->valide)
+        {
+            $formulaire->valide ='valide';
+            $formulaire->update();
+
+            return redirect()->route('mise_a_quais.index')->with('alert', 'Formulaire validé!');
+        }
     }
 
     /**

@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
                                         <li class="breadcrumb-item active">Bon à délivrer</li>
                                     </ol>
                                 </div>
@@ -89,14 +89,14 @@
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="form-group">
-                                            <label for="champs">Nombre d’entités  </label>
+                                            <label for="champs">Nombre d’entités</label>
                                             <input type="text" name="champs[nb]" class="form-control" placeholder="Entrer la Cargaison" >
 
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="champs">Nature des colis a transportés</label>
+                                            <label for="champs">Nature des colis à transportés</label>
                                             <input type="text" name="champs[n_colis]" class="form-control" placeholder="Entrer la nature des marchandises" >
 
                                         </div>

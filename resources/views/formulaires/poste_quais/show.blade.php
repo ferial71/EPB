@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href={{route('home')}}>Home</a></li>
+                                    <li class="breadcrumb-item"><a href={{route('home')}}>Page d'accueil</a></li>
                                     <li class="breadcrumb-item active">Demande de poste à quai</li>
                                 </ol>
                             </div>
@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ Form::model($formulaire, array('route' => array('validatation', $formulaire->id), 'method' => 'PUT')) }}
+                    {{ Form::model($formulaire, array('route' => array('poste_quais.validatation', $formulaire->id), 'method' => 'PUT')) }}
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>

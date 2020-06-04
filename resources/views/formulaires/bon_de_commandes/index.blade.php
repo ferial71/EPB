@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href={{route('home')}}>Home</a></li>
+                                        <li class="breadcrumb-item"><a href={{route('home')}}>Page d'accueil</a></li>
                                         <li class="breadcrumb-item active">Bon de commandes</li>
                                     </ol>
                                 </div>
@@ -56,6 +56,7 @@
                                                 <th>Objet </th>
                                                 <th>Provenance </th>
                                                 <th>Date d’entrée </th>
+                                                <th>Valide</th>
                                                 <th></th>
 
                                             </tr>
@@ -69,10 +70,21 @@
                                                     @endfor
 
                                                 <td>
+                                                    @if($formulaire->valide)
+                                                        <span class="badge badge-success">valide</span>
+                                                    @else
+                                                        <span class="badge badge-dark">non valide</span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     {!! Form::open(['method' => 'DELETE', 'route' => ['bon_de_commandes.destroy', $formulaire->id] ]) !!}
-
-                                                    <a href="{{ route('bon_de_commandes.edit', $formulaire->id) }}" class="btn btn-info" role="button">Edit</a>
-                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    @can('bon_de_commande-validate')
+                                                        <a href="{{ route('bon_de_commandes.show', $formulaire->id) }}" class="btn btn-primary" role="button">Consulter</a>
+                                                    @endcan
+                                                    @can('bon_de_commande-create')
+                                                        <a href="{{ route('bon_de_commandes.edit', $formulaire->id) }}" class="btn btn-info" role="button">Modifier</a>
+                                                    @endcan
+                                                    {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
                                                     {!! Form::close() !!}
 
                                                 </td>
