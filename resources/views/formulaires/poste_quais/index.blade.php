@@ -55,9 +55,15 @@
                                                                          </style>
                                                                          <div >
                                                                              <ul class="list-group">
-                                                                                 @for( $i=6;$i<15;$i++)
-                                                                                     <li class="list-group-item">{{$array[$i]}}  :<span class="label label-default"> {{$formulaire->champs[$array[$i]]}}  </span></li>
-                                                                                 @endfor
+                                                                                     <li class="list-group-item">Cargaison  :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
+                                                                                     <li class="list-group-item">Nature du marchandise :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
+                                                                                     <li class="list-group-item">Mode de conditionnement  :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
+                                                                                     <li class="list-group-item">Tonnage  :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
+                                                                                     <li class="list-group-item">Type du navire  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
+                                                                                     <li class="list-group-item">IMO  :<span class="label label-default"> {{$formulaire->champs[$array[11]]}}  </span></li>
+                                                                                     <li class="list-group-item">La rade actuelle  :<span class="label label-default"> {{$formulaire->champs[$array[12]]}}  </span></li>
+                                                                                     <li class="list-group-item">Paviollon du navire  :<span class="label label-default"> {{$formulaire->champs[$array[13]]}}  </span></li>
+                                                                                     <li class="list-group-item">Longeur du navire  :<span class="label label-default"> {{$formulaire->champs[$array[14]]}}  </span></li>
                                                                              </ul>
                                                                          </div>
 

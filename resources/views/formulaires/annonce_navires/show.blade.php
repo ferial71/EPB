@@ -40,9 +40,14 @@
                                         <td><span>{{$formulaire->champs['nom_navire']}}</span></td>
                                     </tr>
                                     <tr>
+                                        <td>2.</td>
+                                        <td>Transitaire</td>
+                                        <td><span >{{$formulaire->champs['transitaire']}}</span></td>
+                                    </tr>
+                                    <tr>
                                         <td>3.</td>
                                         <td>Armateur</td>
-                                        <td><span >{{$formulaire->champs['nom_armateur']}}</span></td>
+                                        <td><span >{{$formulaire->champs['armateur']}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>4.</td>
@@ -50,39 +55,49 @@
                                         <td><span>{{$formulaire->champs['consignataire']}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>6.</td>
+                                        <td>5.</td>
                                         <td>E.T.D</td>
                                         <td><span>{{$formulaire->champs['date']}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>10.</td>
-                                        <td>Tonnage</td>
-                                        <td><span>{{$formulaire->champs['tonnage']}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>11.</td>
-                                        <td>Type</td>
-                                        <td><span>{{$formulaire->champs['type']}}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>12.</td>
+                                        <td>6.</td>
                                         <td>IMO</td>
                                         <td><span>{{$formulaire->champs['imo']}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>14.</td>
+                                        <td>7.</td>
+                                        <td>Type du navire</td>
+                                        <td><span>{{$formulaire->champs['type']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8.</td>
+                                        <td>Tonnage</td>
+                                        <td><span>{{$formulaire->champs['tonnage']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9.</td>
                                         <td>Paviollon du navire</td>
                                         <td><span>{{$formulaire->champs['pavillon']}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>15.</td>
+                                        <td>10.</td>
                                         <td>Longeur du navire</td>
                                         <td><span>{{$formulaire->champs['longeur_navire']}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>15.</td>
+                                        <td>11.</td>
                                         <td>Largeur du navire</td>
                                         <td><span>{{$formulaire->champs['largeur_navire']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>12.</td>
+                                        <td>Le port en lourd</td>
+                                        <td><span>{{$formulaire->champs['port_lourd']}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>13.</td>
+                                        <td>Le tirant d'eau</td>
+                                        <td><span>{{$formulaire->champs['tirant_eau']}}</span></td>
                                     </tr>
                                     </tbody>
                                 </table>

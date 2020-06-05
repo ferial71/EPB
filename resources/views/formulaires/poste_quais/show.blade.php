@@ -72,7 +72,7 @@
                                     </tr>
                                     <tr>
                                         <td>8.</td>
-                                        <td>Marchandise</td>
+                                        <td>Nature du marchandise</td>
                                         <td><span>{{$formulaire->champs['marchandise']}}</span></td>
                                     </tr>
                                     <tr>
@@ -87,7 +87,7 @@
                                     </tr>
                                     <tr>
                                         <td>11.</td>
-                                        <td>Type</td>
+                                        <td>Type du navire</td>
                                         <td><span>{{$formulaire->champs['type']}}</span></td>
                                     </tr>
                                     <tr>

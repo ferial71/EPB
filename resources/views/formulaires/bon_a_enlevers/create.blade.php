@@ -69,6 +69,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="champs">Marchandise à enlever </label>
+                                            <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la Cargaison" >
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
 
@@ -105,13 +112,9 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-3">
-                                        <div class="form-group">
-                                            <label for="champs">Marchandise à enlever </label>
-                                            <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la Cargaison" >
 
-                                        </div>
-                                    </div>
+
+
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="champs">Mode de conditionnement de la marchandise</label>

@@ -101,10 +101,11 @@
                             </div>
                         </div>
                     </div>
+                    @can('demande_de_mise_a_quai-create')
                     <div class="card-footer">
                     <a href="{{ route('mise_a_quais.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
-
                     </div>
+                    @endcan
                 </div>
             </section>
         </div>

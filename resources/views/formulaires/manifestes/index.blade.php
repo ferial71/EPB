@@ -52,15 +52,10 @@
                                             <tr>
                                                 <th>Navire</th>
                                                 <th>escale </th>
-                                                <th>P.marchandise </th>
-                                                <th>marchandise </th>
                                                 <th>Provenance </th>
                                                 <th>E.T.D </th>
                                                 <th>réceptionnaire</th>
-                                                <th>N.marchandises</th>
-                                                <th>M.C</th>
-                                                <th>Poids BL</th>
-                                                <th>colis</th>
+                                                <th>Marchandises transportées</th>
                                                 <th>Valide</th>
                                                 <th></th>
 
@@ -69,10 +64,39 @@
                                         @foreach($formulaires as $formulaire)
                                             <tbody>
                                                 <?php $array =array_keys( $formulaire->champs );?>
-                                                <td>    {{$formulaire->champs[$array[0]]}} </td>
-                                                    @for( $i=1;$i<11;$i++)
+                                                <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs[$array[0]]}} </a></td>
+                                                    @for( $i=1;$i<6;$i++)
                                                         <td>{{$formulaire->champs[$array[$i]]}}</td>
                                                     @endfor
+                                                <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myModalLabel">Information sur la navire</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <style type="text/css">
+                                                                        .label{ float: right;}
+                                                                    </style>
+                                                                    <div >
+                                                                        <ul class="list-group">
+                                                                                <li class="list-group-item">Nature des marchandises  :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
+                                                                                <li class="list-group-item">mode de conditionnement :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
+                                                                                <li class="list-group-item">Poids total de la marchandise  :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
+                                                                                <li class="list-group-item">Poids du BL  :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
+                                                                                <li class="list-group-item">Nombre de colis transportés  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <td>
                                                     @if($formulaire->valide)
                                                         <span class="badge badge-success">valide</span>
@@ -90,7 +114,7 @@
                                                     @can('manifeste-create')
                                                         <a href="{{ route('manifestes.edit', $formulaire->id) }}" class="btn btn-info" role="button">Modifier</a>
                                                     @endcan
-                                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                                    {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
                                                     {!! Form::close() !!}
 
                                                 </td>
@@ -103,10 +127,12 @@
                             </div>
                         </div>
                     </div>
+                    @can('manifeste-create')
                     <div class="card-footer">
                     <a href="{{ route('manifestes.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
 
                     </div>
+                    @endcan
                 </div>
             </section>
         </div>

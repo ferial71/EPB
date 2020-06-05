@@ -35,37 +35,50 @@
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
-
-
-                                                    <label for="champs">Consignataire</label>
-                                                    <input type="text" name="champs[consignataire]" class="form-control" placeholder="Entrer le nom du transitaire" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <div class="form-group">
                                                     <label for="champs">Nom du navire</label>
                                                     <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"" >
 
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-sm-6">
-                                            <!-- textarea -->
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    <label for="champs">Pavillon </label>
-                                                    <input type="text" name="champs[pavillon]" class="form-control" placeholder="Entrer le pavillon du navire" >
+                                                    <label for="champs">Transitaire</label>
+                                                    <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" >
 
                                                 </div>
-
-
-
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="champs">Armateur</label>
+                                                    <input type="text" name="champs[armateur]" class="form-control" placeholder="Entrer le nom du transitaire" >
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="champs">Consignataire</label>
+                                                    <input type="text" name="champs[consignataire]" class="form-control" placeholder="Entrer le nom du transitaire" >
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="champs">Provenance</label>
+                                                    <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer le nom du transitaire" >
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -78,6 +91,23 @@
 
                                                     </div>
                                                     <!-- /.input group -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+
+                                                <label for="champs">numéro IMO</label>
+                                                <input type="text" name="champs[imo]" class="form-control" placeholder="Entrer le numéro IMO" >
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <!-- textarea -->
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="champs">type du navire </label>
+                                                    <input type="text" name="champs[type]" class="form-control" placeholder="Entrer le type du navire" >
+
                                                 </div>
                                             </div>
                                         </div>
@@ -99,43 +129,34 @@
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
-                                                    <label for="champs">type du navire </label>
-                                                    <input type="text" name="champs[type]" class="form-control" placeholder="Entrer le type du navire" >
+                                                    <label for="champs">Pavillon </label>
+                                                    <input type="text" name="champs[pavillon]" class="form-control" placeholder="Entrer le pavillon du navire" >
 
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label for="IMO-Number">numéro IMO</label>
-                                                <label for="champs">numéro IMO</label>
-                                                <input type="text" name="champs[imo]" class="form-control" placeholder="Entrer le numéro IMO" >
-                                            </div>
-                                        </div>
+
+
                                         <div class="col-4">
-                                            <div class="form-group">
-                                                <label for="champs">Nom de l armateur</label>
-                                                <input type="text" name="champs[nom_armateur]" class="form-control" placeholder="Entrer le nom de l armateur" >
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
                                             <div class="form-group">
                                                 <label for="champs">Longeur du navire</label>
                                                 <input type="text" name="champs[longeur_navire]" class="form-control" placeholder="Entrer le longeur du navire" >
 
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-3">
+                                        <div class="col-4">
                                             <div class="form-group">
                                                 <label for="champs">Largeur du navire</label>
                                                 <input type="text" name="champs[largeur_navire]" class="form-control" placeholder="Entrer le largeur du navire" >
 
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="row">
+
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="champs">Le port en lourd</label>

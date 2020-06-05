@@ -61,7 +61,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
 
-                                                <label for="champs">Nom du Client</label>
+                                                <label for="champs">Nom du client</label>
                                                 <input type="text" name="champs[client]" class="form-control" placeholder="Entrer le nom de l armateur" >
 
 
@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
-                                            <label for="champs">Quantité de marchandise</label>
+                                            <label for="champs">Quantité de la marchandise</label>
                                             <input type="text" name="champs[q_marchandise]" class="form-control" placeholder="Entrer la nature des marchandises" >
 
                                         </div>

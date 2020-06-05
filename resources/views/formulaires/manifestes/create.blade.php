@@ -57,31 +57,6 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <!-- text input -->
-                                        <div class="form-group">
-                                            <div class="form-group">
-
-                                                <label for="champs">Poids total de la marchandise</label>
-                                                <input type="text" name="champs[poids]" class="form-control" placeholder="Entrer le nom de l armateur" >
-
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-group">
-
-                                                <label for="champs">Marchandises transportées</label>
-                                                <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer le nom du consignataire" >
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -95,21 +70,24 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="champs">Date estimée d’arrivée du navire: </label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                                                    </div>
-                                                    <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
 
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="champs">Date estimée d’arrivée du navire: </label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                                                        </div>
+                                                        <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
+
+                                                    </div>
+                                                    <!-- /.input group -->
                                                 </div>
-                                                <!-- /.input group -->
                                             </div>
                                         </div>
-                                    </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-3">
@@ -117,6 +95,16 @@
                                             <label for="champs">Nom du réceptionnaire </label>
                                             <input type="text" name="champs[receptionnaire]" class="form-control" placeholder="Entrer la Cargaison" >
 
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <div class="form-group">
+
+                                                <label for="champs">Marchandises transportées</label>
+                                                <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer le nom du consignataire" >
+
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -136,6 +124,20 @@
 
 
                                 <div class="row">
+                                    <div class="col-sm-6">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <div class="form-group">
+
+                                                <label for="champs">Poids total de la marchandise</label>
+                                                <input type="text" name="champs[poids]" class="form-control" placeholder="Entrer le nom de l armateur" >
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="col-sm-6">
                                         <!-- text input -->
                                         <div class="form-group">

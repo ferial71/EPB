@@ -97,10 +97,11 @@
                             </div>
                         </div>
                     </div>
+                    @can('bon_de_commande-create')
                     <div class="card-footer">
                     <a href="{{ route('bon_de_commandes.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
-
                     </div>
+                    @endcan
                 </div>
             </section>
         </div>

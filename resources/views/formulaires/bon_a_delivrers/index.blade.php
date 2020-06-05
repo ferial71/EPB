@@ -51,16 +51,10 @@
                                         <thead>
                                             <tr>
                                                 <th>Navire</th>
-                                                <th>escale </th>
-                                                <th>P.marchandise </th>
-                                                <th>marchandise </th>
-                                                <th>Provenance </th>
-                                                <th>E.T.D </th>
-                                                <th>réceptionnaire</th>
-                                                <th>N.marchandises</th>
-                                                <th>M.C</th>
-                                                <th>Poids BL</th>
-                                                <th>colis</th>
+                                                <th>Transitaire</th>
+                                                <th>Client</th>
+                                                <th>Adresse du client</th>
+                                                <th>Provenance</th>
                                                 <th>Valide</th>
                                                 <th></th>
 
@@ -69,10 +63,44 @@
                                         @foreach($formulaires as $formulaire)
                                             <tbody>
                                                 <?php $array =array_keys( $formulaire->champs );?>
-                                                <td>    {{$formulaire->champs[$array[0]]}} </td>
-                                                    @for( $i=1;$i<15;$i++)
+                                                <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs[$array[0]]}} </a></td>
+                                                    @for( $i=1;$i<5;$i++)
                                                         <td>{{$formulaire->champs[$array[$i]]}}</td>
                                                     @endfor
+                                                <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="myModalLabel">Information sur la navire</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <style type="text/css">
+                                                                        .label{ float: right;}
+                                                                    </style>
+                                                                    <div >
+                                                                        <ul class="list-group">
+                                                                            <li class="list-group-item">Date d’entrée du navire :<span class="label label-default"> {{$formulaire->champs[$array[5]]}}  </span></li>
+                                                                            <li class="list-group-item">Marchandises délivrée :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
+                                                                            <li class="list-group-item">Quantité de la marchandise :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
+                                                                            <li class="list-group-item">Poids de la marchandise  :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
+                                                                            <li class="list-group-item">Numero BL :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
+                                                                            <li class="list-group-item">Date d’escale  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
+                                                                            <li class="list-group-item">Lieux de chargement  :<span class="label label-default"> {{$formulaire->champs[$array[11]]}}  </span></li>
+                                                                            <li class="list-group-item">Lieux de déchargement  :<span class="label label-default"> {{$formulaire->champs[$array[12]]}}  </span></li>
+                                                                            <li class="list-group-item">Nombre d’unité :<span class="label label-default"> {{$formulaire->champs[$array[13]]}}  </span></li>
+                                                                            <li class="list-group-item">Numéro du poste  :<span class="label label-default"> {{$formulaire->champs[$array[14]]}}  </span></li>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
                                                 <td>
                                                     @if($formulaire->valide)
@@ -104,10 +132,11 @@
                             </div>
                         </div>
                     </div>
+                    @can('bon_a_delivrer-create')
                     <div class="card-footer">
                     <a href="{{ route('bon_a_delivrers.create') }}" class="btn btn-info" role="button">Nouveau demande</a>
-
                     </div>
+                    @endcan
                 </div>
             </section>
         </div>

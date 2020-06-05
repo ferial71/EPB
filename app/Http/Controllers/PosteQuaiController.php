@@ -61,7 +61,6 @@ class PosteQuaiController extends Controller
     public function store(Request $request)
     {
         $formulaire = formulaire::create($request->all());
-        dd($formulaire);
         $formulaire->titre = 'poste_quai';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
