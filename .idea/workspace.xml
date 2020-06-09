@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/websockets.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_06_06_141611_create_websockets_statistics_entries_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/broadcasting.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +39,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -174,6 +170,7 @@
       <path value="$PROJECT_DIR$/vendor/react/promise-stream" />
       <path value="$PROJECT_DIR$/vendor/react/stream" />
       <path value="$PROJECT_DIR$/vendor/react/socket" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
     </include_path>
   </component>
   <component name="ProjectId" id="1YKKfwKQqdMUincREpzxmH92EHb" />
@@ -189,22 +186,23 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/resources/js/components/GravatarComponent.vue" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\feria\project\resources\views" />
+      <recent name="C:\Users\feria\project\resources\views\users" />
+      <recent name="C:\Users\feria\project\resources\views\mise_a_quais" />
+      <recent name="C:\Users\feria\project\resources\views\bn_enlevers" />
+      <recent name="C:\Users\feria\project\resources\views\bn_delivrers" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\feria\project\resources\views\formulaires" />
       <recent name="C:\Users\feria\project\resources\views" />
       <recent name="C:\Users\feria\project\resources\views\formulaire" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\feria\project\resources\views\mise_a_quais" />
-      <recent name="C:\Users\feria\project\resources\views\bn_enlevers" />
-      <recent name="C:\Users\feria\project\resources\views\bn_delivrers" />
-      <recent name="C:\Users\feria\project\resources\views\bn_commandes" />
-      <recent name="C:\Users\feria\project\resources\views\manifestes" />
     </key>
   </component>
   <component name="RunManager">
@@ -248,6 +246,8 @@
       <workItem from="1590842754080" duration="11707000" />
       <workItem from="1591134952148" duration="30019000" />
       <workItem from="1591439605597" duration="1820000" />
+      <workItem from="1591631589649" duration="6520000" />
+      <workItem from="1591710298430" duration="609000" />
     </task>
     <task id="LOCAL-00001" summary="this is new">
       <created>1589871823920</created>
@@ -261,6 +261,19 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -296,26 +309,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1589976162559" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1591101032514">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1591631705921">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591101032514" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1591631705921" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1591631641426">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591631641426" />
     <state x="604" y="336" key="NewPhpFileDialog" timestamp="1589789703632">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1589789703632" />
+    <state x="620" y="123" key="RollbackChangesDialog" timestamp="1591631655376">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="620" y="123" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591631655376" />
     <state width="568" height="446" key="SwitcherDM" timestamp="1590587831437">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="568" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1590587831437" />
-    <state x="558" y="158" key="com.intellij.ide.util.TipDialog" timestamp="1591134971772">
+    <state x="536" y="146" key="VcsDiffUtil.ChangesDialog" timestamp="1591631495016">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="558" y="158" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591134971772" />
-    <state x="463" y="10" width="738" height="804" key="find.popup" timestamp="1591451287306">
+    <state x="536" y="146" key="VcsDiffUtil.ChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591631495016" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1591632511456">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="463" y="10" width="738" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1591451287306" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1591632511456" />
+    <state x="558" y="158" key="com.intellij.ide.util.TipDialog" timestamp="1591729595379">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="558" y="158" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591729595379" />
+    <state x="463" y="10" width="738" height="804" key="find.popup" timestamp="1591638634997">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="463" y="10" width="738" height="804" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1591638634997" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1591209361505">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -352,11 +381,6 @@
           <url>file://$PROJECT_DIR$/resources/views/formulaires/annonce_navires/index.blade.php</url>
           <line>12</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/test.blade.php</url>
-          <line>26</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/show.blade.php</url>
