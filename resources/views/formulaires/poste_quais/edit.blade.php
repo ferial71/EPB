@@ -30,6 +30,7 @@
 
                     <div class="card">
                         <form role="form">
+                            @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-6">
