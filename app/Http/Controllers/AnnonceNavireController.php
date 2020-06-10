@@ -6,6 +6,7 @@ use App\AnnonceNavire;
 use App\armateur;
 use App\cargaison;
 use App\consignataire;
+use App\Events\UserLoggedIn;
 use App\formulaire;
 use App\navire;
 use Illuminate\Http\Request;
@@ -70,6 +71,7 @@ class AnnonceNavireController extends Controller
         $formulaire->titre = 'annonce_navire';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
+        event(new UserLoggedIn(Auth::id()));
 
 
         return redirect()->route('annonce_navires.index');
