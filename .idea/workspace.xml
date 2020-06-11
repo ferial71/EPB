@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/annonce_navires/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_delivrers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_a_enlevers/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/bon_de_commandes/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/manifestes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/manifestes/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/manifestes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/manifestes/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/mise_a_quais/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/formulaires/poste_quais/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
