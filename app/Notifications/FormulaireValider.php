@@ -29,7 +29,7 @@ class FormulaireValider extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -46,6 +46,15 @@ class FormulaireValider extends Notification
                     ->line('Thank you for using our application!');
     }
 
+
+    public function toDatabase()
+    {
+
+        return[
+            'user'=>1,
+            'message'=>"Formulaire Valide"
+        ];
+    }
     /**
      * Get the array representation of the notification.
      *
