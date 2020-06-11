@@ -17,6 +17,9 @@ use Illuminate\Support\Str;
 |
 */
 
+// create users by tinker:
+//factory(App\User::class, 15)->create();
+
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
