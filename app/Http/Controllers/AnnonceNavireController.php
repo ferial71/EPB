@@ -9,6 +9,9 @@ use App\consignataire;
 use App\Events\UserLoggedIn;
 use App\formulaire;
 use App\navire;
+use App\Notifications\NouveauFormulaire;
+use App\role;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Null_;
@@ -71,8 +74,10 @@ class AnnonceNavireController extends Controller
         $formulaire->titre = 'annonce_navire';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
-        event(new UserLoggedIn(Auth::id()));
-
+        $users = User::permission('annonce_navire-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire->id));
+        }
 
         return redirect()->route('annonce_navires.index');
 //        //Validating title and body field
