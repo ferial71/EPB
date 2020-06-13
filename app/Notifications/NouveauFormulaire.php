@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class FormulaireValider extends Notification
+class NouveauFormulaire extends Notification
 {
     use Queueable;
 
@@ -64,6 +64,7 @@ class FormulaireValider extends Notification
             'message'=>"Formulaire Valide"
         ];
     }
+
     /**
      * Get the array representation of the notification.
      *
