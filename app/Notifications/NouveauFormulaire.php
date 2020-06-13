@@ -11,14 +11,18 @@ class NouveauFormulaire extends Notification
 {
     use Queueable;
 
+    public $user_id;
+    public $formulaire;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id,$formulaire)
     {
-        //
+        $this->user_id = $id;
+        $this->formulaire = $formulaire;
     }
 
     /**
@@ -60,8 +64,8 @@ class NouveauFormulaire extends Notification
     {
 
         return[
-            'user'=>1,
-            'message'=>"Formulaire Valide"
+            'user_id'=>$this->user_id,
+            'message'=>"Nouveau formulaire"
         ];
     }
 
