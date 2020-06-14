@@ -71,7 +71,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
 });
 
-
+Route::post('/notification/get', 'NotificationController@get');
+Route::post('/notification/read', 'NotificationController@read');
 //Route::get('tet', function () {
 //    event(new App\Events\StatusLiked('Someone'));
 //    return "Event has been sent!";
