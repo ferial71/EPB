@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>AdminLTE 3 | User Profile</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +16,7 @@
 
 
     <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}})">
+{{--    <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}})">--}}
     <!-- Bootstrap Color Picker -->
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css')}}">
     <!-- Tempusdominus Bbootstrap 4 -->
@@ -106,22 +105,8 @@
                         </div>
                         <!-- Message End -->
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
+
+
                     <div class="dropdown-divider"></div>
                     <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                 </div>
@@ -133,23 +118,16 @@
                     <span class="badge badge-warning navbar-badge">15</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-item dropdown-header">15 Notifications</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 new messages
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> 8 friend requests
-                        <span class="float-right text-muted text-sm">12 hours</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 new reports
-                        <span class="float-right text-muted text-sm">2 days</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
+
+{{--                    <span class="dropdown-item dropdown-header">15 Notifications</span>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    <a href="#" class="dropdown-item">--}}
+{{--                        <i class="fas fa-envelope mr-2"></i> 4 new messages--}}
+{{--                        <span class="float-right text-muted text-sm">3 mins</span>--}}
+{{--                    </a>--}}
+{{--                    <div class="dropdown-divider"></div>--}}
+{{--                    --}}
+                    <notification></notification>
                     <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
             </li>
@@ -209,44 +187,44 @@
                         </a>
                         <ul class="nav nav-treeview">
                             @can('annonce_navire-list')
-                            <li class="nav-item">
-                                <a  href={{route('annonce_navires.index')}}  class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Annonce navire  </p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a  href={{route('annonce_navires.index')}}  class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Annonce navire  </p>
+                                    </a>
+                                </li>
                             @endcan
                             @can('demande_de_poste_a_quai-list')
-                            <li class="nav-item">
-                                <a href={{route('poste_quais.index')}} class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Demande de poste à quai</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href={{route('poste_quais.index')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Demande de poste à quai</p>
+                                    </a>
+                                </li>
                             @endcan
                             @can('manifeste-list')
-                            <li class="nav-item">
-                                <a href={{route('manifestes.index')}} class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Manifeste</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href={{route('manifestes.index')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Manifeste</p>
+                                    </a>
+                                </li>
                             @endcan
                             @can('bon_de_commande-list')
-                            <li class="nav-item">
-                                <a href={{route('bon_de_commandes.index')}} class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Bon de commande</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href={{route('bon_de_commandes.index')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bon de commande</p>
+                                    </a>
+                                </li>
                             @endcan
                             @can('bon_a_enlever-list')
-                            <li class="nav-item">
-                                <a href={{route('bon_a_enlevers.index')}} class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Bon à enlever</p>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a href={{route('bon_a_enlevers.index')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bon à enlever</p>
+                                    </a>
+                                </li>
                             @endcan
                             @can('demande_de_mise_a_quai-list')
                                 <li class="nav-item">
@@ -324,7 +302,7 @@
                            onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();"
                         >
-                        <i class="nav-icon far fa-circle text-danger"></i>
+                            <i class="nav-icon far fa-circle text-danger"></i>
                             <p class="text">Logout</p>
                         </a>
 
@@ -395,77 +373,6 @@
 
 
 
-
-<script>
-    $(function () {
-        //Initialize Select2 Elements
-        $('.select2').select2()
-
-        //Initialize Select2 Elements
-        $('.select2bs4').select2({
-            theme: 'bootstrap4'
-        })
-
-        //Datemask dd/mm/yyyy
-        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-        //Datemask2 mm/dd/yyyy
-        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-        //Money Euro
-        $('[data-mask]').inputmask()
-
-        //Date range picker
-        $('#reservation').daterangepicker()
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({
-            timePicker: true,
-            timePickerIncrement: 30,
-            locale: {
-                format: 'MM/DD/YYYY hh:mm A'
-            }
-        })
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-            {
-                ranges   : {
-                    'Today'       : [moment(), moment()],
-                    'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                startDate: moment().subtract(29, 'days'),
-                endDate  : moment()
-            },
-            function (start, end) {
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-            }
-        )
-
-        //Timepicker
-        $('#timepicker').datetimepicker({
-            format: 'LT'
-        })
-
-        //Bootstrap Duallistbox
-        $('.duallistbox').bootstrapDualListbox()
-
-        //Colorpicker
-        $('.my-colorpicker1').colorpicker()
-        //color picker with addon
-        $('.my-colorpicker2').colorpicker()
-
-        $('.my-colorpicker2').on('colorpickerChange', function(event) {
-            $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-        });
-
-        $("input[data-bootstrap-switch]").each(function(){
-            $(this).bootstrapSwitch('state', $(this).prop('checked'));
-        });
-
-    })
-</script>
-<script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 </html>
