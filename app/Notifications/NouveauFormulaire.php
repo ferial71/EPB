@@ -4,6 +4,7 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -33,40 +34,40 @@ class NouveauFormulaire extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database','broadcast'];
+        return ['database','broadcast'];
     }
 
     /**
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return array
      */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
-    }
+//    public function toMail($notifiable)
+//    {
+//        return (new MailMessage)
+//                    ->line('The introduction to the notification.')
+//                    ->action('Notification Action', url('/'))
+//                    ->line('Thank you for using our application!');
+//    }
 
 
     public function toDatabase()
     {
 
         return[
-            'user'=>1,
-            'message'=>"Formulaire Valide"
+            'user'=>$this->user_id,
+            'message'=>"Nouveau formulaire"
         ];
     }
 
     public function toBroadcast()
     {
 
-        return[
+        return new BroadcastMessage([
             'user_id'=>$this->user_id,
             'message'=>"Nouveau formulaire"
-        ];
+        ]);
     }
 
     /**
@@ -78,7 +79,8 @@ class NouveauFormulaire extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'user_id'=>$this->user_id,
+            'message'=>"Nouveau formulaire"
         ];
     }
 }
