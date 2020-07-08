@@ -18,8 +18,9 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+// Vue.component('notification', require('./components/Notification.vue'));
 Vue.component('notification', require('./components/Notification.vue').default);
+Vue.component('notification-item', require('./components/NotificationItem.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,17 +30,17 @@ Vue.component('notification', require('./components/Notification.vue').default);
 
 const app = new Vue({
     el: '#app',
-    data: {
-        notifications: ''
-    },
-    created() {
-        axios.post('/notification/get').then(response => {
-            this.notifications = response.data;
-        });
-
-        var userId = $('meta[name="userId"]').attr('content');
-        Echo.private('App.User.' + userId).notification((notification) => {
-            this.notifications.push(notification);
-        });
-    }
+    // data: {
+    //     notifications: ''
+    // },
+    // created() {
+    //     axios.post('/notification/get').then(response => {
+    //         this.notifications = response.data;
+    //     });
+    //
+    //     var userId = $('meta[name="userId"]').attr('content');
+    //     Echo.private('App.User.' + userId).notification((notification) => {
+    //         this.notifications.push(notification);
+    //     });
+    // }
 });

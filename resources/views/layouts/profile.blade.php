@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>AdminLTE 3 | User Profile</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,6 +14,11 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
+{{--    <script>--}}
+{{--        window.Laravel ={!! json_encode([--}}
+{{--    'crfToken' => csrf_token(),--}}
+{{--]) !!};--}}
+{{--    </script>--}}
 
 
     <!-- iCheck for checkboxes and radio inputs -->
@@ -37,9 +43,15 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
 
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
+
 </head>
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" >
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -66,7 +78,7 @@
         </form>
 
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" id="app">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -112,12 +124,12 @@
                 </div>
             </li>
             <!-- Notifications Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge">15</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+{{--            <li class="nav-item dropdown">--}}
+{{--                <a class="nav-link" data-toggle="dropdown" href="#">--}}
+{{--                    <i class="far fa-bell"></i>--}}
+{{--                    <span class="badge badge-warning navbar-badge">15</span>--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">--}}
 
 {{--                    <span class="dropdown-item dropdown-header">15 Notifications</span>--}}
 {{--                    <div class="dropdown-divider"></div>--}}
@@ -127,10 +139,11 @@
 {{--                    </a>--}}
 {{--                    <div class="dropdown-divider"></div>--}}
 {{--                    --}}
-                    <notification></notification>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-                </div>
-            </li>
+                    <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>
+
+{{--                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
             <li class="nav-item">
                 <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                     <i class="fas fa-th-large"></i>
@@ -339,24 +352,24 @@
 <!-- ./wrapper -->
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+{{--<!-- Bootstrap 4 -->--}}
+{{--<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>--}}
 
-<!-- Select2 -->
-<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
-<!-- Bootstrap4 Duallistbox -->
-<script src="{{ asset('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}"></script>
-<!-- InputMask -->
-<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
-<!-- date-range-picker -->
-<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- bootstrap color picker -->
-<script src="{{ asset('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-<!-- Bootstrap Switch -->
-<script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
+{{--<!-- Select2 -->--}}
+{{--<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>--}}
+{{--<!-- Bootstrap4 Duallistbox -->--}}
+{{--<script src="{{ asset('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }}"></script>--}}
+{{--<!-- InputMask -->--}}
+{{--<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>--}}
+{{--<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>--}}
+{{--<!-- date-range-picker -->--}}
+{{--<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>--}}
+{{--<!-- bootstrap color picker -->--}}
+{{--<script src="{{ asset('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>--}}
+{{--<!-- Tempusdominus Bootstrap 4 -->--}}
+{{--<script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>--}}
+{{--<!-- Bootstrap Switch -->--}}
+{{--<script src="{{ asset('plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>--}}
 
 
 
@@ -368,6 +381,7 @@
 
 
 
+<script src="{{ asset('js/app.js') }}"></script>
 
 <!-- AdminLTE App -->
 

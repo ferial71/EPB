@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\BroadcastMessage;
@@ -14,6 +15,7 @@ class NouveauFormulaire extends Notification
 
     public $user_id;
     public $formulaire;
+    public $user_name;
 
     /**
      * Create a new notification instance.
@@ -55,20 +57,29 @@ class NouveauFormulaire extends Notification
     public function toDatabase()
     {
 
+        $this->user_name = User::findOrFail($this->user_id);
         return[
             'user'=>$this->user_id,
-            'message'=>"Nouveau formulaire"
+            'titre'=>  $this->formulaire->titre,
+            'formulaire'=> $this->formulaire->id,
+            'user_name' => $this->user_name->name
         ];
     }
-
-    public function toBroadcast()
+    /**
+     * Get the broadcastable representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return BroadcastMessage
+     */
+    public function toBroadcast($notifiable)
     {
-
         return new BroadcastMessage([
             'user_id'=>$this->user_id,
-            'message'=>"Nouveau formulaire"
+            'message'=>'Nouveau '. $this->formulaire->titre,
+            'user_name' => User::findOrFail($this->user_id),
         ]);
     }
+
 
     /**
      * Get the array representation of the notification.
@@ -80,7 +91,7 @@ class NouveauFormulaire extends Notification
     {
         return [
             'user_id'=>$this->user_id,
-            'message'=>"Nouveau formulaire"
+            'message'=>'Nouveau '. $this->formulaire->titre
         ];
     }
 }

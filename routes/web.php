@@ -77,3 +77,7 @@ Route::post('/notification/read', 'NotificationController@read');
 //    event(new App\Events\StatusLiked('Someone'));
 //    return "Event has been sent!";
 //});
+
+Route::get('/markAsRead',function(){
+    auth()->user()->unreadNotifications->markAsRead();
+});

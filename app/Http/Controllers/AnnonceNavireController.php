@@ -76,7 +76,7 @@ class AnnonceNavireController extends Controller
         $formulaire->save();
         $users = User::permission('annonce_navire-validate')->get();
         foreach ($users as $user){
-            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire->id));
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
         }
 
         return redirect()->route('annonce_navires.index');

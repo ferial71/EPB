@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ Form::model($formulaire, array('route' => array('annonce_navires.validatation', $formulaire->id), 'method' => 'PUT')) }}
+
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>
@@ -116,6 +116,7 @@
         </section>
 
     </div>
+    {{ Form::model($formulaire, array('route' => array('annonce_navires.validatation', $formulaire->id), 'method' => 'PUT')) }}
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -129,6 +130,7 @@
                     <p>Est ce que vous êtes sure vous voulez valider cette formulaire?</p>
                 </div>
                 <div class="modal-footer justify-content-between">
+
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
                     {{ Form::submit('Valider', array('class' => 'btn btn-success' ,'name'=>'valide', 'value'=>'true')) }}
 
