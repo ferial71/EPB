@@ -1,60 +1,35 @@
 <template>
-<!--    @click="markNotificationAsRead"-->
-    <li class="nav-item dropdown" >
-        <a class="nav-link" data-toggle="dropdown" >
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">{{unreadNotifications.length}}</span>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="glyphicon glyphicon-globe"></span>
+            Notifications <span class="badge">{{ notifications.length }}</span> <span class="caret"></span>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" >
 
-            <span class="dropdown-item dropdown-header">{{unreadNotifications.length}} Notifications</span>
-
-            <notification-item v-for="unread in unreadNotifications" :unread="unread" :key="unread.id"></notification-item>
-
-
-
-            <div class="dropdown-divider"></div>
-
-
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
+        <ul class="dropdown-menu" role="menu">
+            <li v-for="notification in notifications">
+                <a href="#" v-on:click="MarkAsRead(notification)">
+                    SomeOne commented on your Post<br>
+                    <small>{{ notification.data['message'] }}</small>
+                </a>
+            </li>
+            <li v-if="notifications.length == 0">
+                There is no new notifications
+            </li>
+        </ul>
     </li>
 </template>
 
 <script>
-    import NotificationItem from './NotificationItem.vue';
     export default {
-        props:['unreads','userid'],
-        components: {NotificationItem},
-        data(){
-            return {
-                unreadNotifications: this.unreads
-            }
-        },
+        props: ['notifications'],
         methods: {
-            markNotificationAsRead() {
-                if (this.unreadNotifications.length) {
-                    axios.get('/markAsRead');
-                }
-            }
-        },
-        mounted() {
-            console.log('Component mounted');
-            // Echo.private(`App.User.${this.userid}`)
-            //     .notification((notification) => {
-            //         console.log(notification.type);
-            //         let newUnreadNotifications = {data: {thread: notification.thread, user: notification.user}};
-            //         this.unreadNotifications.push(newUnreadNotifications);
-            //     });
-
-            // let userId= "{{ Auth::id() }}";
-
-            Echo.private('users.' + this.userid)
-                .notification((notification) => {
-                    console.log(notification.type);
-                    let newUnreadNotifications = {data: {thread: notification.thread, user: notification.user}};
-                    this.unreadNotifications.push(newUnreadNotifications);
+            MarkAsRead: function(notification) {
+                var data = {
+                    id: notification.id
+                };
+                axios.post('/notification/read', data).then(response => {
+                    window.location.href = "/post/" + notification.data.post.id;
                 });
+            }
         }
     }
 </script>

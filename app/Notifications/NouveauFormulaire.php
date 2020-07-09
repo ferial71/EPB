@@ -22,9 +22,9 @@ class NouveauFormulaire extends Notification
      *
      * @return void
      */
-    public function __construct($id,$formulaire)
+    public function __construct($user_id,$formulaire)
     {
-        $this->user_id = $id;
+        $this->user_id = $user_id;
         $this->formulaire = $formulaire;
     }
 
@@ -65,20 +65,20 @@ class NouveauFormulaire extends Notification
             'user_name' => $this->user_name->name
         ];
     }
-    /**
-     * Get the broadcastable representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return BroadcastMessage
-     */
-    public function toBroadcast($notifiable)
-    {
-        return new BroadcastMessage([
-            'user_id'=>$this->user_id,
-            'message'=>'Nouveau '. $this->formulaire->titre,
-            'user_name' => User::findOrFail($this->user_id),
-        ]);
-    }
+//    /**
+//     * Get the broadcastable representation of the notification.
+//     *
+//     * @param  mixed  $notifiable
+//     * @return BroadcastMessage
+//     */
+//    public function toBroadcast($notifiable)
+//    {
+//        return new BroadcastMessage([
+//            'user_id'=>$this->user_id,
+//            'message'=>'Nouveau '. $this->formulaire->titre,
+//            'user_name' => User::findOrFail($this->user_id),
+//        ]);
+//    }
 
 
     /**
@@ -91,7 +91,8 @@ class NouveauFormulaire extends Notification
     {
         return [
             'user_id'=>$this->user_id,
-            'message'=>'Nouveau '. $this->formulaire->titre
+            'message'=>'Nouveau '. $this->formulaire->titre,
+            'user_name' => User::findOrFail($this->user_id)
         ];
     }
 }

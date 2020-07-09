@@ -78,6 +78,9 @@ Route::post('/notification/read', 'NotificationController@read');
 //    return "Event has been sent!";
 //});
 
-Route::get('/markAsRead',function(){
-    auth()->user()->unreadNotifications->markAsRead();
-});
+//Route::get('/markAsRead',function(){
+//    auth()->user()->unreadNotifications->markAsRead();
+//});
+
+Route::post('/notification/get', 'NotificationController@get');
+Route::post('/notification/read', 'NotificationController@read');

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="userid" contetnt="{{ Auth::check() ? Auth::user()->id : '' }}">
 
     <title>AdminLTE 3 | User Profile</title>
     <!-- Tell the browser to be responsive to screen width -->
@@ -42,6 +43,7 @@
     <link rel="stylesheet" href="{{asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
+
 
     <script>
         window.Laravel = {!! json_encode([
@@ -139,8 +141,8 @@
 {{--                    </a>--}}
 {{--                    <div class="dropdown-divider"></div>--}}
 {{--                    --}}
-                    <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>
-
+{{--                    <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>--}}
+            <notification v-bind:notifications="notifications"></notification>
 {{--                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
 {{--                </div>--}}
 {{--            </li>--}}
