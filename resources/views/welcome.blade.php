@@ -18,6 +18,11 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                position:fixed;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
             }
 
             .full-height {
@@ -74,28 +79,15 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md" >
-                    <div img src="/svg/EntreprisePortuaireBejaiaLogo.svg" style="height: 25px;" class="pr-3"></div>
-                    <div style="height: 130px;">Entreprise Portuaire de Bejaia</div>
-                </div>
+{{--                    <div img src="/svg/EntreprisePortuaireBejaiaLogo.svg" style="height: 25px;" class="pr-3"></div>--}}
+{{--                    <h1 style=" text-shadow: #000; color: #fff">Entreprise Portuaire de Bejaia</h1>--}}
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
         </div>
