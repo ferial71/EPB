@@ -176,6 +176,81 @@
                         <ul class="nav nav-treeview">
                             @can('annonce_navire-list')
                                 <li class="nav-item">
+                                    <a  href={{route('annonce_navires.create')}}  class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Annonce navire  </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('demande_de_poste_a_quai-list')
+                                <li class="nav-item">
+                                    <a href={{route('poste_quais.create')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Demande de poste à quai</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('manifeste-list')
+                                <li class="nav-item">
+                                    <a href={{route('manifestes.create')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Manifeste</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('bon_de_commande-list')
+                                <li class="nav-item">
+                                    <a href={{route('bon_de_commandes.create')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bon de commande</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('bon_a_enlever-list')
+                                <li class="nav-item">
+                                    <a href={{route('bon_a_enlevers.create')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bon à enlever</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('demande_de_mise_a_quai-list')
+                                <li class="nav-item">
+                                    <a href={{route('mise_a_quais.create')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Demande de mise à quai</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('bon_a_delivrer-list')
+                                <li class="nav-item">
+                                    <a href={{route('bon_a_delivrers.create')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Bon à délivrer</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('cpn-list')
+                                <li class="nav-item">
+                                    <a href={{route('home')}} class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Consulter la CPN</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Historique
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('annonce_navire-list')
+                                <li class="nav-item">
                                     <a  href={{route('annonce_navires.index')}}  class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Annonce navire  </p>
@@ -224,7 +299,7 @@
                             @endcan
                             @can('bon_a_delivrer-list')
                                 <li class="nav-item">
-                                    <a href={{route('bon_a_delivrers.index')}} class="nav-link">
+                                    <a href={{route('bon_a_delivrers.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Bon à délivrer</p>
                                     </a>
@@ -238,35 +313,6 @@
                                     </a>
                                 </li>
                             @endcan
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Historique
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="../tables/simple.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Simple Tables</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../tables/data.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../tables/jsgrid.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
