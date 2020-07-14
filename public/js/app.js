@@ -1908,6 +1908,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NotificationItem_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NotificationItem.vue */ "./resources/js/components/NotificationItem.vue");
 //
 //
 //
@@ -1928,17 +1929,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['notifications'],
-  methods: {
-    MarkAsRead: function MarkAsRead(notification) {
-      var data = {
-        id: notification.id
+  props: ['unreads', 'userid'],
+  components: {
+    NotificationItem: _NotificationItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      unreadNotifications: this.unreads
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    console.log('Component mounted.');
+    Echo["private"]('App.User.' + this.userid).notification(function (notification) {
+      console.log(notification);
+      var newUnreadNotifications = {
+        data: {
+          thread: notification.thread,
+          user: notification.user
+        }
       };
-      axios.post('/notification/read', data).then(function (response) {
-        window.location.href = "/post/" + notification.data.post.id;
-      });
-    }
+
+      _this.unreadNotifications.push(newUnreadNotifications);
+    });
   }
 });
 
@@ -1960,7 +1988,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['unread'],
   data: function data() {
@@ -1969,17 +1996,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    redirect: function redirect() {
-      // axios.get("http://formulaires/" +this.unread.data['titre'] + "s/"+ this.unread.data['formulaire']);
+    MarkAsRead: function MarkAsRead(notification) {
+      var data = {
+        id: notification.id
+      };
+      axios.post('/notification/read', data);
       this.formulaireUrl = "http://127.0.0.1:8000/formulaires/" + this.unread.data['titre'] + "s/" + this.unread.data['formulaire'];
     }
-  } // mounted(){
-  //     window.location = "formulaires/" + this.unread.data['titre'] + "s/"+ this.unread.data['formulaire'];
-  //         // this.unread.data['titre'] + "s/"+ this.unread.data['formulaire']
-  //
-  //     // this.formulaireUrl= this.unread.data['titre'] + "s/"+ this.unread.data['formulaire']
-  // }
-
+  }
 });
 
 /***/ }),
@@ -47711,62 +47735,43 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", { staticClass: "dropdown" }, [
+  return _c("li", { staticClass: "nav-item dropdown" }, [
     _c(
       "a",
       {
-        staticClass: "dropdown-toggle",
-        attrs: {
-          href: "#",
-          "data-toggle": "dropdown",
-          role: "button",
-          "aria-expanded": "false"
-        }
+        staticClass: "nav-link",
+        attrs: { "data-toggle": "dropdown", href: "#" }
       },
       [
-        _c("span", { staticClass: "glyphicon glyphicon-globe" }),
-        _vm._v("\n        Notifications "),
-        _c("span", { staticClass: "badge" }, [
-          _vm._v(_vm._s(_vm.notifications.length))
-        ]),
+        _c("i", { staticClass: "far fa-bell" }),
         _vm._v(" "),
-        _c("span", { staticClass: "caret" })
+        _c("span", { staticClass: "badge badge-warning navbar-badge" }, [
+          _vm._v(_vm._s(_vm.unreadNotifications.length))
+        ])
       ]
     ),
     _vm._v(" "),
     _c(
-      "ul",
-      { staticClass: "dropdown-menu", attrs: { role: "menu" } },
+      "div",
+      { staticClass: "dropdown-menu dropdown-menu-lg dropdown-menu-right" },
       [
-        _vm._l(_vm.notifications, function(notification) {
-          return _c("li", [
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    return _vm.MarkAsRead(notification)
-                  }
-                }
-              },
-              [
-                _vm._v("\n                SomeOne commented on your Post"),
-                _c("br"),
-                _vm._v(" "),
-                _c("small", [_vm._v(_vm._s(notification.data["message"]))])
-              ]
-            )
-          ])
-        }),
+        _c("span", { staticClass: "dropdown-item dropdown-header" }, [
+          _vm._v(_vm._s(_vm.unreadNotifications.length) + " Notifications")
+        ]),
         _vm._v(" "),
-        _vm.notifications.length == 0
-          ? _c("li", [
-              _vm._v("\n            There is no new notifications\n        ")
-            ])
-          : _vm._e()
-      ],
-      2
+        _c("div", { staticClass: "dropdown-divider" }),
+        _vm._v(" "),
+        _c(
+          "li",
+          _vm._l(_vm.unreadNotifications, function(unread) {
+            return _c("notification-item", {
+              key: unread.id,
+              attrs: { unread: unread }
+            })
+          }),
+          1
+        )
+      ]
     )
   ])
 }
@@ -47797,19 +47802,17 @@ var render = function() {
     {
       staticClass: "dropdown-item",
       attrs: { href: _vm.formulaireUrl },
-      on: { click: _vm.redirect }
+      on: {
+        click: function($event) {
+          return _vm.MarkAsRead(_vm.unread)
+        }
+      }
     },
     [
       _c("i", { staticClass: "fas fa-envelope mr-2" }),
-      _vm._v(
-        " " +
-          _vm._s(_vm.unread.data["message"]) +
-          " par " +
-          _vm._s(_vm.unread.data["user_name"]) +
-          "\n\n    "
-      ),
+      _vm._v(" Nouveau " + _vm._s(_vm.unread.data["titre"]) + "\n\n    "),
       _c("span", { staticClass: "float-right text-muted text-sm" }, [
-        _vm._v(_vm._s(_vm.unread.created_at))
+        _vm._v("par " + _vm._s(_vm.unread.data["user_name"]))
       ])
     ]
   )
@@ -59982,12 +59985,9 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -60005,57 +60005,78 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  */
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component('notification', __webpack_require__(/*! ./components/Notification.vue */ "./resources/js/components/Notification.vue")["default"]); // Vue.component('notification', require('./components/Notification.vue'));
+// Vue.component('notification-item', require('./components/NotificationItem.vue'));
+// Vue.component('example', require('./components/Example.vue'));
 // Vue.component('notification', require('./components/Notification.vue'));
 
-Vue.component('notification', __webpack_require__(/*! ./components/Notification.vue */ "./resources/js/components/Notification.vue")["default"]);
-Vue.component('notification-item', __webpack_require__(/*! ./components/NotificationItem.vue */ "./resources/js/components/NotificationItem.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+//
+// const app = new Vue({
+//     el: '#app'
+// });
+//
+// import Echo from 'laravel-echo';
+//
+// window.Pusher = require('pusher-js');
+//
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: 'f9c41c660415c3 16d1e2',
+//     cluster: 'mt1',
+//     wsHost: window.location.hostname,
+//     wsPort: 6001,
+//     disableStats: true,
+//
+// });
+//
 
-
-window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
-window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  broadcaster: 'pusher',
-  key: 'f9c41c660415c3 16d1e2',
-  cluster: 'mt1',
-  wsHost: window.location.hostname,
-  wsPort: 6001,
-  disableStats: true
-});
 var app = new Vue({
-  el: '#app',
-  data: {
-    notifications: ''
-  },
-  created: function created() {
-    var _this = this;
+  el: '#app' // data: {
+  //     notifications: ''
+  // },
+  //     mounted(){
+  //         window.Echo.private(`App.User.${Laravel.userId}`)
+  //             .notification((notification) => {
+  //                 addNotifications([notification], '#notifications');
+  //             });
+  //     },
+  //     created() {
+  //         axios.post('/notification/get').then(response => {
+  //             this.notifications = response.data;
+  //             console.log(response.data);
+  //         });
+  //
+  //         window.Echo.private(`App.User.${Laravel.userId}`)
+  //             .notification((notification) => {
+  //                 this.notifications.push(notification);
+  //             });
+  //         // let userId = $('meta[name="userid"]').attr('content');
+  //         // Echo.private('App.User.' + userId).notification((notification) => {
+  //         //     console.log('ojnono');
+  //         //     this.notifications.push(notification);
+  //         // });
+  //     }
 
-    axios.post('/notification/get').then(function (response) {
-      _this.notifications = response.data;
-      console.log(response.data);
-    });
-    window.Echo["private"]("App.User.".concat(Laravel.userId)).notification(function (notification) {
-      _this.notifications.push(notification);
-    }); // let userId = $('meta[name="userid"]').attr('content');
-    // Echo.private('App.User.' + userId).notification((notification) => {
-    //     console.log('ojnono');
-    //     this.notifications.push(notification);
-    // });
-  }
-});
-var notifications = []; //...
-
-$(document).ready(function () {
-  if (Laravel.userId) {
-    //...
-    window.Echo["private"]("App.User.".concat(Laravel.userId)).notification(function (notification) {
-      addNotifications([notification], '#notifications');
-    });
-  }
-});
+}); //
+// var notifications = [];
+//
+// //...
+//
+// $(document).ready(function() {
+//     if(Laravel.userId) {
+//
+//         window.Echo.private(`App.User.${Laravel.userId}`)
+//             .notification((notification) => {
+//                 addNotifications([notification], '#notifications');
+//             });
+//     }
+// });
 
 /***/ }),
 
@@ -60101,7 +60122,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: 'f9c41c660415c3 16d1e2',
+  key: 'f9c41c660415c316d1e2',
   cluster: 'mt1',
   wsHost: window.location.hostname,
   wsPort: 6001,
