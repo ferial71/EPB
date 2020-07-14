@@ -22,14 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/annonce_navire', 'HomeController@annonce_navire')->name('annonce_navire');
-Route::get('/dpostequai', 'HomeController@dpostequai')->name('dpostequai');
-//Route::get('/Consignataire/annonce_navire', 'ConsignataireController@index')->name('annonce');
-Route::resource('/Consignataire', 'ConsignataireController');
-Route::resource('/Transitaire', 'transitaire\TransitaireController');
 Route::resource('/Admin', 'Admin\AdminController');
-
-//Route::resource('/Consignataire/annonce_navire', 'consignataire\annonce_navireController');
 
 
 Route::resource('users','UserController')->middleware('admin');
@@ -81,6 +74,3 @@ Route::post('/notification/read', 'NotificationController@read');
 //Route::get('/markAsRead',function(){
 //    auth()->user()->unreadNotifications->markAsRead();
 //});
-
-Route::post('/notification/get', 'NotificationController@get');
-Route::post('/notification/read', 'NotificationController@read');

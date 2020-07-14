@@ -1933,17 +1933,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['unreads', 'userid'],
+  props: ["unreads", "userid"],
   components: {
     NotificationItem: _NotificationItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -1955,8 +1947,8 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    console.log('Component mounted.');
-    Echo["private"]('App.User.' + this.userid).notification(function (notification) {
+    console.log("Component mounted.");
+    Echo["private"]("App.User." + this.userid).notification(function (notification) {
       console.log(notification);
       var newUnreadNotifications = {
         data: {
@@ -1988,8 +1980,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['unread'],
+  props: ["unread"],
   data: function data() {
     return {
       formulaireUrl: ""
@@ -2000,8 +1998,8 @@ __webpack_require__.r(__webpack_exports__);
       var data = {
         id: notification.id
       };
-      axios.post('/notification/read', data);
-      this.formulaireUrl = "http://127.0.0.1:8000/formulaires/" + this.unread.data['titre'] + "s/" + this.unread.data['formulaire'];
+      axios.post("/notification/read", data);
+      this.formulaireUrl = "http://127.0.0.1:8000/formulaires/" + this.unread.data["titre"] + "s/" + this.unread.data["formulaire"];
     }
   }
 });
@@ -60006,77 +60004,16 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('notification', __webpack_require__(/*! ./components/Notification.vue */ "./resources/js/components/Notification.vue")["default"]); // Vue.component('notification', require('./components/Notification.vue'));
-// Vue.component('notification-item', require('./components/NotificationItem.vue'));
-// Vue.component('example', require('./components/Example.vue'));
-// Vue.component('notification', require('./components/Notification.vue'));
-
+Vue.component("notification", __webpack_require__(/*! ./components/Notification.vue */ "./resources/js/components/Notification.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-//
-// const app = new Vue({
-//     el: '#app'
-// });
-//
-// import Echo from 'laravel-echo';
-//
-// window.Pusher = require('pusher-js');
-//
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'f9c41c660415c3 16d1e2',
-//     cluster: 'mt1',
-//     wsHost: window.location.hostname,
-//     wsPort: 6001,
-//     disableStats: true,
-//
-// });
-//
 
 var app = new Vue({
-  el: '#app' // data: {
-  //     notifications: ''
-  // },
-  //     mounted(){
-  //         window.Echo.private(`App.User.${Laravel.userId}`)
-  //             .notification((notification) => {
-  //                 addNotifications([notification], '#notifications');
-  //             });
-  //     },
-  //     created() {
-  //         axios.post('/notification/get').then(response => {
-  //             this.notifications = response.data;
-  //             console.log(response.data);
-  //         });
-  //
-  //         window.Echo.private(`App.User.${Laravel.userId}`)
-  //             .notification((notification) => {
-  //                 this.notifications.push(notification);
-  //             });
-  //         // let userId = $('meta[name="userid"]').attr('content');
-  //         // Echo.private('App.User.' + userId).notification((notification) => {
-  //         //     console.log('ojnono');
-  //         //     this.notifications.push(notification);
-  //         // });
-  //     }
-
-}); //
-// var notifications = [];
-//
-// //...
-//
-// $(document).ready(function() {
-//     if(Laravel.userId) {
-//
-//         window.Echo.private(`App.User.${Laravel.userId}`)
-//             .notification((notification) => {
-//                 addNotifications([notification], '#notifications');
-//             });
-//     }
-// });
+  el: "#app"
+});
 
 /***/ }),
 
