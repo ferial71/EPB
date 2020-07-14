@@ -1929,10 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["unreads", "userid"],
@@ -1948,17 +1944,19 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log("Component mounted.");
-    Echo["private"]("App.User." + this.userid).notification(function (notification) {
+    Echo["private"]("App.Notification.1").notification(function (notification) {
       console.log(notification);
       var newUnreadNotifications = {
         data: {
-          thread: notification.thread,
-          user: notification.user
+          id: notification.id,
+          data: notification.data
         }
       };
+      console.log("echo working");
 
       _this.unreadNotifications.push(newUnreadNotifications);
     });
+    console.log("Component mounted end");
   }
 });
 
@@ -47744,7 +47742,7 @@ var render = function() {
         _c("i", { staticClass: "far fa-bell" }),
         _vm._v(" "),
         _c("span", { staticClass: "badge badge-warning navbar-badge" }, [
-          _vm._v(_vm._s(_vm.unreadNotifications.length))
+          _vm._v("\n      " + _vm._s(_vm.unreadNotifications.length) + "\n    ")
         ])
       ]
     ),
@@ -60048,7 +60046,7 @@ try {
 
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -60058,9 +60056,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  broadcaster: 'pusher',
-  key: 'f9c41c660415c316d1e2',
-  cluster: 'mt1',
+  broadcaster: "pusher",
+  key: "f9c41c660415c316d1e2",
+  cluster: "mt1",
   wsHost: window.location.hostname,
   wsPort: 6001,
   disableStats: true
