@@ -32,16 +32,13 @@ export default {
   mounted() {
     console.log("Component mounted.");
 
-    Echo.private("App.User." + this.userid).notification(
-      notification => {
-        console.log(notification);
-        let newUnreadNotifications = {
-          data: { id: notification.id, data: notification.data }
-        };
-        console.log("echo working");
-        this.unreadNotifications.push(newUnreadNotifications);
-      }
-    );
+    Echo.private("App.User." + this.userid).notification(notification => {
+      console.log(notification);
+      let newUnreadNotifications = {
+        data: { id: notification.id, data: notification.data }
+      };
+      this.unreadNotifications.push(newUnreadNotifications);
+    });
     console.log("Component mounted end");
   }
 };

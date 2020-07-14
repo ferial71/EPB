@@ -1952,7 +1952,6 @@ __webpack_require__.r(__webpack_exports__);
           data: notification.data
         }
       };
-      console.log("echo working");
 
       _this.unreadNotifications.push(newUnreadNotifications);
     });
