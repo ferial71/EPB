@@ -140,11 +140,11 @@
 {{--                        <span class="float-right text-muted text-sm">3 mins</span>--}}
 {{--                    </a>--}}
 {{--                    <div class="dropdown-divider"></div>--}}
-{{--                    --}}
 
 
-{{--                    <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>--}}
-            <notification v-bind:notifications="notifications"></notification>
+
+                    <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>
+{{--            <notification v-bind:notifications="notifications"></notification>--}}
 {{--                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>--}}
 {{--                </div>--}}
 {{--            </li>--}}
