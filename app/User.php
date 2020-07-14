@@ -64,4 +64,8 @@ class User extends Authenticatable
         return $this->hasOne('App/formualaire');
 
     }
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'App.User.'.$this->id;
+    }
 }
