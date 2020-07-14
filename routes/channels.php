@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Broadcast;
 
+
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return true ;
 });
@@ -21,3 +22,8 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 //    return (int) $user->id === (int) $id;
 //
 //});
+Broadcast::channel('App.Notification.{id}', function($user, $id){
+    $permission = Notification::findOrNew($id)->data['titre'] +'-validate';
+    dd($permission);
+    return $user->id === User::permission( $permission)->get();
+});

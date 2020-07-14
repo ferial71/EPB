@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d0a9562-f571-4cb2-bab6-6e3ab3c37ce8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/NouveauFormulaire.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/NouveauFormulaire.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/websockets.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/websockets.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Notification.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Notification.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/NotificationItem.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/NotificationItem.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -254,6 +245,7 @@
       <workItem from="1594643483983" duration="10675000" />
       <workItem from="1594730088957" duration="849000" />
       <workItem from="1594731325770" duration="355000" />
+      <workItem from="1594739711948" duration="266000" />
     </task>
     <task id="LOCAL-00001" summary="this is new">
       <created>1589871823920</created>
@@ -353,13 +345,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/layouts/profile.blade.php</url>
-          <line>56</line>
+          <line>53</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/resources/views/annonceNav.blade.php</url>
-          <line>110</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/Consignataire/home.blade.php</url>

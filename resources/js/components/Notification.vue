@@ -32,7 +32,7 @@ export default {
   mounted() {
     console.log("Component mounted.");
 
-    Echo.private("App.Notification." + this.userid).notification(
+    Echo.private("App.User." + this.userid).notification(
       notification => {
         console.log(notification);
         let newUnreadNotifications = {

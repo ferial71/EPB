@@ -1944,7 +1944,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     console.log("Component mounted.");
-    Echo["private"]("App.Notification.1").notification(function (notification) {
+    Echo["private"]("App.User." + this.userid).notification(function (notification) {
       console.log(notification);
       var newUnreadNotifications = {
         data: {
