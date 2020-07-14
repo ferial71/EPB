@@ -35,7 +35,7 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: 'f9c41c660415c3 16d1e2',
+    key: 'f9c41c660415c316d1e2',
     cluster: 'mt1',
     wsHost: window.location.hostname,
     wsPort: 6001,
