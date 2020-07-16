@@ -55,7 +55,7 @@
 
                 <div class="wrap-input100 validate-input">
                 <!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> -->
-                    <input id="email" type="email" class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" >
+                    <input id="email" type="email" class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" />
                     <span class="focus-input100"></span>
                     <span class="label-input100">Email</span>
                     @error('email')
@@ -66,9 +66,10 @@
                 </div>
 
 
+
                 <div class="wrap-input100 validate-input">
                 <!-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> -->
-                    <input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                    <input id="password" type="password" class="input100 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"/>
                     <span class="focus-input100"></span>
                     <span class="label-input100">Mot de passe</span>
                     @error('password')
@@ -104,7 +105,7 @@
                     </button>
                 </div>
 
-               
+
             </form>
 
             <div class="login100-more" style="background-image: url('{{asset('images/navire.jpg')}}');">
