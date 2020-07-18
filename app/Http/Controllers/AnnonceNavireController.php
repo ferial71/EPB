@@ -59,6 +59,21 @@ class AnnonceNavireController extends Controller
         return view('formulaires/annonce_navires.create');
     }
 
+
+    public function validate_reqest(Request $request)
+    {
+
+        $this->validate($request, [
+            'champs[nom_navire]' => 'required',
+//            'imo' => 'required',
+//            'LOA' => 'required',
+//            'BEAM' => 'required',
+//            'DWT' => 'required',
+//            'DRAFT' => 'required',
+
+        ]);
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -69,6 +84,7 @@ class AnnonceNavireController extends Controller
     public function store(Request $request)
     {
 
+        validate_reqest($request);
 
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'annonce_navire';
