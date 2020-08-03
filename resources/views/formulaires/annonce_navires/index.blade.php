@@ -39,10 +39,12 @@
                                 </thead>
                                 @foreach($formulaires as $formulaire)
                                     <tbody>
-                                    <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs[$array[0]]}} </a></td>
-                                    @for( $i=1;$i<6;$i++)
-                                        <td>{{$formulaire->champs[$array[$i]]}}</td>
-                                    @endfor
+                                    <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs['nom_navire']}}</a></td>
+                                    <td>{{$formulaire->champs['transitaire']}}</td>
+                                    <td>{{$formulaire->champs['armateur']}}</td>
+                                    <td>{{$formulaire->champs['consignataire']}}</td>
+                                    <td>{{$formulaire->champs['provenance']}}</td>
+                                    <td>{{$formulaire->champs['date']}}</td>
                                     <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
                                         <div class="modal-dialog modal-lg">
                                             <div class="modal-content">
@@ -56,14 +58,14 @@
                                                         </style>
                                                         <div >
                                                             <ul class="list-group">
-                                                                    <li class="list-group-item">IMO  :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
-                                                                    <li class="list-group-item">Type du navire  :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
-                                                                    <li class="list-group-item">Tonnage :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
-                                                                    <li class="list-group-item">Paviollon du navire  :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
-                                                                    <li class="list-group-item">Longeur du navire  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
-                                                                    <li class="list-group-item">Largeur du navire  :<span class="label label-default"> {{$formulaire->champs[$array[11]]}}  </span></li>
-                                                                    <li class="list-group-item">Le port en lourd  :<span class="label label-default"> {{$formulaire->champs[$array[12]]}}  </span></li>
-                                                                    <li class="list-group-item">Le tirant d'eau  :<span class="label label-default"> {{$formulaire->champs[$array[13]]}}  </span></li>
+                                                                    <li class="list-group-item">IMO  :<span class="label label-default"> {{$formulaire->champs['imo']}}  </span></li>
+                                                                    <li class="list-group-item">Type du navire  :<span class="label label-default"> {{$formulaire->champs['type']}}  </span></li>
+                                                                    <li class="list-group-item">Tonnage :<span class="label label-default"> {{$formulaire->champs['tonnage']}}  </span></li>
+                                                                    <li class="list-group-item">Pavillon du navire  :<span class="label label-default"> {{$formulaire->champs['pavillon']}}  </span></li>
+                                                                    <li class="list-group-item">Longeur du navire  :<span class="label label-default"> {{$formulaire->champs['longeur_navire']}}  </span></li>
+                                                                    <li class="list-group-item">Largeur du navire  :<span class="label label-default"> {{$formulaire->champs['largeur_navire']}}  </span></li>
+                                                                    <li class="list-group-item">Le port en lourd  :<span class="label label-default"> {{$formulaire->champs['port_lourd']}}  </span></li>
+                                                                    <li class="list-group-item">Le tirant d'eau  :<span class="label label-default"> {{$formulaire->champs['tirant_eau']}}  </span></li>
                                                             </ul>
                                                         </div>
 
@@ -84,10 +86,10 @@
                                     </td>
                                     <td>
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['annonce_navires.destroy', $formulaire->id] ]) !!}
-                                        @can('demande_de_poste_a_quai-validate')
+                                        @can('annonce_navire-validate')
                                             <a href="{{ route('annonce_navires.show', $formulaire->id) }}" class="btn btn-primary" role="button">Consulter</a>
                                         @endcan
-                                        @can('demande_de_poste_a_quai-create')
+                                        @can('annonce_navire-create')
                                             <a href="{{ route('annonce_navires.edit', $formulaire->id) }}" class="btn btn-info" role="button">Modifier</a>
                                         @endcan
                                         {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}

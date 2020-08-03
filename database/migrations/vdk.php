@@ -1,0 +1,1 @@
+`Code_client`,`Imo`,`Navire`,`Longueur`,`MMSI`,`CALL-SIGN`,`DEA`,`HEA`,`TED`,`Cargaison`,`Tonnage`,`Nature`,`Agent`,`Receptionnaire`,`Pavillon`,`Port`,`Dh_envoie`,`annonce_id`,`observation`,`status_annonce`,`motif_annulation`
