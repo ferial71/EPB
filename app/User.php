@@ -68,4 +68,5 @@ class User extends Authenticatable
     {
         return 'App.User.'.$this->id;
     }
+
 }

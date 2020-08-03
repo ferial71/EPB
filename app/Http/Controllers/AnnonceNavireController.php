@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\AnnonceNavire;
-use App\armateur;
-use App\cargaison;
-use App\consignataire;
 use App\Events\UserLoggedIn;
 use App\formulaire;
-use App\navire;
 use App\Notifications\NouveauFormulaire;
 use App\role;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\Null_;
 use Session;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Marquine\Etl\Etl;
+
+
 
 class AnnonceNavireController extends Controller
 
@@ -63,8 +62,9 @@ class AnnonceNavireController extends Controller
     public function validate_reqest(Request $request)
     {
 
-        $this->validate($request, [
-            'champs[nom_navire]' => 'required',
+        $request->validate($request, [
+            'champs' => 'required',
+//            'champs.nom_navire' => 'required',
 //            'imo' => 'required',
 //            'LOA' => 'required',
 //            'BEAM' => 'required',
@@ -74,6 +74,7 @@ class AnnonceNavireController extends Controller
         ]);
 
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -84,7 +85,32 @@ class AnnonceNavireController extends Controller
     public function store(Request $request)
     {
 
-        validate_reqest($request);
+
+        $messages = [
+            'required' => 'Ce champ est obligatoire.',
+            'between' => 'Cette valeur doit être entre :min - :max.',
+            'numeric' => 'Ce champ doit être une valeur numérique.',
+        ];
+
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|alpha_dash',
+            'champs.imo' => 'required|numeric',
+            'champs.transitaire' => 'required|alpha_dash',
+            'champs.armateur' => 'required|alpha_dash',
+            'champs.consignataire' => 'required|alpha_dash',
+            'champs.provenance' => 'required|alpha_dash',
+            'champs.date' => 'required|date',
+            'champs.type' => 'required|alpha_dash',
+            'champs.tonnage' => 'required|numeric',
+            'champs.pavillon' => 'required|alpha_dash',
+            'champs.longeur_navire' => 'required|numeric',
+            'champs.largeur_navire' => 'required|numeric',
+            'champs.port_lourd' => 'required|numeric',
+            'champs.tirant_eau' => 'required|numeric',
+
+//            'body' => 'required',
+        ],$messages);
+        dd($validatedData);
 
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'annonce_navire';
@@ -223,14 +249,15 @@ class AnnonceNavireController extends Controller
         //vérifier si une demande de validation
 
 
-        if ($formulaire->valide!=null)
+        if ( $formulaire->valide != null )
         {
             return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+            dd($formulaire);
 
         }
-        elseif ($request->valide)
+        elseif ( $request->valide  )
         {
-            $formulaire->valide ='valide';
+            $formulaire->valide = 1 ;
             $formulaire->update();
 
             return redirect()->route('annonce_navires.index')->with('alert', 'Formulaire validé!');
@@ -302,11 +329,56 @@ class AnnonceNavireController extends Controller
         $formulaire = formulaire::findOrFail($id);
         $formulaire->delete();
 
-        return redirect()->route('formulaires/annonce_navires.index')
+        return redirect()->route('annonce_navires.index')
             ->with('flash_message',
                 'annonce navire successfully deleted');
 
     }
+
+    public function import(Request $request)
+    {
+
+        $path = $request->file('csv_file')->getRealPath();
+
+        $csv= file_get_contents($path);
+
+
+        $array = array_map("str_getcsv", explode(",", $csv));
+        $data = array_map('str_getcsv', file($path));
+
+
+        if (count($data) > 0) {
+
+            $csv_data = array_slice($data, 0, 2);
+
+            $csv_data_file = formulaire::create([
+//                'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
+//                'csv_header' => $request->has('header'),
+                'champs' => $data
+            ]);
+        } else {
+            return redirect()->back();
+    }
+}
+    public function processImport(Request $request)
+    {
+        $data = CsvData::find($request->csv_data_file_id);
+        $csv_data = json_decode($data->csv_data, true);
+        foreach ($csv_data as $row) {
+            $contact = new Contact();
+            foreach (config('app.db_fields') as $index => $field) {
+                if ($data->csv_header) {
+                    $contact->$field = $row[$request->fields[$field]];
+                } else {
+                    $contact->$field = $row[$request->fields[$index]];
+                }
+            }
+            $contact->save();
+        }
+
+        return view('import_success');
+    }
+
 }
 
 
@@ -321,5 +393,7 @@ class AnnonceNavireController extends Controller
         $arr['annonce_navire'] = annonce_navire::all();
         return view('Consignataire.annonce_navire.index')->with($arr);
     }*/
+
+
 
 
