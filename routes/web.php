@@ -11,9 +11,14 @@
 |
 */
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->middleware('auth');
+
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
@@ -34,6 +39,8 @@ Route::resource('roles','RoleController');
 
 
 Route::group(['prefix'=>'formulaires'],function(){
+    Route::post('annonce_navires/import','AnnonceNavireController@import')->name('annonce_navires.import');
+    Route::post('annonce_navires/import_process', 'AnnonceNavireController@processImport')->name('annonce_navires.import_process');
     Route::put('annonce_navires/validatation/{id}','AnnonceNavireController@validatation')->name('annonce_navires.validatation');
     Route::resource('annonce_navires','AnnonceNavireController');
     Route::put('poste_quais/validatation/{id}','PosteQuaiController@validatation')->name('poste_quais.validatation');

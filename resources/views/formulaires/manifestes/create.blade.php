@@ -38,7 +38,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du navire</label>
-                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"" >
+                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" >
 
 
 

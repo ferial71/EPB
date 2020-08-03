@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('annonce_navires.index')}}">liste des annonces</a></li>
                                         <li class="breadcrumb-item active">Annonces navire</li>
                                     </ol>
                                 </div>
@@ -25,62 +25,59 @@
                     </section>
                 <!-- /.card-header -->
                 <!-- form start -->
-
-
                         <div class="card">
                              <form role="form">
                                  @csrf
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-sm-6">
+{{--                                        <input-element></input-element>--}}
+                                        <div class="col-sm-4">
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Nom du navire</label>
-                                                    <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[nom_navire]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.nom_navire') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Transitaire</label>
-                                                    <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[transitaire]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.transitaire') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Armateur</label>
-                                                    <input type="text" name="champs[armateur]" class="form-control" placeholder="Entrer le nom du transitaire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[armateur]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.armateur') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Consignataire</label>
-                                                    <input type="text" name="champs[consignataire]" class="form-control" placeholder="Entrer le nom du transitaire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[consignataire]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.consignataire') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Provenance</label>
-                                                    <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer le nom du transitaire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[provenance]" class="form-control"  >
+                                                    <p class="text-danger">@error('champs.provenance') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Date d’entrée du navire: </label>
@@ -88,18 +85,22 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                         </div>
-                                                        <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
-
+                                                        <input type="text" autocomplete="off" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
                                                     </div>
+                                                    <p class="text-danger">@error('champs.date') {{$message}} @enderror</p>
                                                     <!-- /.input group -->
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
 
-                                                <label for="champs">numéro IMO</label>
-                                                <input type="text" name="champs[imo]" class="form-control" placeholder="Entrer le numéro IMO" >
+                                                <label for="champs[imo]">numéro IMO</label>
+                                                <input type="text" autocomplete="off" name="champs[imo]" class="form-control" >
+                                                <p class="text-danger">@error('champs.imo') {{$message}} @enderror</p>
+
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -107,8 +108,8 @@
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">type du navire </label>
-                                                    <input type="text" name="champs[type]" class="form-control" placeholder="Entrer le type du navire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[type]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.type') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,87 +117,126 @@
 
 
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Tonnage </label>
-                                                    <input type="text" name="champs[tonnage]" class="form-control" placeholder="Entrer le Poids transporté par le navire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[tonnage]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.tonnage') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             <!-- text input -->
                                             <div class="form-group">
                                                 <div class="form-group">
                                                     <label for="champs">Pavillon </label>
-                                                    <input type="text" name="champs[pavillon]" class="form-control" placeholder="Entrer le pavillon du navire" >
-
+                                                    <input type="text" autocomplete="off" name="champs[pavillon]" class="form-control" >
+                                                    <p class="text-danger">@error('champs.pavillon') {{$message}} @enderror</p>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-
-
-                                        <div class="col-4">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="champs">Longeur du navire</label>
-                                                <input type="text" name="champs[longeur_navire]" class="form-control" placeholder="Entrer le longeur du navire" >
-
+                                                <input type="text" autocomplete="off" name="champs[longeur_navire]" class="form-control"  >
+                                                <p class="text-danger">@error('champs.longeur_navire') {{$message}} @enderror</p>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="champs">Largeur du navire</label>
-                                                <input type="text" name="champs[largeur_navire]" class="form-control" placeholder="Entrer le largeur du navire" >
-
+                                                <input type="text" autocomplete="off" name="champs[largeur_navire]" class="form-control" >
+                                                <p class="text-danger">@error('champs.largeur_navire') {{$message}} @enderror</p>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-4">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="champs">Le port en lourd</label>
-                                                <input type="text" name="champs[port_lourd]" class="form-control" placeholder="Entrer le port en lourd" >
-
-
+                                                <input type="text" autocomplete="off" name="champs[port_lourd]" class="form-control"  >
+                                                <p class="text-danger">@error('champs.port_lourd') {{$message}} @enderror</p>
                                             </div>
                                         </div>
-                                        <div class="col-5">
+                                        <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="champs">Le tirant d'eau</label>
-                                                <input type="text" name="champs[tirant_eau]" class="form-control" placeholder="Entrer le tirant d'eau" >
-
+                                                <input type="text" autocomplete="off" name="champs[tirant_eau]" class="form-control" >
+                                                <p class="text-danger">@error('champs.tirant_eau') {{$message}} @enderror</p>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputFile">Ou bien sélectionner une fichier CSV</label>
-                                        <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                                            </div>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" id="">Upload</span>
-                                            </div>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                                 <!-- /.card-body -->
+
                             </form>
 
+{{--                            @error('champs[transitaire]') {{$message}} @enderror--}}
                         </div>
                         <div class="card-footer">
                             {{ Form::submit('Crée annonce', array('class' => 'btn btn-primary')) }}
                             {{ Form::close() }}
                         </div>
+{{--                    <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">--}}
+{{--                        <label for="csv_file">Ou bien sélectionner une fichier CSV</label>--}}
+
+
+{{--                        <div class="input-group">--}}
+{{--                            <div class="custom-file">--}}
+{{--                                <input id="csv_file" type="file" class="form-control" name="csv_file" required>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="input-group-append">--}}
+{{--                                <a  class="input-group-text" id="" href="{{route('annonce_navires.import')}}" method="POST">Upload</a>--}}
+{{--                            </div>--}}
+{{--                            @if ($errors->has('csv_file'))--}}
+{{--                                <span class="help-block">--}}
+{{--                                                    <strong>{{ $errors->first('csv_file') }}</strong>--}}
+{{--                                                </span>--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+                    <form class="form-horizontal" method="POST" action="{{ route('annonce_navires.import') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+
+                        <div class="form-group{{ $errors->has('csv_file') ? ' has-error' : '' }}">
+                            <label for="csv_file" class="col-md-4 control-label">CSV file to import</label>
+
+                            <div class="col-md-6">
+                                <input id="csv_file" type="file" class="form-control" name="csv_file" required>
+
+                                @if ($errors->has('csv_file'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('csv_file') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="header" checked> File contains header row?
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Parse CSV
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
                     </div>
                 </section>
         </div>
