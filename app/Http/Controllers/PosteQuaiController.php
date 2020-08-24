@@ -30,7 +30,7 @@ class PosteQuaiController extends Controller
         //tout les formulaire avec le titre 'poste_quai'
 
 
-        $formulaires = formulaire::where('titre', 'poste_quai')->latest('id')->paginate(10);
+        $formulaires = formulaire::where('titre', 'Demande de poste à quai')->latest('id')->paginate(10);
         if ($formulaires->total()==0){
             $array=null;
         }
@@ -60,8 +60,29 @@ class PosteQuaiController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.nom_armateur' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.consignataire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.date' => 'required|date',
+            'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.m_conditionnement' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.tonnage' => 'required|numeric',
+            'champs.type' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.pavillon' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.cargaison' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.imo' => 'required|numeric',
+            'champs.rade' => 'required|numeric',
+            'champs.longeur_navire' => 'required|numeric',
+            'champs.largeur_navire' => 'required|numeric',
+            'champs.port_lourd' => 'required|numeric',
+            'champs.tirant_eau' => 'required|numeric',
+        ]);
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre = 'poste_quai';
+        $formulaire->titre = 'Demande de poste à quai';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
 
