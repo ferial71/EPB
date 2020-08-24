@@ -6,7 +6,7 @@
     <section class="content" style="padding-bottom: 2%">
         <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
             <section class="content">
-                {{ Form::open(array('route' => 'bon_de_commandes.store')) }}
+                {{ Form::open(array('route' => 'bon_de_commandes.store','data-parsley-validate'=> '','autocomplete'=>'off')) }}
                 <div class="wrapper">
                     <section class="content-header">
                         <div class="container-fluid">
@@ -28,7 +28,7 @@
 
 
                     <div class="card">
-                        <form role="form">
+                        <form role="form" autocomplete="off">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -38,7 +38,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du navire</label>
-                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"" >
+                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >
 
 
 
@@ -51,7 +51,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du transitaire</label>
-                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" >
+                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
 
                                             </div>
@@ -63,7 +63,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Poids de la marchandise</label>
-                                                <input type="text" name="champs[poids]" class="form-control" placeholder="Entrer le nom de l armateur" >
+                                                <input type="text" name="champs[poids]" class="form-control" placeholder="Entrer le poids de la marchandise" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
 
 
 
@@ -75,7 +75,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Objets demandés</label>
-                                                <input type="text" name="champs[objet]" class="form-control" placeholder="Entrer le nom du consignataire" >
+                                                <input type="text" name="champs[objet]" class="form-control" placeholder="Entrer l'objet demandée" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Provenance</label>
-                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" >
+                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
 
                                             </div>
@@ -104,7 +104,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
-                                                    <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
+                                                    <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask required>
 
                                                 </div>
                                                 <!-- /.input group -->
