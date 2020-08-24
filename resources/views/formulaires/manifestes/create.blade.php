@@ -6,7 +6,7 @@
     <section class="content" style="padding-bottom: 2%">
         <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
             <section class="content">
-                {{ Form::open(array('route' => 'manifestes.store')) }}
+                {{ Form::open(array('route' => 'manifestes.store','data-parsley-validate'=> '','autocomplete'=>'off')) }}
                 <div class="wrapper">
                     <section class="content-header">
                         <div class="container-fluid">
@@ -28,7 +28,7 @@
 
 
                     <div class="card">
-                        <form role="form">
+                        <form role="form" autocomplete="off">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -38,7 +38,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du navire</label>
-                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" >
+                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
 
 
@@ -51,7 +51,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">La nature de l’escale du navire</label>
-                                                <input type="text" name="champs[nature_escale]" class="form-control" placeholder="Entrer le nom du transitaire" >
+                                                <input type="text" name="champs[nature_escale]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
 
                                             </div>
@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Provenance</label>
-                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" >
+                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
 
                                             </div>
@@ -94,7 +94,7 @@
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="champs">Nom du réceptionnaire </label>
-                                            <input type="text" name="champs[receptionnaire]" class="form-control" placeholder="Entrer la Cargaison" >
+                                            <input type="text" name="champs[receptionnaire]" class="form-control" placeholder="Entrer le nom réceptionnaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Marchandises transportées</label>
-                                                <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer le nom du consignataire" >
+                                                <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la marchandise transportée" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                             </div>
                                         </div>
@@ -111,14 +111,14 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="champs">Nature des marchandises</label>
-                                            <input type="text" name="champs[n_marchandise]" class="form-control" placeholder="Entrer la nature des marchandises" >
+                                            <input type="text" name="champs[n_marchandise]" class="form-control" placeholder="Entrer la nature des marchandises" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
                                     <div class="col-5">
                                         <div class="form-group">
                                             <label for="champs">Mode de conditionnement</label>
-                                            <input type="text" name="champs[m_conditionnement]" class="form-control" placeholder="Entrer le mode de conditionnement" >
+                                            <input type="text" name="champs[m_conditionnement]" class="form-control" placeholder="Entrer le mode de conditionnement" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Poids total de la marchandise</label>
-                                                <input type="text" name="champs[poids]" class="form-control" placeholder="Entrer le nom de l armateur" >
+                                                <input type="text" name="champs[poids]" class="form-control" placeholder="Entrer le nom de l armateur" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
 
 
 
@@ -143,8 +143,9 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
+
                                                 <label for="champs">Poids du BL </label>
-                                                <input type="text" name="champs[poids_bl]" class="form-control" placeholder="Entrer le Poids transporté par le navire" >
+                                                <input type="text" name="champs[poids_bl]" class="form-control" placeholder="Entrer le Poids transporté par le navire" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
 
                                             </div>
                                         </div>
@@ -153,8 +154,9 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
+
                                                 <label for="champs">Nombre de colis transportés </label>
-                                                <input type="text" name="champs[nb_colis]" class="form-control" placeholder="Entrer le type du navire" >
+                                                <input type="text" name="champs[nb_colis]" class="form-control" placeholder="Entrer le type du navire" data-parsley-pattern="[0-9]*" data-parsley-trigger="keyup" required>
                                             </div>
                                         </div>
                                     </div>
