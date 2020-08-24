@@ -43,6 +43,14 @@ class BonCommandeController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            //'champs.imo' => 'required|numeric',
+            'champs.poids' => 'required|numeric',
+            'champs.objet' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.date' => 'required|date',
+            ]);
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'bon_de_commande';
         $formulaire->user_id = Auth::id();
