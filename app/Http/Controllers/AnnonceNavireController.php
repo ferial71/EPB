@@ -13,6 +13,7 @@ use Session;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Marquine\Etl\Etl;
+use \Validator;
 
 
 
@@ -86,31 +87,27 @@ class AnnonceNavireController extends Controller
     {
 
 
-        $messages = [
-            'required' => 'Ce champ est obligatoire.',
-            'between' => 'Cette valeur doit être entre :min - :max.',
-            'numeric' => 'Ce champ doit être une valeur numérique.',
-        ];
+
 
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|alpha_dash',
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.imo' => 'required|numeric',
-            'champs.transitaire' => 'required|alpha_dash',
-            'champs.armateur' => 'required|alpha_dash',
-            'champs.consignataire' => 'required|alpha_dash',
-            'champs.provenance' => 'required|alpha_dash',
+            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.armateur' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.consignataire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.date' => 'required|date',
-            'champs.type' => 'required|alpha_dash',
+            'champs.type' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.tonnage' => 'required|numeric',
-            'champs.pavillon' => 'required|alpha_dash',
+            'champs.pavillon' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.longeur_navire' => 'required|numeric',
             'champs.largeur_navire' => 'required|numeric',
             'champs.port_lourd' => 'required|numeric',
             'champs.tirant_eau' => 'required|numeric',
+        ]);
 
-//            'body' => 'required',
-        ],$messages);
-        dd($validatedData);
+
+
 
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'annonce_navire';
@@ -335,26 +332,53 @@ class AnnonceNavireController extends Controller
 
     }
 
+
+
     public function import(Request $request)
     {
+        function csvToJson($fname) {
+            // open csv file
+            if (!($fp = fopen($fname, 'r'))) {
+                die("Can't open file...");
+            }
+
+            //read csv headers
+            $key = fgetcsv($fp,"1024",",");
+
+            // parse csv rows into array
+            $json = array();
+            while ($row = fgetcsv($fp,"1024",",")) {
+                $json[] = array_combine($key, $row);
+            }
+
+            // release file handle
+            fclose($fp);
+
+            // encode array to json
+//            return json_encode($json,JSON_UNESCAPED_SLASHES);
+         return   json_encode($json);
+        }
+
 
         $path = $request->file('csv_file')->getRealPath();
+        $csv_file =csvToJson($path);
+        str_replace("\ " , '' ,"jsonoutput");
+        stripslashes(json_encode($csv_file));
+//        json_encode($csv_file, JSON_UNESCAPED_SLASHES);
+//        $csv= file_get_contents($path);
+//
+//
+//        $array = array_map("str_getcsv", explode(",", $csv));
+//        $data = array_map('str_getcsv', file($path));
 
-        $csv= file_get_contents($path);
 
 
-        $array = array_map("str_getcsv", explode(",", $csv));
-        $data = array_map('str_getcsv', file($path));
-
-
-        if (count($data) > 0) {
-
-            $csv_data = array_slice($data, 0, 2);
+        if ($csv_file) {
 
             $csv_data_file = formulaire::create([
 //                'csv_filename' => $request->file('csv_file')->getClientOriginalName(),
 //                'csv_header' => $request->has('header'),
-                'champs' => $data
+                'champs' => $csv_file
             ]);
         } else {
             return redirect()->back();
