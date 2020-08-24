@@ -46,6 +46,19 @@ class ManifesteController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.nature_escale' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.date' => 'required|date',
+            'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.n_marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.m_conditionnement' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.poids' => 'required|numeric',
+            'champs.poids_bl' => 'required|numeric',
+            'champs.nb_colis' => 'required|numeric',
+        ]);
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Manifeste';
         $formulaire->save();
