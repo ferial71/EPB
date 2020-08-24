@@ -16,8 +16,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
-                                        <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
-                                        <li class="breadcrumb-item active">Bon à délivrer</li>
+                                        <li class="breadcrumb-item"><a href="{{route('mise_a_quais.index')}}">Liste des mises à quai</a></li>
+                                        <li class="breadcrumb-item active">Nouveau mise à quai</li>
                                     </ol>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
                                     <div class="col-5">
                                         <div class="form-group">
                                             <label for="champs">Poids de la marchandise</label>
-                                            
+
                                             <input type="text" name="champs[p_marchandise]" class="form-control" placeholder="Entrer le poids de la marchandise" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
                                         </div>
                                     </div>
