@@ -19,7 +19,7 @@ class BonEnleverController extends Controller
      */
     public function index()
     {
-        $formulaires = formulaire::where('titre', 'bon_a_enlever')->latest('id')->paginate(10); //show only 5 items at a time in descending order
+        $formulaires = formulaire::where('titre', 'Bon à enlever')->latest('id')->paginate(10); //show only 5 items at a time in descending order
 
         return view('formulaires/bon_a_enlevers.index', compact('formulaires'));
     }
@@ -37,8 +37,23 @@ class BonEnleverController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.date' => 'required|date',
+            'champs.date_enlever' => 'required|date',
+            'champs.date_declaration' => 'required|date',
+            'champs.m_conditionnement' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.p_marchandise' => 'required|numeric',
+            'champs.nb_unite' => 'required|numeric',
+            'champs.num_declaration' => 'required|numeric',
+        ]);
+
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre ='bon_a_enlever';
+        $formulaire->titre ='Bon à enlever';
         $formulaire->save();
 
         return redirect()->route('bon_a_enlevers.index');
