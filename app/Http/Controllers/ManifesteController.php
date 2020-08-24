@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\NouveauFormulaire;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ManifesteController extends Controller
 {
@@ -20,7 +23,7 @@ class ManifesteController extends Controller
      */
     public function index()
     {
-        $formulaires = formulaire::where('titre', '=', 'manifeste')->orderby('id', 'desc')->paginate(10); //show only 5 items at a time in descending order
+        $formulaires = formulaire::where('titre', '=', 'Manifeste')->orderby('id', 'desc')->paginate(10); //show only 5 items at a time in descending order
 
         return view('formulaires/manifestes.index', compact('formulaires'));
     }
@@ -44,9 +47,12 @@ class ManifesteController extends Controller
     public function store(Request $request)
     {
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre = 'manifeste';
+        $formulaire->titre = 'Manifeste';
         $formulaire->save();
-
+        $users = User::permission('manifeste-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
+        }
 
         return redirect()->route('manifestes.index');
     }

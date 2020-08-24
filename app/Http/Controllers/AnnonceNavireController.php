@@ -35,7 +35,7 @@ class AnnonceNavireController extends Controller
 
     public function index()
     {
-        $formulaires = formulaire::where('titre', 'annonce_navire')->latest('id')->paginate(10);
+        $formulaires = formulaire::where('titre', 'Annonce navire')->latest('id')->paginate(10);
 
         //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
         //sinon tableau array est null
@@ -110,7 +110,7 @@ class AnnonceNavireController extends Controller
 
 
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre = 'annonce_navire';
+        $formulaire->titre = 'Annonce navire';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
         $users = User::permission('annonce_navire-validate')->get();

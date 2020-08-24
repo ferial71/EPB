@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\NouveauFormulaire;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BonEnleverController extends Controller
 {
@@ -55,6 +58,10 @@ class BonEnleverController extends Controller
         $formulaire = formulaire::create($request->all());
         $formulaire->titre ='Bon à enlever';
         $formulaire->save();
+        $users = User::permission('bon_a_enlever-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
+        }
 
         return redirect()->route('bon_a_enlevers.index');
     }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\NouveauFormulaire;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MiseQuaiController extends Controller
 {
@@ -65,6 +68,10 @@ class MiseQuaiController extends Controller
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Mise à quai';
         $formulaire->save();
+        $users = User::permission('mise_a_quai-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
+        }
 
 
         return redirect()->route('mise_a_quais.index');

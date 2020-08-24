@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\NouveauFormulaire;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +23,7 @@ class BonCommandeController extends Controller
     public function index()
     {
 
-        $formulaires = formulaire::where('titre', 'bon_de_commande')->latest('id')->paginate(10); //show only 5 items at a time in descending order
+        $formulaires = formulaire::where('titre', 'Bon de commande')->latest('id')->paginate(10); //show only 5 items at a time in descending order
         return view('formulaires/bon_de_commandes.index', compact('formulaires'));
     }
 
@@ -52,9 +54,13 @@ class BonCommandeController extends Controller
             'champs.date' => 'required|date',
             ]);
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre = 'bon_de_commande';
+        $formulaire->titre = 'Bon de commande';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
+        $users = User::permission('bon_de_commande-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
+        }
 
 
         return redirect()->route('bon_de_commandes.index');

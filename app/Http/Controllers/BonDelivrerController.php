@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\NouveauFormulaire;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BonDelivrerController extends Controller
 {
@@ -60,6 +63,10 @@ class BonDelivrerController extends Controller
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Bon à delivrer';
         $formulaire->save();
+        $users = User::permission('bon_a_delivrer-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
+        }
 
 
         return redirect()->route('bon_a_delivrers.index');

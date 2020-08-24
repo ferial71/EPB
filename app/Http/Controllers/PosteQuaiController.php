@@ -6,6 +6,8 @@ use App\AnnonceNavire;
 use App\dpquai;
 use App\formulaire;
 use App\navire;
+use App\Notifications\NouveauFormulaire;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -85,7 +87,10 @@ class PosteQuaiController extends Controller
         $formulaire->titre = 'Demande de poste à quai';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
-
+        $users = User::permission('poste_quai-validate')->get();
+        foreach ($users as $user){
+            $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
+        }
 
         return redirect()->route('poste_quais.index');
     }
