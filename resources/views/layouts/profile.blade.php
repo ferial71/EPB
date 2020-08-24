@@ -6,9 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="userid" contetnt="{{ Auth::check() ? Auth::user()->id : '' }}">
 
-    <title>AdminLTE 3 | User Profile</title>
+    <title>EPB</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
@@ -40,6 +42,8 @@
     <link rel="stylesheet" href="{{asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/parsley.css') }}">
+    <script src="https://parsleyjs.org/dist/parsley.min.js"></script>
 
 
     <script>
@@ -47,6 +51,56 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <style>
+        .box
+        {
+            width:100%;
+            max-width:600px;
+            background-color:#f9f9f9;
+            border:1px solid #ccc;
+            border-radius:5px;
+            padding:16px;
+            margin:0 auto;
+        }
+        input.parsley-success,
+        select.parsley-success,
+        textarea.parsley-success {
+            color: #468847;
+            background-color: #DFF0D8;
+            border: 1px solid #D6E9C6;
+        }
+
+        input.parsley-error,
+        select.parsley-error,
+        textarea.parsley-error {
+            color: #B94A48;
+            background-color: #F2DEDE;
+            border: 1px solid #EED3D7;
+        }
+
+        .parsley-errors-list {
+            margin: 2px 0 3px;
+            padding: 0;
+            list-style-type: none;
+            font-size: 0.9em;
+            line-height: 0.9em;
+            opacity: 0;
+
+            transition: all .3s ease-in;
+            -o-transition: all .3s ease-in;
+            -moz-transition: all .3s ease-in;
+            -webkit-transition: all .3s ease-in;
+        }
+
+        .parsley-errors-list.filled {
+            opacity: 1;
+        }
+
+        .parsley-type, .parsley-required, .parsley-equalto, .parsley-pattern, .parsley-length{
+            color:#ff0000;
+        }
+
+    </style>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -65,63 +119,11 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-            <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto" >
             <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-comments"></i>
-                    <span class="badge badge-danger navbar-badge">3</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-
-
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
             <!-- Notifications Dropdown Menu -->
             <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>
         </ul>
@@ -153,15 +155,8 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Statistique
-                                <i class="right fas"></i>
-                            </p>
-                        </a>
-                    </li>
+
+                    @canany(['annonce_navire-create', 'demande_de_poste_a_quai-create','manifeste-create','bon_de_commande-create','bon_a_enlever-create','demande_de_mise_a_quai-create','bon_a_delivrer-create'])
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
@@ -171,7 +166,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('annonce_navire-list')
+                            @can('annonce_navire-create')
                                 <li class="nav-item">
                                     <a  href={{route('annonce_navires.create')}}  class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -179,7 +174,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('demande_de_poste_a_quai-list')
+                            @can('demande_de_poste_a_quai-create')
                                 <li class="nav-item">
                                     <a href={{route('poste_quais.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -187,7 +182,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('manifeste-list')
+                            @can('manifeste-create')
                                 <li class="nav-item">
                                     <a href={{route('manifestes.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -195,7 +190,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('bon_de_commande-list')
+                            @can('bon_de_commande-create')
                                 <li class="nav-item">
                                     <a href={{route('bon_de_commandes.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -203,7 +198,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('bon_a_enlever-list')
+                            @can('bon_a_enlever-create')
                                 <li class="nav-item">
                                     <a href={{route('bon_a_enlevers.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -211,7 +206,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('demande_de_mise_a_quai-list')
+                            @can('demande_de_mise_a_quai-create')
                                 <li class="nav-item">
                                     <a href={{route('mise_a_quais.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -219,7 +214,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('bon_a_delivrer-list')
+                            @can('bon_a_delivrer-create')
                                 <li class="nav-item">
                                     <a href={{route('bon_a_delivrers.create')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
@@ -237,11 +232,12 @@
                             @endcan
                         </ul>
                     </li>
+                    @endcanany
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Historique
+                                Listes
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -313,13 +309,7 @@
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-envelope"></i>
-                            <p>
-                                Mailbox
-                                <i class="fas right"></i>
-                            </p>
-                        </a>
+
 
                     <li class="nav-header">Action</li>
                     <li class="nav-item">
@@ -380,8 +370,8 @@
 {{--<!-- InputMask -->--}}
 {{--<script src="{{ asset('plugins/moment/moment.min.js') }}"></script>--}}
 {{--<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>--}}
-{{--<!-- date-range-picker -->--}}
-{{--<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>--}}
+<!-- date-range-picker -->
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
 {{--<!-- bootstrap color picker -->--}}
 {{--<script src="{{ asset('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>--}}
 {{--<!-- Tempusdominus Bootstrap 4 -->--}}
@@ -400,6 +390,7 @@
 
 
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/parsley.min.js') }}"></script>
 
 <!-- AdminLTE App -->
 
