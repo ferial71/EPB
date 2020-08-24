@@ -24,7 +24,7 @@ class MiseQuaiController extends Controller
 
 
     {
-        $formulaires = formulaire::where('titre', 'mise_a_quai')->latest('id')->paginate(10);
+        $formulaires = formulaire::where('titre', 'Mise à quai')->latest('id')->paginate(10);
 
         //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
         //sinon tableau array est null
@@ -52,8 +52,18 @@ class MiseQuaiController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.marques' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.nb' => 'required|numeric',
+            'champs.n_colis' => 'required|numeric',
+            'champs.p_marchandise' => 'required|numeric',
+        ]);
+
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre = 'mise_a_quai';
+        $formulaire->titre = 'Mise à quai';
         $formulaire->save();
 
 
