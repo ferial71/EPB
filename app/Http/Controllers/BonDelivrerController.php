@@ -22,7 +22,7 @@ class BonDelivrerController extends Controller
      */
     public function index()
     {
-        $formulaires = formulaire::where('titre', '=', 'bon_a_delivrer')->orderby('id', 'desc')->paginate(10); //show only 5 items at a time in descending order
+        $formulaires = formulaire::where('titre', '=', 'Bon à delivrer')->orderby('id', 'desc')->paginate(10); //show only 5 items at a time in descending order
 
         return view('formulaires/bon_a_delivrers.index', compact('formulaires'));
     }
@@ -40,8 +40,25 @@ class BonDelivrerController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.client' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.client_adr' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.date' => 'required|date',
+            'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.q_marchandise' => 'required|numeric',
+            'champs.p_marchandise' => 'required|numeric',
+            'champs.num_bl' => 'required|numeric',
+            'champs.date_escale' => 'required|date',
+            'champs.l_chargement' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.l_dechargement' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.nb_unite' => 'required|numeric',
+            'champs.nb_poste' => 'required|numeric',
+        ]);
         $formulaire = formulaire::create($request->all());
-        $formulaire->titre = 'bon_a_delivrer';
+        $formulaire->titre = 'Bon à delivrer';
         $formulaire->save();
 
 
