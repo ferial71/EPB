@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-
+                    @can('annonce_navire-validate')
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>

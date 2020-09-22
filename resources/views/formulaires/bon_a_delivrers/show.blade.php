@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href={{route('home')}}>Page d'accueil</a></li>
+                                    <li class="breadcrumb-item"><a href={{route('bon_a_delivrers.index')}}>Liste des bon à délivrer</a></li>
                                     <li class="breadcrumb-item active">Bon à délivrer</li>
                                 </ol>
                             </div>
@@ -117,10 +117,13 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ Form::model($formulaire, array('route' => array('bon_a_delivrers.validatation', $formulaire->id), 'method' => 'PUT')) }}
+
+
+                    @can('bon_a_delivrer-validate')
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>
+                        @endcan
 
 
                 </div>
@@ -129,6 +132,7 @@
         </section>
 
     </div>
+    {{ Form::model($formulaire, array('route' => array('bon_a_delivrers.validatation', $formulaire->id), 'method' => 'PUT')) }}
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content">

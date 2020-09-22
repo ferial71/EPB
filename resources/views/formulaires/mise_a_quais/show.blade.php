@@ -77,15 +77,17 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ Form::model($formulaire, array('route' => array('mise_a_quais.validatation', $formulaire->id), 'method' => 'PUT')) }}
+                    @can('demande_de_mise_a_quai-validate')
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>
+                        @endcan
                 </div>
             </div>
         </section>
 
     </div>
+    {{ Form::model($formulaire, array('route' => array('mise_a_quais.validatation', $formulaire->id), 'method' => 'PUT')) }}
     <div class="modal fade" id="modal-default">
         <div class="modal-dialog">
             <div class="modal-content">
