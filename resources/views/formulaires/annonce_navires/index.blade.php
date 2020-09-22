@@ -24,8 +24,8 @@
                     </section>
                     <!-- /.card-header -->
                     <div class="card">
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-hover ">
+                        <div class="card-body col-md-12">
+                            <table id="example1" class="table table-bordered table-hover col-md-12">
                                 <thead>
                                 <tr>
                                     <th>Navire</th>
@@ -87,12 +87,12 @@
                                     <td>
                                         {!! Form::open(['method' => 'DELETE', 'route' => ['annonce_navires.destroy', $formulaire->id] ]) !!}
                                         @can('annonce_navire-validate')
-                                            <a href="{{ route('annonce_navires.show', $formulaire->id) }}" class="btn btn-primary" role="button">Consulter</a>
+                                            <a href="{{ route('annonce_navires.show', $formulaire->id) }}" class="btn btn-primary btn-sm" role="button">Consulter</a>
                                         @endcan
                                         @can('annonce_navire-create')
-                                            <a href="{{ route('annonce_navires.edit', $formulaire->id) }}" class="btn btn-info" role="button">Modifier</a>
+                                            <a href="{{ route('annonce_navires.edit', $formulaire->id) }}" class="btn btn-info btn-sm" role="button">Modifier</a>
                                         @endcan
-                                        {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::submit('Supprimer', ['class' => 'btn btn-danger  btn-sm']) !!}
                                         {!! Form::close() !!}
 
                                     </td>
