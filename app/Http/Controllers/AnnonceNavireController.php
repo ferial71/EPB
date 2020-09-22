@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\UserLoggedIn;
 use App\formulaire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\role;
 use App\User;
@@ -35,7 +36,7 @@ class AnnonceNavireController extends Controller
 
     public function index()
     {
-        $formulaires = formulaire::where('titre', 'Annonce navire')->latest('id')->paginate(10);
+        $formulaires = formulaire::where('titre', 'annonce navire')->latest('id')->paginate(10);
 
         //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
         //sinon tableau array est null
@@ -85,10 +86,6 @@ class AnnonceNavireController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-
         $validatedData = $request->validate([
             'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.imo' => 'required|numeric',
@@ -111,6 +108,7 @@ class AnnonceNavireController extends Controller
 
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Annonce navire';
+        $formulaire->url= 'annonce_navires';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
         $users = User::permission('annonce_navire-validate')->get();
@@ -249,13 +247,15 @@ class AnnonceNavireController extends Controller
         if ( $formulaire->valide != null )
         {
             return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
-            dd($formulaire);
+
 
         }
         elseif ( $request->valide  )
         {
             $formulaire->valide = 1 ;
             $formulaire->update();
+            $user = User::findOrFail($formulaire->user_id);
+            $user->notify(new FormulaireValider(Auth::id(),$formulaire));
 
             return redirect()->route('annonce_navires.index')->with('alert', 'Formulaire validé!');
         }
