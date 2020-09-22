@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
@@ -60,8 +61,12 @@ class BonDelivrerController extends Controller
             'champs.nb_unite' => 'required|numeric',
             'champs.nb_poste' => 'required|numeric',
         ]);
-        $formulaire = formulaire::create($request->all());
+
+
+        $formulaire = formulaire::create($validatedData);
         $formulaire->titre = 'Bon à delivrer';
+        $formulaire->url= 'bon_a_delivrers';
+        $formulaire->user_id=Auth::id() ;
         $formulaire->save();
         $users = User::permission('bon_a_delivrer-validate')->get();
         foreach ($users as $user){
@@ -84,6 +89,7 @@ class BonDelivrerController extends Controller
         return view('formulaires/bon_a_delivrers.show',compact('formulaire'));
     }
 
+
     public function validatation(Request $request,$id)
     {
         $formulaire =formulaire::findOrFail($id);
@@ -91,22 +97,20 @@ class BonDelivrerController extends Controller
         //vérifier si une demande de validation
 
 
-        if ($formulaire->valide!=null)
-        {
-            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
 
-        }
-        elseif ($request->valide)
-        {
-            $formulaire->valide ='valide';
+
+            $formulaire->valide = 1 ;
             $formulaire->update();
+            $user = User::findOrFail($formulaire->user_id);
+            $user->notify(new FormulaireValider(Auth::id(),$formulaire));
 
             return redirect()->route('bon_a_delivrers.index')->with('alert', 'Formulaire validé!');
-        }
+
 
 
 
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -144,8 +148,8 @@ class BonDelivrerController extends Controller
         $formulaire = formulaire::findOrFail($id);
         $formulaire->delete();
 
-        return redirect()->route('formulaires/bon_a_delivrers.index')
+        return redirect()->route('bon_a_delivrers.index')
             ->with('flash_message',
-                'formulaires/bon_a_delivrers successfully deleted');
+                'bon_a_delivrers successfully deleted');
     }
 }

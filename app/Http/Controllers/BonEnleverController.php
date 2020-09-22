@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
@@ -57,6 +58,7 @@ class BonEnleverController extends Controller
 
         $formulaire = formulaire::create($request->all());
         $formulaire->titre ='Bon à enlever';
+        $formulaire->url= 'bon_a_enlevers';
         $formulaire->save();
         $users = User::permission('bon_a_enlever-validate')->get();
         foreach ($users as $user){
@@ -84,15 +86,18 @@ class BonEnleverController extends Controller
         //vérifier si une demande de validation
 
 
-        if ($formulaire->valide!=null)
+        if ( $formulaire->valide != null )
         {
             return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
 
+
         }
-        elseif ($request->valide)
+        else
         {
-            $formulaire->valide ='valide';
+            $formulaire->valide = 1 ;
             $formulaire->update();
+            $user = User::findOrFail($formulaire->user_id);
+            $user->notify(new FormulaireValider(Auth::id(),$formulaire));
 
             return redirect()->route('bon_a_enlevers.index')->with('alert', 'Formulaire validé!');
         }

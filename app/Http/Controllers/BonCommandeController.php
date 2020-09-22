@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,7 +24,7 @@ class BonCommandeController extends Controller
     public function index()
     {
 
-        $formulaires = formulaire::where('titre', 'Bon de commande')->latest('id')->paginate(10); //show only 5 items at a time in descending order
+        $formulaires = formulaire::where('titre', 'Bon de commande')->latest('id')->paginate(10); //show only 10 items at a time in descending order
         return view('formulaires/bon_de_commandes.index', compact('formulaires'));
     }
 
@@ -55,6 +56,7 @@ class BonCommandeController extends Controller
             ]);
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Bon de commande';
+        $formulaire->url= 'bon_de_commandes';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
         $users = User::permission('bon_de_commande-validate')->get();
@@ -86,15 +88,18 @@ class BonCommandeController extends Controller
         //vérifier si une demande de validation
 
 
-        if ($formulaire->valide!=null)
+        if ( $formulaire->valide != null )
         {
             return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
 
+
         }
-        elseif ($request->valide)
+        elseif ( $request->valide  )
         {
-            $formulaire->valide ='valide';
+            $formulaire->valide = 1 ;
             $formulaire->update();
+            $user = User::findOrFail($formulaire->user_id);
+            $user->notify(new FormulaireValider(Auth::id(),$formulaire));
 
             return redirect()->route('bon_de_commandes.index')->with('alert', 'Formulaire validé!');
         }
@@ -102,6 +107,7 @@ class BonCommandeController extends Controller
 
 
     }
+
 
 
 
@@ -141,7 +147,7 @@ class BonCommandeController extends Controller
         $formulaire = formulaire::findOrFail($id);
         $formulaire->delete();
 
-        return redirect()->route('formulaires/bon_de_commandes.index')
+        return redirect()->route('bon_de_commandes.index')
             ->with('flash_message',
                 'formulaires/bon_de_commandes successfully deleted');
     }

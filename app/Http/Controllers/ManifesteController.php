@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
@@ -61,6 +62,8 @@ class ManifesteController extends Controller
         ]);
         $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Manifeste';
+        $formulaire->url= 'manifestes';
+        $formulaire->user_id = Auth::id();
         $formulaire->save();
         $users = User::permission('manifeste-validate')->get();
         foreach ($users as $user){
@@ -82,27 +85,31 @@ class ManifesteController extends Controller
         return view('formulaires/manifestes.show',compact('formulaire'));
     }
 
-    public function validatation(Request $request,$id)
+
+        public function validatation(Request $request,int $id)
     {
         $formulaire =formulaire::findOrFail($id);
 
         //vérifier si une demande de validation
 
 
-        if ($formulaire->valide!=null)
+        if ( $formulaire->valide != null )
         {
             return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
 
+
         }
-        elseif ($request->valide)
+        elseif ( $request->valide  )
         {
-            $formulaire->valide ='valide';
-            $formulaire->update();
+
+        $formulaire->valide = 1 ;
+        $formulaire->update();
+        $user = User::findOrFail($formulaire->user_id);
+        $user->notify(new FormulaireValider(Auth::id(),$formulaire));
+
 
             return redirect()->route('manifestes.index')->with('alert', 'Formulaire validé!');
         }
-
-
 
     }
     /**
@@ -141,7 +148,7 @@ class ManifesteController extends Controller
         $formulaire = formulaire::findOrFail($id);
         $formulaire->delete();
 
-        return redirect()->route('formulaires/manifestes.index')
+        return redirect()->route('manifestes.index')
             ->with('flash_message',
                 'manifeste successfully deleted');
     }

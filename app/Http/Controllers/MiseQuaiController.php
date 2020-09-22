@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\formulaire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
@@ -61,14 +62,19 @@ class MiseQuaiController extends Controller
             'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.marques' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.nb' => 'required|numeric',
-            'champs.n_colis' => 'required|numeric',
+            'champs.n_colis' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.p_marchandise' => 'required|numeric',
         ]);
 
-        $formulaire = formulaire::create($request->all());
+
+        $formulaire = formulaire::create($validatedData);
+
         $formulaire->titre = 'Mise à quai';
+        $formulaire->url= 'mise_a_quais';
+        $formulaire->user_id = Auth::id();
         $formulaire->save();
-        $users = User::permission('mise_a_quai-validate')->get();
+
+        $users = User::permission('demande_de_mise_a_quai-validate')->get();
         foreach ($users as $user){
             $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
         }
@@ -94,21 +100,20 @@ class MiseQuaiController extends Controller
         $formulaire =formulaire::findOrFail($id);
 
         //vérifier si une demande de validation
-
-        if ($formulaire->valide!=null)
+        if ( $formulaire->valide != null )
         {
-            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+            return redirect()->route('mise_a_quais.index')->with('alert', 'Cette formulaire a été déja validé!');
 
         }
-        elseif ($request->valide)
+        else
         {
-            $formulaire->valide ='valide';
+            $formulaire->valide = 1 ;
             $formulaire->update();
-
+            $user = User::findOrFail($formulaire->user_id);
+            $user->notify(new FormulaireValider(Auth::id(),$formulaire));
             return redirect()->route('mise_a_quais.index')->with('alert', 'Formulaire validé!');
         }
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -145,7 +150,7 @@ class MiseQuaiController extends Controller
         $formulaire = formulaire::findOrFail($id);
         $formulaire->delete();
 
-        return redirect()->route('formulaires/mise_a_quais.index')
+        return redirect()->route('mise_a_quais.index')
             ->with('flash_message',
                 'formulaires/mise_a_quais successfully deleted');
     }
