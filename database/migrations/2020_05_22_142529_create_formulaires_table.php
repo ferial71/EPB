@@ -19,6 +19,7 @@ class CreateFormulairesTable extends Migration
             $table->json('champs');
             $table->boolean('valide')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
