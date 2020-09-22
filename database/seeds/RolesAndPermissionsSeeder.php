@@ -106,7 +106,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // création de role et permission pour Chef de service de sécurité maritime et mouvement
         $role = Role::create(['name' => 'CSSMM']);
-        $role->syncPermissions('annonce_navire-list','annonce_navire-validate','demande_de_poste_a_quai-list','annonce_navire-delete');
+        $role->syncPermissions('annonce_navire-list','annonce_navire-validate','demande_de_poste_a_quai-list','demande_de_poste_a_quai-delete','demande_de_poste_a_quai-validate','annonce_navire-delete');
 
         /** @var \App\User $user */
         $admin = factory(\App\User::class)->create([
