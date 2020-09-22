@@ -15,13 +15,7 @@ class CreateEscalesTable extends Migration
     {
 
 
-        Schema::create('cargaisons', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('tonnage')->nullable();
-            $table->integer('nombreColis')->nullable();
-            $table->timestamps();
 
-        });
 
         Schema::create('marchandises', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -103,14 +97,16 @@ class CreateEscalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargaisons');
-        Schema::dropIfExists('marchandises');
+
+
 
         Schema::dropIfExists('emplacements');
-        Schema::dropIfExists('transitaires');
+
         Schema::dropIfExists('dpquais');
         Schema::dropIfExists('cpns');
         Schema::dropIfExists('escales');
         Schema::dropIfExists('quais');
+        Schema::dropIfExists('transitaires');
+        Schema::dropIfExists('marchandises');
     }
 }

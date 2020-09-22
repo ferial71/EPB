@@ -20,12 +20,12 @@ class CreateManifestesTable extends Migration
             $table->date('dCreation')->nullable();
             $table->date('dValidation')->nullable();
             $table->string('valide')->nullable();
-            $table->unsignedBigInteger('demande_poste_id');
+            $table->unsignedBigInteger('dpquai_id');
             $table->unsignedBigInteger('cargaisons_id');
 
             $table->timestamps();
 
-            $table->foreign('demande_poste_id')->references('id')->on('demande_poste');
+            $table->foreign('dpquai_id')->references('id')->on('dpquais');
             $table->foreign('cargaisons_id')->references('id')->on('cargaisons');
         });
 
@@ -63,8 +63,9 @@ class CreateManifestesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manifestes');
+
         Schema::dropIfExists('bon_commandes');
         Schema::dropIfExists('bon_enlevements');
+        Schema::dropIfExists('manifestes');
     }
 }
