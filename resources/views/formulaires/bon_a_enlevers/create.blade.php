@@ -11,10 +11,10 @@
                     <section class="content-header">
                         <div class="container-fluid">
                             <div class="row mb-2">
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <h1>Bon à enlever</h1>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-4">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
                                         <li class="breadcrumb-item active">Bon à enlever</li>
@@ -32,7 +32,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Marchandise à enlever </label>
                                             <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la marchandise à enlever" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="row">
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Date d’entrée de la marchandise: </label>
@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Date d’enlèvement de la marchandise: </label>
@@ -116,21 +116,21 @@
 
 
 
-                                    <div class="col-4">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Mode de conditionnement de la marchandise</label>
                                             <input type="text" name="champs[m_conditionnement]" class="form-control" placeholder="Entrer le mode de conditionnement" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Poids de la marchandise</label>
 
                                             <input type="text" name="champs[p_marchandise]" class="form-control" placeholder="Entrer le poids de la marchandise" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -143,7 +143,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Date de la déclaration : </label>
@@ -158,7 +158,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">

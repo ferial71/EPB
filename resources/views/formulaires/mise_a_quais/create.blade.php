@@ -12,7 +12,7 @@
                         <div class="container-fluid">
                             <div class="row mb-2">
                                 <div class="col-sm-6">
-                                    <h1>Bon à délivrer</h1>
+                                    <h1>Demande de mise à quai</h1>
                                 </div>
                                 <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
@@ -32,7 +32,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -86,9 +86,7 @@
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="champs">Nombre d'entité</label>
 
@@ -96,14 +94,14 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="champs">Nature des colis à transportés</label>
                                             <input type="text" name="champs[n_colis]" class="form-control" placeholder="Entrer la nature des colis" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="champs">Poids de la marchandise</label>
 

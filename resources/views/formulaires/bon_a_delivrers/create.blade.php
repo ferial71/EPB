@@ -32,7 +32,7 @@
                             @csrf
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -70,19 +70,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="form-group">
 
                                                 <label for="champs">Adresse du client</label>
-                                                <input type="text" name="champs[client_adr]" class="form-control" placeholder="Entrer l\'adresse du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <input type="text" name="champs[client_adr]" class="form-control" placeholder="Entrer l'adresse du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -96,7 +97,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Date d’entrée du navire: </label>
@@ -105,7 +106,7 @@
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
                                                     <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
-
+                                                    <p class="text-danger">@error('champs.date') {{$message}} @enderror</p>
                                                 </div>
                                                 <!-- /.input group -->
                                             </div>
@@ -113,14 +114,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Marchandise délivrée</label>
                                             <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la marchandise" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Quantité de la marchandise</label>
 
@@ -128,7 +129,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-5">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Poids de la marchandise</label>
                                             <input type="text" name="champs[p_marchandise]" class="form-control" placeholder="Entrer le poids de la maechandise" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
@@ -140,7 +141,7 @@
 
 
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -151,7 +152,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Date d’escale : </label>
@@ -160,13 +161,14 @@
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
                                                     <input type="text" name="champs[date_escale]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
+                                                    <p class="text-danger">@error('champs.date_escale') {{$message}} @enderror</p>
 
                                                 </div>
                                                 <!-- /.input group -->
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -177,7 +179,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -188,7 +190,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -200,7 +202,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <!-- text input -->
                                         <div class="form-group">
                                             <div class="form-group">
