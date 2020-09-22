@@ -156,7 +156,7 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
 
-                    @canany(['annonce_navire-create', 'demande_de_poste_a_quai-create','manifeste-create','bon_de_commande-create','bon_a_enlever-create','demande_de_mise_a_quai-create','bon_a_delivrer-create'])
+                    @canany(['annonce_navire-create', 'demande_de_poste_a_quai-create','manifeste-create','bon_de_commande-create','bon_a_enlever-create','demande_de_mise_a_quai-create','bon_a_delivrer-create','bon_a_delivrer-list'])
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
@@ -292,7 +292,7 @@
                             @endcan
                             @can('bon_a_delivrer-list')
                                 <li class="nav-item">
-                                    <a href={{route('bon_a_delivrers.create')}} class="nav-link">
+                                    <a href={{route('bon_a_delivrers.index')}} class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Bon à délivrer</p>
                                     </a>
