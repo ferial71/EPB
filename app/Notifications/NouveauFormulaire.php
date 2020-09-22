@@ -16,6 +16,7 @@ class NouveauFormulaire extends Notification
     public $user_id;
     public $formulaire;
     public $user_name;
+    public $message;
 
     /**
      * Create a new notification instance.
@@ -54,31 +55,53 @@ class NouveauFormulaire extends Notification
 //    }
 
 
-    public function toDatabase()
-    {
-
-        $this->user_name = User::findOrFail($this->user_id);
-        return[
-            'user'=>$this->user_id,
-            'titre'=>  $this->formulaire->titre,
-            'formulaire'=> $this->formulaire->id,
-            'user_name' => $this->user_name->name
-        ];
-    }
+//    public function toDatabase()
+//    {
+//
+//        $this->user_name = User::findOrFail($this->user_id);
+//        return[
+//            'user'=>$this->user_id,
+//            'titre'=>$this->formulaire->titre,
+//            'url'=>$this->formulaire->url,
+//            'formulaire'=> $this->formulaire->id,
+//            'user_name' => $this->user_name->name
+//        ];
+//    }
 //    /**
 //     * Get the broadcastable representation of the notification.
 //     *
 //     * @param  mixed  $notifiable
-//     * @return BroadcastMessage
+//     * @return array
 //     */
 //    public function toBroadcast($notifiable)
 //    {
-//        return new BroadcastMessage([
+//        $this->user_name = User::findOrFail($this->user_id);
+//        return [
 //            'user_id'=>$this->user_id,
 //            'message'=>'Nouveau '. $this->formulaire->titre,
-//            'user_name' => User::findOrFail($this->user_id),
-//        ]);
+//
+//            'user'=>$this->user_id,
+//            'titre'=>$this->formulaire->titre,
+//            'url'=>$this->formulaire->url,
+//            'formulaire'=> $this->formulaire->id,
+//            'user_name' => $this->user_name->name
+//        ];
 //    }
+     public function toBroadcast($notifiable)
+    {
+        $this->user_name = User::findOrFail($this->user_id);
+        $this->message = "Un nouveau ".$this->formulaire->titre;
+        return [
+            'user_id'=>$this->user_id,
+            'message'=>$this->message,
+
+            'user'=>$this->user_id,
+            'titre'=>$this->formulaire->titre,
+            'url'=>$this->formulaire->url,
+            'formulaire'=> $this->formulaire->id,
+            'user_name' => $this->user_name->name
+        ];
+    }
 
 
     /**
@@ -89,10 +112,17 @@ class NouveauFormulaire extends Notification
      */
     public function toArray($notifiable)
     {
+        $this->user_name = User::findOrFail($this->user_id);
+        $this->message = "Un nouveau ".$this->formulaire->titre;
         return [
             'user_id'=>$this->user_id,
-            'message'=>'Nouveau '. $this->formulaire->titre,
-            'user_name' => User::findOrFail($this->user_id)
+            'message'=>$this->message,
+
+            'user'=>$this->user_id,
+            'titre'=>$this->formulaire->titre,
+            'url'=>$this->formulaire->url,
+            'formulaire'=> $this->formulaire->id,
+            'user_name' => $this->user_name->name
         ];
     }
 }

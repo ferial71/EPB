@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasOne('App/formualaire');
 
     }
+    /**
+     * The channels the user receives notification broadcasts on.
+     *
+     * @return string
+     */
     public function receivesBroadcastNotificationsOn()
     {
         return 'App.User.'.$this->id;
