@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AnnonceNavire;
-use App\dpquai;
+
+
 use App\formulaire;
-use App\navire;
+use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
@@ -83,11 +83,15 @@ class PosteQuaiController extends Controller
             'champs.port_lourd' => 'required|numeric',
             'champs.tirant_eau' => 'required|numeric',
         ]);
-        $formulaire = formulaire::create($request->all());
+
+
+        $formulaire = formulaire::create($validatedData);
         $formulaire->titre = 'Demande de poste à quai';
+        $formulaire->url= 'poste_quais';
         $formulaire->user_id = Auth::id();
         $formulaire->save();
-        $users = User::permission('poste_quai-validate')->get();
+
+        $users = User::permission('demande_de_poste_a_quai-validate')->get();
         foreach ($users as $user){
             $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
         }
@@ -137,23 +141,26 @@ class PosteQuaiController extends Controller
         //vérifier si une demande de validation
 
 
-        if ($formulaire->valide!=null)
+        if ( $formulaire->valide != null )
         {
-            return redirect()->route('poste_quais.index',$id)->with('alert', 'Cette formulaire a été déja validé!');
+            return redirect()->back()->with('alert', 'Cette formulaire a été déja validé!');
+
 
         }
-        elseif ($request->valide)
+        elseif ( $request->valide  )
         {
-            $formulaire->valide ='valide';
-
-
+            $formulaire->valide = 1 ;
             $formulaire->update();
+            $user = User::findOrFail($formulaire->user_id);
+            $user->notify(new FormulaireValider(Auth::id(),$formulaire));
+
             return redirect()->route('poste_quais.index')->with('alert', 'Formulaire validé!');
         }
 
 
 
     }
+
 
     public function update(Request $request, $id)
     {
