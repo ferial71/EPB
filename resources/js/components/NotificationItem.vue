@@ -4,7 +4,7 @@
         class="dropdown-item"
         v-on:click="MarkAsRead(unread)"
     >
-        <i class="fas fa-envelope mr-2"></i> Nouveau {{ unread.data["titre"] }}
+        <i class="fas fa-envelope mr-2"></i>  {{unread.data["message"]}}
 
         <span class="float-right text-muted text-sm"
             >par {{ unread.data["user_name"] }}</span
@@ -28,8 +28,8 @@ export default {
             axios.post("/notification/read", data);
             this.formulaireUrl =
                 "http://127.0.0.1:8000/formulaires/" +
-                this.unread.data["titre"] +
-                "s/" +
+                this.unread.data["url"] +
+                "/" +
                 this.unread.data["formulaire"];
         }
     }

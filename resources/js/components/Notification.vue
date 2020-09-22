@@ -39,7 +39,7 @@ export default {
       };
       this.unreadNotifications.push(newUnreadNotifications);
     });
-    console.log("Component mounted end");
+
   }
 };
 </script>
