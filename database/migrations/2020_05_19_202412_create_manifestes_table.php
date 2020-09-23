@@ -46,12 +46,12 @@ class CreateManifestesTable extends Migration
         Schema::create('bon_enlevements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('emplacement_id');
-            $table->unsignedBigInteger('transitaire_id');
+            $table->unsignedBigInteger('utilisateur_exterieur_id');
             $table->unsignedBigInteger('marchandise_id');
             $table->timestamps();
 
             $table->foreign('emplacement_id')->references('id')->on('emplacements');
-            $table->foreign('transitaire_id')->references('id')->on('transitaires');
+            $table->foreign('utilisateur_exterieur_id')->references('id')->on('utilisateur_exterieurs');
             $table->foreign('marchandise_id')->references('id')->on('marchandises');
         });
     }

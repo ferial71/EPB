@@ -21,19 +21,6 @@ class CreateNaviresTable extends Migration
             $table->timestamps();
 
         });
-        Schema::create('adresses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('rue');
-            $table->string('cite');
-            $table->string('etat');
-            $table->string('paye');
-            $table->string('code_postale');
-            $table->unsignedBigInteger('utilisateur_exterieur_id');
-            $table->timestamps();
-
-            $table->foreign('utilisateur_exterieur_id')->references('id')->on('utilisateur_exterieurs');
-        });
-
 
         Schema::create('armateurs', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -78,18 +65,30 @@ class CreateNaviresTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
         });
 
+        Schema::create('adresses', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('rue');
+            $table->string('cite');
+            $table->string('etat');
+            $table->string('paye');
+            $table->string('code_postale');
+            $table->unsignedBigInteger('utilisateur_exterieur_id');
+            $table->timestamps();
+
+            $table->foreign('utilisateur_exterieur_id')->references('id')->on('utilisateur_exterieurs');
+        });
 
         Schema::create('annonce_navs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('navire_id');
-            $table->unsignedBigInteger('consignataire_id');
+            $table->unsignedBigInteger('utilisateur_exterieur_id');
             $table->unsignedBigInteger('armateur_id');
             $table->unsignedBigInteger('cargaison_id');
             $table->date('date_dentree');
             $table->timestamps();
 
             $table->foreign('navire_id')->references('id')->on('navires');
-            $table->foreign('consignataire_id')->references('id')->on('consignataires');
+            $table->foreign('utilisateur_exterieur_id')->references('id')->on('utilisateur_exterieurs');
             $table->foreign('armateur_id')->references('id')->on('armateurs');
             $table->foreign('cargaison_id')->references('id')->on('cargaisons');
         });
@@ -103,20 +102,10 @@ class CreateNaviresTable extends Migration
     public function down()
     {
 
-
-
-
-
-
-
-
-
-
         Schema::dropIfExists('annonce_navs');
-        Schema::dropIfExists('consignataires');
+        Schema::dropIfExists('utilisateur_exterieurs');
 
         Schema::dropIfExists('navires');
-
         Schema::dropIfExists('cargaisons');
         Schema::dropIfExists('armateurs');
         Schema::dropIfExists('adresses');

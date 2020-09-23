@@ -57,7 +57,7 @@ class CreateEscalesTable extends Migration
 
             $table->bigIncrements('id');
             $table->unsignedBigInteger('annonce_nav_id');
-            $table->unsignedBigInteger('transitaire_id');
+            $table->unsignedBigInteger('utilisateur_exterieur_id');
             $table->unsignedBigInteger('marchandise_id');
             $table->date('date');
             $table->time('estimation_temps_arriver');
@@ -65,7 +65,7 @@ class CreateEscalesTable extends Migration
             $table->timestamps();
 
             $table->foreign('marchandise_id')->references('id')->on('marchandises');
-            $table->foreign('transitaire_id')->references('id')->on('transitaires');
+            $table->foreign('utilisateur_exterieur_id')->references('id')->on('utilisateur_exterieurs');
             $table->foreign('annonce_nav_id')->references('id')->on('annonce_navs');
         });
 
@@ -109,7 +109,7 @@ class CreateEscalesTable extends Migration
         Schema::dropIfExists('cpns');
         Schema::dropIfExists('escales');
         Schema::dropIfExists('quais');
-        Schema::dropIfExists('transitaires');
+//        Schema::dropIfExists('transitaires');
         Schema::dropIfExists('marchandises');
     }
 }
