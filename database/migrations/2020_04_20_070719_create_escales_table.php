@@ -37,18 +37,21 @@ class CreateEscalesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('transitaires', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('numero_tel')->nullable();
-            $table->string('numero_tel_fix')->nullable();
-            $table->string('numero_fax')->nullable();
-            $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
-        });
+        // remplacé par utilisateur_exterieurs avec le type transitaire
+
+//        Schema::create('transitaires', function (Blueprint $table) {
+//            $table->bigIncrements('id');
+//            $table->unsignedBigInteger('user_id')->nullable();
+//            $table->string('nom');
+//            $table->string('prenom');
+//            $table->string('numero_tel')->nullable();
+//            $table->string('numero_tel_fix')->nullable();
+//            $table->string('numero_fax')->nullable();
+//            $table->timestamps();
+//
+//            $table->foreign('user_id')->references('id')->on('users');
+//        });
 
         Schema::create('dpquais', function (Blueprint $table) {
 

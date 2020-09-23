@@ -28,7 +28,10 @@ class CreateNaviresTable extends Migration
             $table->string('etat');
             $table->string('paye');
             $table->string('code_postale');
+            $table->unsignedBigInteger('utilisateur_exterieur_id');
             $table->timestamps();
+
+            $table->foreign('utilisateur_exterieur_id')->references('id')->on('utilisateur_exterieurs');
         });
 
 
@@ -47,7 +50,7 @@ class CreateNaviresTable extends Migration
             $table->string('pavillon');
             $table->string('longeur');
             $table->string('largeur');
-            $table->float('imo');
+            $table->bigInteger('imo');
             $table->float('port_lourd');
             $table->float('tirant_eau');
             $table->float('poids')->nullable();
@@ -59,19 +62,19 @@ class CreateNaviresTable extends Migration
 
 
 
-        Schema::create('consignataires', function (Blueprint $table) {
+        Schema::create('utilisateur_exterieurs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('adresse_id')->nullable();
 
-            $table->string('nom');
-            $table->string('prenom')->nullable();
+            $table->string('type');//consignataire ou bien transitaure
+            //nom et prénom sont remplacé par ceux de l'utilisateur
+//            $table->string('nom');
+//            $table->string('prenom')->nullable();
             $table->string('numero_tel')->nullable();
             $table->string('numero_tel_fix')->nullable();
             $table->string('numero_fax')->nullable();
             $table->timestamps();
 
-            $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
         });
 
@@ -103,12 +106,19 @@ class CreateNaviresTable extends Migration
 
 
 
-        Schema::dropIfExists('annonce_navs');
 
+
+
+
+
+
+        Schema::dropIfExists('annonce_navs');
         Schema::dropIfExists('consignataires');
-        Schema::dropIfExists('adresses');
+
         Schema::dropIfExists('navires');
+
         Schema::dropIfExists('cargaisons');
         Schema::dropIfExists('armateurs');
+        Schema::dropIfExists('adresses');
     }
 }
