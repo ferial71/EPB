@@ -110,6 +110,7 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
                         Valider
                     </button>
+                        @endcan
                 </div>
 
             </div>
