@@ -19,6 +19,8 @@
     <script>
         window.Laravel ={!! json_encode(['crfToken' => csrf_token(),]) !!};
     </script>
+    <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+
 
 
     <!-- iCheck for checkboxes and radio inputs -->
@@ -44,6 +46,10 @@
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/parsley.css') }}">
     <script src="https://parsleyjs.org/dist/parsley.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
 
     <script>
@@ -359,7 +365,7 @@
 </div>
 <!-- ./wrapper -->
 <!-- jQuery -->
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+
 {{--<!-- Bootstrap 4 -->--}}
 {{--<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>--}}
 
@@ -384,6 +390,7 @@
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
 @yield('scripts')
 
