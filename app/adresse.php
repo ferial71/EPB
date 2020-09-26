@@ -13,9 +13,10 @@ class adresse extends Model
             'code_postale'
     ];
 
-    protected function consignataire()
-    {
 
-        return $this->belongsTo('App\consignataire');
+    protected function client()
+    {
+        return $this->belongsTo('App\client');
     }
+
 }
