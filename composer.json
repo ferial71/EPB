@@ -19,6 +19,7 @@
         "laravel/ui": "^1.2",
         "laravelcollective/html": "^6.1",
         "maatwebsite/excel": "^3.1",
+        "monarobase/country-list": "^3.2",
         "paragonie/random_compat": "^2.0",
         "pusher/pusher-php-server": "^4.1",
         "spatie/laravel-permission": "^3.12"

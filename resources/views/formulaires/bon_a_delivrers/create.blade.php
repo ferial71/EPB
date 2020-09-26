@@ -38,7 +38,12 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du navire</label>
-                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >
+                                                <select id="nom_navire" name="champs[nom_navire]"class="form-control">
+                                                    @foreach($navires as $navire)
+                                                        <option value="{{$navire->nom}}">{{$navire->nom}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >--}}
 
 
 
@@ -51,7 +56,12 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du transitaire</label>
-                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <select id="transitaire" name="champs[transitaire]"class="form-control">
+                                                    @foreach($users_trans as $users_tran)
+                                                        <option value="{{$users_tran->name}}">{{$users_tran->name}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
                                             </div>
@@ -63,7 +73,13 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du client</label>
-                                                <input type="text" name="champs[client]" class="form-control" placeholder="Entrer le nom du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <select id="client" name="champs[client]"class="form-control">
+                                                    @foreach($clients as $client)
+                                                        <option value="{{$client->nom}}">{{$client->nom}}</option>
+                                                    @endforeach
+                                                </select>
+
+{{--                                                <input type="text" name="champs[client]" class="form-control" placeholder="Entrer le nom du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
 
@@ -78,7 +94,12 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Adresse du client</label>
-                                                <input type="text" name="champs[client_adr]" class="form-control" placeholder="Entrer l'adresse du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <select id="client_adr" name="champs[client_adr]"class="form-control">
+                                                    @foreach($clients as $client)
+                                                        <option value="{{$client->adresse}}">{{$client->adresse["rue"]}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[client_adr]" class="form-control" placeholder="Entrer l'adresse du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
                                             </div>
                                         </div>
@@ -88,8 +109,12 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Provenance</label>
-                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
-
+                                                <select id="provenance" name="champs[provenance]"class="form-control">
+                                                    @foreach($countries as $countrie)
+                                                        <option value="{{$countrie}}">{{$countrie}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
                                             </div>
 
@@ -245,3 +270,49 @@
         </div>
     </section>
 @endsection
+
+@section('scripts')
+<script >
+    $(document.body).on('change','#nom_navire',function(){
+        // $("#nom_navire").change(function(){
+
+        var nom = $(this).val();
+        var url = '{{ route("annonce_navires.navire", ":nom") }}';
+        url = url.replace(':nom', nom);
+        url = url.replace(' ', '_');
+
+        // alert(url);
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response){
+                if(response != null){
+                    // alert(response.imo);
+                    $('#imo').val(response.imo);
+                    $('#tirant_eau').val(response.tirant_eau);
+                    ////
+                    $('#port_lourd').val(response.port_lourd);
+                    $('#largeur_navire').val(response.largeur);
+                    $('#longeur_navire').val(response.longeur);
+                    $('#pavillon').val(response.pavillon);
+                    $('#tonnage').val(response.poids);
+                    $('#type').val(response.type);
+                }
+            },
+            error: function() {
+                console.log('event');
+            }
+        });
+    });
+
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    } );
+    $('#timepicker').datetimepicker({
+        format: 'LT'
+    })
+</script>
+@stop
+
