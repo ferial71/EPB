@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\armateur;
+use App\client;
 use App\formulaire;
+use App\navire;
 use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Monarobase\CountryList\CountryListFacade as Countries;
 
 class BonDelivrerController extends Controller
 {
@@ -33,7 +37,15 @@ class BonDelivrerController extends Controller
 
     public function create()
     {
-        return view('formulaires/bon_a_delivrers.create');
+        $navires = navire::all();
+        $users_trans = User::role('transitaire')->get();
+        $clients = client::find(1);
+        $armateurs =armateur::all();
+        $countries = Countries::getList('en');
+        dd($clients->adresses());
+
+
+        return view('formulaires/bon_a_delivrers.create',compact('navires','users_trans','clients','armateurs','countries'));
     }
 
     /**
