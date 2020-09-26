@@ -40,6 +40,7 @@ Route::resource('roles','RoleController');
 
 Route::group(['prefix'=>'formulaires'],function(){
     Route::post('annonce_navires/import','AnnonceNavireController@import')->name('annonce_navires.import');
+    Route::get('annonce_navires/navire/{id}','AnnonceNavireController@navire')->name('annonce_navires.navire');
     Route::post('annonce_navires/import_process', 'AnnonceNavireController@processImport')->name('annonce_navires.import_process');
     Route::put('annonce_navires/validatation/{id}','AnnonceNavireController@validatation')->name('annonce_navires.validatation');
     Route::resource('annonce_navires','AnnonceNavireController');
