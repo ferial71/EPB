@@ -23,7 +23,7 @@ class Utilisateur_exterieur extends Model
 
     protected function user()
     {
-        return $this->belongsTo('App/user');
+        return $this->belongsTo('App\User');
 
     }
 

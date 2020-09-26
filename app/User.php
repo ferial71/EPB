@@ -48,22 +48,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function consignataire()
-    {
-        return $this->hasMany('App/consignataire');
-
-    }
-
-    protected function transitaire()
-    {
-        return $this->hasMany('App/transitaire');
-
-    }
+//    protected function consignataire()
+//    {
+//        return $this->hasMany('App/consignataire');
+//
+//    }
+//
+//    protected function transitaire()
+//    {
+//        return $this->hasMany('App/transitaire');
+//
+//    }
     protected function formulaire()
     {
         return $this->hasOne('App/formualaire');
 
     }
+    protected function utilisateur_exterieur()
+    {
+        return $this->hasOne('App\Utilisateur_exterieur');
+    }
+
     /**
      * The channels the user receives notification broadcasts on.
      *

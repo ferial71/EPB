@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\adresse;
+use Monarobase\CountryList\CountryListFacade as Countries;
+use App\AnnonceNavire;
+use App\armateur;
 use App\Events\UserLoggedIn;
 use App\formulaire;
+use App\navire;
 use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\role;
+use App\transitaire;
 use App\User;
+use App\Utilisateur_exterieur;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\Types\Null_;
 use Session;
 use Illuminate\Http\Request;
@@ -38,6 +46,7 @@ class AnnonceNavireController extends Controller
     {
         $formulaires = formulaire::where('titre', 'annonce navire')->latest('id')->paginate(10);
 
+
         //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
         //sinon tableau array est null
         if ($formulaires->total()==0){
@@ -50,6 +59,16 @@ class AnnonceNavireController extends Controller
         return view('formulaires/annonce_navires.index', compact('formulaires','array'));
     }
 
+    public function navire($nom = 0 )
+    {
+        $nom = str_replace('_', ' ', $nom);
+
+        $navire= navire::where('id','1')->first();
+//        $formulaires = formulaire::where('titre', 'annonce navire')->latest('id');
+
+
+        return response()->json($navire);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -57,7 +76,14 @@ class AnnonceNavireController extends Controller
      */
     public function create()
     {
-        return view('formulaires/annonce_navires.create');
+        $navires = navire::all();
+        $users_trans = User::role('transitaire')->get();
+        $users_cons = User::role('consignataire')->get();
+        $armateurs =armateur::all();
+        $countries = Countries::getList('en');
+
+
+        return view('formulaires/annonce_navires.create',compact('navires','users_trans','armateurs','users_cons','countries'));
     }
 
 
