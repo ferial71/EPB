@@ -59,6 +59,10 @@ class AnnonceNavireController extends Controller
         return view('formulaires/annonce_navires.index', compact('formulaires','array'));
     }
 
+    public function createNouveauNavire()
+    {
+        return view('formulaires/annonce_navires.createNouveauNavire');
+    }
     public function navire($nom = 0 )
     {
         $nom = str_replace('_', ' ', $nom);
