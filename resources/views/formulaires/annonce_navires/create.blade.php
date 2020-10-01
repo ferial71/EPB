@@ -41,6 +41,8 @@
                                                             <option value="{{$navire->nom}}">{{$navire->nom}}</option>
                                                         @endforeach
                                                     </select>
+
+                                                    <a href="{{ route('annonce_navires.createNouveauNavire') }}" class="btn btn-info btn-sm" role="button">Nouveau navire</a>
 {{--                                                    <input type="text" autocomplete="off" name="champs[nom_navire]" class="form-control" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >--}}
                                                     <p class="text-danger">@error('champs.nom_navire') {{$message}} @enderror</p>
                                                 </div>
@@ -325,9 +327,7 @@
         $( function() {
             $( "#datepicker" ).datepicker();
         } );
-        $('#timepicker').datetimepicker({
-            format: 'LT'
-        })
+
     </script>
 @stop
 {{--    <script>--}}

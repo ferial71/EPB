@@ -41,10 +41,12 @@ Route::resource('roles','RoleController');
 Route::group(['prefix'=>'formulaires'],function(){
     Route::post('annonce_navires/import','AnnonceNavireController@import')->name('annonce_navires.import');
     Route::get('annonce_navires/navire/{id}','AnnonceNavireController@navire')->name('annonce_navires.navire');
-    Route::post('annonce_navires/import_process', 'AnnonceNavireController@processImport')->name('annonce_navires.import_process');
+    Route::get('annonce_navires/createNouveauNavire','AnnonceNavireController@createNouveauNavire')->name('annonce_navires.createNouveauNavire');
+//    Route::post('annonce_navires/import_process', 'AnnonceNavireController@processImport')->name('annonce_navires.import_process');
     Route::put('annonce_navires/validatation/{id}','AnnonceNavireController@validatation')->name('annonce_navires.validatation');
     Route::resource('annonce_navires','AnnonceNavireController');
     Route::put('poste_quais/validatation/{id}','PosteQuaiController@validatation')->name('poste_quais.validatation');
+    Route::get('poste_quais/navire/{id}','PosteQuaiController@navire')->name('poste_quais.navire');
     Route::resource('poste_quais','PosteQuaiController');
     Route::put('manifestes/validatation/{id}','ManifesteController@validatation')->name('manifestes.validatation');
     Route::resource('manifestes','ManifesteController');

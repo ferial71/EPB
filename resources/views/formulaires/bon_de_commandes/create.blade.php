@@ -38,7 +38,12 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du navire</label>
-                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >
+                                                <select id="nom_navire" name="champs[nom_navire]"class="form-control">
+                                                    @foreach($navires as $navire)
+                                                        <option value="{{$navire->nom}}">{{$navire->nom}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire"data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >--}}
 
 
 
@@ -51,7 +56,12 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Nom du transitaire</label>
-                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <select id="transitaire" name="champs[transitaire]"class="form-control">
+                                                    @foreach($users_trans as $users_tran)
+                                                        <option value="{{$users_tran->name}}">{{$users_tran->name}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
                                             </div>
@@ -87,7 +97,12 @@
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Provenance</label>
-                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <select id="provenance" name="champs[provenance]"class="form-control">
+                                                    @foreach($countries as $countrie)
+                                                        <option value="{{$countrie}}">{{$countrie}}</option>
+                                                    @endforeach
+                                                </select>
+{{--                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
                                             </div>
@@ -104,7 +119,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
-                                                    <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask required>
+                                                    <input type="text" id="datepicker" data-provide="datepicker"name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask required>
 
                                                 </div>
                                                 <!-- /.input group -->
@@ -143,3 +158,10 @@
         </div>
     </section>
 @endsection
+@section('scripts')
+    <script >
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        } );
+    </script>
+@stop

@@ -89,22 +89,23 @@
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="form-group">
-                                            <div class="form-group">
+{{--                                    <div class="col-sm-4">--}}
+{{--                                        <div class="form-group">--}}
+{{--                                            <div class="form-group">--}}
 
-                                                <label for="champs">Adresse du client</label>
-                                                <select id="client_adr" name="champs[client_adr]"class="form-control">
-                                                    @foreach($clients as $client)
-                                                        <option value="{{$client->adresse}}">{{$client->adresse["rue"]}}</option>
-                                                    @endforeach
-                                                </select>
+{{--                                                <label for="champs">Adresse du client</label>--}}
+{{--                                                <select id="client_adr" name="champs[client_adr]"class="form-control">--}}
+{{--                                                    @foreach($clients as $client)--}}
+{{--                                                        <option value="{{$client->adresse}}">{{$client->adresse}}</option>--}}
+{{--                                                        <option value="{{$client->adresse}}">{{$client->adresse}}</option>--}}
+{{--                                                    @endforeach--}}
+{{--                                                </select>--}}
 {{--                                                <input type="text" name="champs[client_adr]" class="form-control" placeholder="Entrer l'adresse du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+                                    <div class="col-sm-6">
                                         <!-- textarea -->
                                         <div class="form-group">
                                             <div class="form-group">
@@ -122,15 +123,16 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
                                             <div class="form-group">
                                                 <label for="champs">Date d’entrée du navire: </label>
+
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
-                                                    <input type="text" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
+                                                    <input type="text" id="datepicker" data-provide="datepicker" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
                                                     <p class="text-danger">@error('champs.date') {{$message}} @enderror</p>
                                                 </div>
                                                 <!-- /.input group -->
@@ -142,7 +144,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Marchandise délivrée</label>
-                                            <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la marchandise" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                            <input type="text" name="champs[marchandise]" class="form-control" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
@@ -150,14 +152,14 @@
                                         <div class="form-group">
                                             <label for="champs">Quantité de la marchandise</label>
 
-                                            <input type="text" name="champs[q_marchandise]" class="form-control" placeholder="Entrer la quantité de la marchandise" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                            <input type="text" name="champs[q_marchandise]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
 
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Poids de la marchandise</label>
-                                            <input type="text" name="champs[p_marchandise]" class="form-control" placeholder="Entrer le poids de la maechandise" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                            <input type="text" name="champs[p_marchandise]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
                                         </div>
                                     </div>
                                 </div>
@@ -172,7 +174,7 @@
                                             <div class="form-group">
                                                 <label for="champs">Numéro de BL </label>
 
-                                                <input type="text" name="champs[num_bl]" class="form-control" placeholder="Entrer le numéro de BL" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                                <input type="text" name="champs[num_bl]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
 
                                             </div>
                                         </div>
@@ -185,7 +187,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
-                                                    <input type="text" name="champs[date_escale]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
+                                                    <input type="text" id="datepicker" data-provide="datepicker" name="champs[date_escale]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
                                                     <p class="text-danger">@error('champs.date_escale') {{$message}} @enderror</p>
 
                                                 </div>
@@ -199,7 +201,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Lieux du chargement </label>
-                                                <input type="text" name="champs[l_chargement]" class="form-control" placeholder="Entrer le lieux de chargement" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <input type="text" name="champs[l_chargement]" class="form-control"  data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +212,7 @@
                                             <div class="form-group">
 
                                                 <label for="champs">Lieux du déchargement </label>
-                                                <input type="text" name="champs[l_dechargement]" class="form-control" placeholder="Entrer le lieux de déchargement" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <input type="text" name="champs[l_dechargement]" class="form-control"  data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
                                             </div>
                                         </div>
                                     </div>
@@ -222,7 +224,7 @@
 
                                                 <label for="champs">Nombre d’unité </label>
 
-                                                <input type="text" name="champs[nb_unite]" class="form-control" placeholder="Entrer le nombre d'unité" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                                <input type="text" name="champs[nb_unite]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
                                             </div>
                                         </div>
                                     </div>
@@ -234,8 +236,8 @@
 
                                                 <label for="champs">Numéro de poste</label>
 
-                                                <input type="text" name="champs[nb_poste]" class="form-control" placeholder="Entrer le numéro de poste" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
                                             </div>
+                                            <input type="text" name="champs[nb_poste]" class="form-control" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
                                         </div>
                                     </div>
 
@@ -244,7 +246,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Ou bien sélectionner une fichier CSV</label>
+                                    <label for="exampleInputFile">Ou bien sélectionner un fichier CSV</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="exampleInputFile">
@@ -273,40 +275,6 @@
 
 @section('scripts')
 <script >
-    $(document.body).on('change','#nom_navire',function(){
-        // $("#nom_navire").change(function(){
-
-        var nom = $(this).val();
-        var url = '{{ route("annonce_navires.navire", ":nom") }}';
-        url = url.replace(':nom', nom);
-        url = url.replace(' ', '_');
-
-        // alert(url);
-
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response){
-                if(response != null){
-                    // alert(response.imo);
-                    $('#imo').val(response.imo);
-                    $('#tirant_eau').val(response.tirant_eau);
-                    ////
-                    $('#port_lourd').val(response.port_lourd);
-                    $('#largeur_navire').val(response.largeur);
-                    $('#longeur_navire').val(response.longeur);
-                    $('#pavillon').val(response.pavillon);
-                    $('#tonnage').val(response.poids);
-                    $('#type').val(response.type);
-                }
-            },
-            error: function() {
-                console.log('event');
-            }
-        });
-    });
-
     $( function() {
         $( "#datepicker" ).datepicker();
     } );
