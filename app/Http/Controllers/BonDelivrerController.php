@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\adresse;
 use App\armateur;
 use App\client;
 use App\formulaire;
@@ -39,10 +40,9 @@ class BonDelivrerController extends Controller
     {
         $navires = navire::all();
         $users_trans = User::role('transitaire')->get();
-        $clients = client::find(1);
+        $clients = client::all();
         $armateurs =armateur::all();
         $countries = Countries::getList('en');
-        dd($clients->adresses());
 
 
         return view('formulaires/bon_a_delivrers.create',compact('navires','users_trans','clients','armateurs','countries'));

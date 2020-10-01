@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 
 
+use App\armateur;
 use App\formulaire;
+use App\navire;
 use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Monarobase\CountryList\CountryListFacade as Countries;
 
 class PosteQuaiController extends Controller
 {
@@ -43,6 +46,15 @@ class PosteQuaiController extends Controller
 
         return view('formulaires/poste_quais.index', compact('formulaires','array'));
     }
+    public function navire($nom = 0 )
+    {
+        $nom = str_replace('_', ' ', $nom);
+
+        $navire= navire::where('id','1')->first();
+
+
+        return response()->json($navire);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -51,7 +63,14 @@ class PosteQuaiController extends Controller
      */
     public function create()
     {
-        return view('formulaires/poste_quais.create');
+        $navires = navire::all();
+        $users_trans = User::role('transitaire')->get();
+        $users_cons = User::role('consignataire')->get();
+        $armateurs =armateur::all();
+        $countries = Countries::getList('en');
+
+
+        return view('formulaires/poste_quais.create',compact('navires','users_trans','armateurs','users_cons','countries'));
     }
 
     /**

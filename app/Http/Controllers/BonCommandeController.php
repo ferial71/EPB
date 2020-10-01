@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\formulaire;
+use App\marchandise;
+use App\navire;
 use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Monarobase\CountryList\CountryListFacade as Countries;
 
 class BonCommandeController extends Controller
 {
@@ -35,7 +39,15 @@ class BonCommandeController extends Controller
      */
     public function create()
     {
-        return view('formulaires/bon_de_commandes.create');
+        $navires = navire::all();
+        $users_trans = User::role('transitaire')->get();
+//        $clients = client::all();
+//        $armateurs =armateur::all();
+        $countries = Countries::getList('en');
+//        $marchandise = marchandise::all();
+
+
+        return view('formulaires/bon_de_commandes.create',compact('navires','users_trans','countries'));
     }
 
     /**

@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\armateur;
 use App\formulaire;
+use App\navire;
 use App\Notifications\FormulaireValider;
 use App\Notifications\NouveauFormulaire;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Monarobase\CountryList\CountryListFacade as Countries;
 
 class ManifesteController extends Controller
 {
@@ -36,7 +39,14 @@ class ManifesteController extends Controller
      */
     public function create()
     {
-        return view('formulaires/manifestes.create');
+        $navires = navire::all();
+//        $users_trans = User::role('transitaire')->get();
+//        $users_cons = User::role('consignataire')->get();
+//        $armateurs =armateur::all();
+        $countries = Countries::getList('en');
+
+
+        return view('formulaires/manifestes.create',compact('navires','countries'));
     }
 
     /**
