@@ -1,16 +1,36 @@
 {{-- \resources\views\roles\index.blade.php --}}
 @extends('layouts.profile')
 
-@section('title', '| Roles')
 
 @section('content')
 
-    <div class="col-lg-10 col-lg-offset-1">
-        <h1><i class="fa fa-key"></i> Roles
+    <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
+        <section class="content">
+            <div class="wrapper">
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1> Administration des Roles
+                                    <hr>
 
-            <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
-            <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a></h1>
-        <hr>
+                                        <a href="{{ route('users.index') }}" class="btn btn-outline-info pull-right">Utilisateurs</a>
+                                        <a href="{{ route('permissions.index') }}" class="btn btn-outline-info pull-right">Permissions</a></h1>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href={{route('home')}}>Page d'accueil</a></li>
+                                    <li class="breadcrumb-item active">Administration des Roles </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div><!-- /.container-fluid -->
+                </section>
+                <!-- /.card-header -->
+                <div class="card">
+                    <div class="card-body">
+
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -28,11 +48,11 @@
                         <td>{{ $role->name }}</td>
 
                         <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
-                        <td>
-                            <a href="{{ URL::to('roles/'.$role->id.'/edit') }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
+                        <td style="display: flex;">
+                            <a href="{{ URL::to('roles/'.$role->id.'/edit') }}" class="btn btn-info btn-sm pull-left" style="margin-right: 3px;">Modifier</a>
 
                             {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id] ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::submit('Supprimer', ['class' => 'btn btn-sm btn-danger']) !!}
                             {!! Form::close() !!}
 
                         </td>
@@ -42,9 +62,17 @@
 
             </table>
         </div>
-
-        <a href="{{ URL::to('roles/create') }}" class="btn btn-success">Add Role</a>
-
+                    </div>
+                </div>
+            </div>
+        </section>
+        <a href="{{ URL::to('roles/create') }}" class="btn btn-success">Ajouter un Role</a>
     </div>
+
+
+
+
+
+
 
 @endsection
