@@ -15,7 +15,13 @@ class CreateEmplacementsTable extends Migration
     {
         Schema::create('emplacements', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('ligne');
+            $table->integer('collone');
+            $table->integer('altitude');
+            $table->unsignedBigInteger('marchandise_id');
             $table->timestamps();
+
+            $table->foreign('marchandise_id')->references('id')->on('marchandises');
         });
     }
 
