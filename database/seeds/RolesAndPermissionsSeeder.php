@@ -76,7 +76,13 @@ class RolesAndPermissionsSeeder extends Seeder
             'annonce_navire-list',
             'annonce_navire-create',
             'annonce_navire-validate',
-            'annonce_navire-delete'
+            'annonce_navire-delete',
+
+            'constat_de_vue_a_quais-list',
+            'constat_de_vue_a_quais-create',
+            'constat_de_vue_a_quais-validate',
+            'constat_de_vue_a_quais-delete'
+
         ];
 
 

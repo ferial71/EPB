@@ -58,6 +58,8 @@ Route::group(['prefix'=>'formulaires'],function(){
     Route::resource('bon_a_enlevers','BonEnleverController');
     Route::put('mise_a_quais/validatation/{id}','MiseQuaiController@validatation')->name('mise_a_quais.validatation');
     Route::resource('mise_a_quais','MiseQuaiController');
+    Route::put('constat_de_vue_a_quais/validatation/{id}','constatVueQuaisController@validatation')->name('constat_de_vue_a_quais.validatation');
+    Route::resource('constat_de_vue_a_quais','constatVueQuaisController');
 
 });
 

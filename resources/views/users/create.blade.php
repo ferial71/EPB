@@ -6,6 +6,7 @@
 @section('content')
 
     <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
+        {{ Form::open(array('url' => 'users')) }}
         <section class="content">
             <div class="wrapper">
                 <section class="content-header">
@@ -26,12 +27,9 @@
                     </div><!-- /.container-fluid -->
                 </section>
                 <!-- /.card-header -->
+
                 <div class="card">
                     <div class="card-body">
-
-
-        {{ Form::open(array('url' => 'users')) }}
-
         <div class="form-group">
             {{ Form::label('name', 'Nom') }}
             {{ Form::text('name', '', array('class' => 'form-control')) }}

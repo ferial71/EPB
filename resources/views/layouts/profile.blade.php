@@ -304,6 +304,14 @@
                                     </a>
                                 </li>
                             @endcan
+                                @can('constat_de_vue_a_quai-list')
+                                    <li class="nav-item">
+                                        <a href={{route('bon_a_delivrers.index')}} class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Bon à délivrer</p>
+                                        </a>
+                                    </li>
+                                @endcan
                             @can('cpn-list')
                                 <li class="nav-item">
                                     <a href={{route('home')}} class="nav-link">

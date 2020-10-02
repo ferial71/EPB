@@ -91,13 +91,7 @@ class NavireSeeder extends Seeder
 
         for ($i=0;$i<10;$i++){
             db::table('marchandises')->insert([
-                //$table->bigIncrements('id');
-                //            $table->string('name')->nullable();
-                //            $table->string('poids')->nullable();
-                //            $table->string('nature')->nullable();
-                //            $table->string('mode_conditionnement')->nullable();
-                //            $table->unsignedBigInteger('cargaison_id');
-                //            $table->timestamps();
+
                 'name'=> $faker->word,
                 'poids'=> $faker->numerify('##'),
                 //'nature'=> $faker->randomElements(['PLT', 'STC', 'JERRICANS', 'PLASTIC', 'CL', 'ONU', 'AROMES', 'FRUITS','COLIS','GENERATRICE','CSE','COMPENSATEUR']),
@@ -127,6 +121,10 @@ class NavireSeeder extends Seeder
 
         for ($i=0;$i<10;$i++){
             db::table('emplacements')->insert([
+                'ligne'=> $faker->numberBetween(1,10),
+                'collone'=> $faker->numberBetween(1,10),
+                'altitude'=> $faker->numberBetween(1,10),
+                'marchandise_id'=> $faker->numberBetween(1,10),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
