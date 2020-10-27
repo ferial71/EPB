@@ -45,8 +45,40 @@ class Kernel extends HttpKernel
         'admin' => [
             'web',
             'auth',
-            'role:admin'
+            'role:admin',
         ],
+        'Consignataire' => [
+            'web',
+            'auth',
+            'role:Consignataire',
+        ],
+        'Transitaire' => [
+            'web',
+            'auth',
+            'role:Transitaire',
+        ],
+        'CSP' => [
+            'web',
+            'auth',
+            'role:CSP',
+        ],
+        'CSTN' => [
+            'web',
+            'auth',
+            'role:CSTN',
+        ],
+        'PCPN' => [
+            'web',
+            'auth',
+            'role:PCPN',
+        ],
+        'CSSMM' => [
+            'web',
+            'auth',
+            'role:CSSMM',
+        ],
+
+
     ];
 
     /**
