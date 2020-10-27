@@ -81,11 +81,7 @@
                 </div>
                 <div class="card-footer">
 
-                    @can('constat_de_vue_a_quais-validate')
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                        Valider
-                    </button>
-@endcan
+
 
                 </div>
 
@@ -104,7 +100,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Est ce que vous êtes sure vous voulez valider cette formulaire?</p>
+                    <p>Est ce que vous êtes sure vous voulez valider ce formulaire?</p>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>

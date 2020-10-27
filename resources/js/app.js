@@ -7,6 +7,10 @@
 require("./bootstrap");
 
 window.Vue = require("vue");
+// import 'vue-datetime/dist/vue-datetime.css';
+// import { Datetime } from 'vue-datetime/dist/vue-datetime.css';
+
+// Vue.component('datetime', Datetime);
 
 /**
  * The following block of code may be used to automatically register your
@@ -18,6 +22,7 @@ window.Vue = require("vue");
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+Vue.component("dateandtime", require("./components/Dateandtime.vue").default);
 Vue.component("notification", require("./components/Notification.vue").default);
 Vue.component("input-element", require("./components/InputElement.vue").default);
 

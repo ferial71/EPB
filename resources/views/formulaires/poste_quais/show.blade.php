@@ -1,7 +1,10 @@
 @extends('layouts.profile')
 
-@section('title', '| View Post')
+@section('styles')
+{{--    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">--}}
+{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css" integrity="sha256-b5ZKCi55IX+24Jqn638cP/q3Nb2nlx+MH/vMMqrId6k=" crossorigin="anonymous" />--}}
 
+@stop
 @section('content')
 
     <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
@@ -48,7 +51,7 @@
                                     <tr>
                                         <td>3.</td>
                                         <td>Armateur</td>
-                                        <td><span >{{$formulaire->champs['nom_armateur']}}</span></td>
+                                        <td><span >{{$formulaire->champs['armateur']}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>4.</td>
@@ -143,6 +146,69 @@
                 </div>
                 <div class="modal-body">
                     <p>Est ce que vous êtes sure vous voulez valider cette formulaire?</p>
+{{--                    <p>veuillez remplir les champs suivants pour valider le formulaire</p>--}}
+
+
+{{--                    <div class="container">--}}
+
+{{--                            <div class="row form-group">--}}
+{{--                                <div class="col-md-2">--}}
+{{--                                    Appointment Time--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-8">--}}
+{{--                                    <input type="text" class="form-control datetimepicker" name="Appointment_time">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                    </div>--}}
+
+{{--                    <dateandtime></dateandtime>--}}
+{{--                    <dateandtime v-model="datetime"></dateandtime>--}}
+
+{{--                    <div class="row" style="margin-top: 100px;">--}}
+{{--                        <div class="col-md-6 col-md-offset-3">--}}
+{{--                            <div class="panel panel-default">--}}
+{{--                                <div class="panel-heading">--}}
+{{--                                    <h3>How to Use Bootstrap Datetimepicker in Laravel - NiceSnippets.com</h3>--}}
+{{--                                </div>--}}
+{{--                                <div class="panel-body">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>Bootstrap DateTimePicker</label>--}}
+{{--                                        <input type="text" class="form-control datetimepicker" name="Appointment_time">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+
+{{--                    <div class="form-group">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label for="champs">La date et l'heurs d’entrée du navire: </label>--}}
+{{--                            <div class="input-group">--}}
+{{--                                <div class="input-group-prepend">--}}
+{{--                                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>--}}
+{{--                                </div>--}}
+{{--                                <input type="text" data-provide="datepicker"  id="datetimepicker" name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >--}}
+
+{{--                            </div>--}}
+{{--                            <!-- /.input group -->--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="container">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class='col-sm-6'>--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <div class='input-group date' id='datetimepicker1'>--}}
+{{--                                        <input type='text' type="date" class="form-control" />--}}
+{{--                                        <span class="input-group-addon">--}}
+{{--               <span class="glyphicon glyphicon-calendar"></span>--}}
+{{--               </span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
@@ -158,166 +224,19 @@
 
 @endsection
 @section('scripts')
-
-
-    <script src="{{asset('plugins/sweetalert2/sweetalert2.min.js')}} "></script>
-    <!-- Toastr -->
-    <script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
-    <script type="text/javascript">
-        $(function() {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000
-            });
-
-            $('.swalDefaultSuccess').click(function() {
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultInfo').click(function() {
-                Toast.fire({
-                    icon: 'info',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultError').click(function() {
-                Toast.fire({
-                    icon: 'error',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultWarning').click(function() {
-                Toast.fire({
-                    icon: 'warning',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.swalDefaultQuestion').click(function() {
-                Toast.fire({
-                    icon: 'question',
-                    title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-
-            $('.toastrDefaultSuccess').click(function() {
-                toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-            $('.toastrDefaultInfo').click(function() {
-                toastr.info('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-            $('.toastrDefaultError').click(function() {
-                toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-            $('.toastrDefaultWarning').click(function() {
-                toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
-            });
-
-            $('.toastsDefaultDefault').click(function() {
-                $(document).Toasts('create', {
-                    title: 'Toast Title',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultTopLeft').click(function() {
-                $(document).Toasts('create', {
-                    title: 'Toast Title',
-                    position: 'topLeft',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultBottomRight').click(function() {
-                $(document).Toasts('create', {
-                    title: 'Toast Title',
-                    position: 'bottomRight',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultBottomLeft').click(function() {
-                $(document).Toasts('create', {
-                    title: 'Toast Title',
-                    position: 'bottomLeft',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultAutohide').click(function() {
-                $(document).Toasts('create', {
-                    title: 'Toast Title',
-                    autohide: true,
-                    delay: 750,
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultNotFixed').click(function() {
-                $(document).Toasts('create', {
-                    title: 'Toast Title',
-                    fixed: false,
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultFull').click(function() {
-                $(document).Toasts('create', {
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    icon: 'fas fa-envelope fa-lg',
-                })
-            });
-            $('.toastsDefaultFullImage').click(function() {
-                $(document).Toasts('create', {
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    image: '../../dist/img/user3-128x128.jpg',
-                    imageAlt: 'User Picture',
-                })
-            });
-            $('.toastsDefaultSuccess').click(function() {
-                $(document).Toasts('create', {
-                    class: 'bg-success',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultInfo').click(function() {
-                $(document).Toasts('create', {
-                    class: 'bg-info',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultWarning').click(function() {
-                $(document).Toasts('create', {
-                    class: 'bg-warning',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultDanger').click(function() {
-                $(document).Toasts('create', {
-                    class: 'bg-danger',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-            $('.toastsDefaultMaroon').click(function() {
-                $(document).Toasts('create', {
-                    class: 'bg-maroon',
-                    title: 'Toast Title',
-                    subtitle: 'Subtitle',
-                    body: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
-                })
-            });
-        });
-
-    </script>
-
-
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>--}}
+{{--        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>--}}
+{{--        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>--}}
+{{--    <script type="text/javascript">--}}
+{{--        $(document).ready(function() {--}}
+{{--            $(function () {--}}
+{{--                $('.datetimepicker').datetimepicker();--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+{{--<script>--}}
+{{--    $(function () {--}}
+{{--        $('#datetimepicker').datetimepicker();--}}
+{{--    });--}}
+{{--</script>--}}
 @endsection

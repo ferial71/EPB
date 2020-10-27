@@ -45,7 +45,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/parsley.css') }}">
-    <script src="https://parsleyjs.org/dist/parsley.min.js"></script>
+{{--    <script src="https://parsleyjs.org/dist/parsley.min.js"></script>--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -107,6 +107,8 @@
         }
 
     </style>
+
+    @yield('scripts')
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -228,14 +230,14 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('cpn-list')
-                                <li class="nav-item">
-                                    <a href={{route('home')}} class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Consulter la CPN</p>
-                                    </a>
-                                </li>
-                            @endcan
+                                @can('constat_de_vue_a_quais-create')
+                                    <li class="nav-item">
+                                        <a href={{route('constat_de_vue_a_quais.create')}} class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Constat de vue a quais</p>
+                                        </a>
+                                    </li>
+                                @endcan
                         </ul>
                     </li>
                     @endcanany
@@ -312,14 +314,7 @@
                                         </a>
                                     </li>
                                 @endcan
-                            @can('cpn-list')
-                                <li class="nav-item">
-                                    <a href={{route('home')}} class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Consulter la CPN</p>
-                                    </a>
-                                </li>
-                            @endcan
+
                         </ul>
                     </li>
                     @can('user-create')

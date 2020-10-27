@@ -46,11 +46,6 @@
                                         <td><span>{{$formulaire->champs['transitaire']}}</span></td>
                                     </tr>
                                     <tr>
-                                        <td>3.</td>
-                                        <td>Nom du réceptionnaire</td>
-                                        <td><span >{{$formulaire->champs['receptionnaire']}}</span></td>
-                                    </tr>
-                                    <tr>
                                         <td>4.</td>
                                         <td>Date d’entrée de la marchandise</td>
                                         <td><span>{{$formulaire->champs['date_entrer']}}</span></td>
@@ -97,14 +92,6 @@
                     </div>
                 </div>
                 <div class="card-footer">
-
-                    @can('bon_a_enlever-validate')
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
-                        Valider
-                    </button>
-
-
-                        @endcan
                 </div>
 
             </div>
@@ -123,7 +110,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>Est ce que vous êtes sure vous voulez valider cette formulaire?</p>
+                    <p>Est ce que vous êtes sure vous voulez valider ce formulaire?</p>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
