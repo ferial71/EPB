@@ -8,9 +8,6 @@ class AnnonceNavire extends Model
 {
 
 
-
-
-
     protected $fillable = [
             'navire_id',
             'consignataire_id',
@@ -39,6 +36,13 @@ class AnnonceNavire extends Model
     protected function cargaison()
     {
         return $this->belongsTo('App\cargaison');
+    }
+
+    public function getCargaison($id)
+    {
+
+        $cargo = cargaison::where('id',$id)->first();
+        return $cargo;
     }
 
 
