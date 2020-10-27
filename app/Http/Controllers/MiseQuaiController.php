@@ -65,8 +65,8 @@ class MiseQuaiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.marques' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.nb' => 'required|numeric',
@@ -75,7 +75,7 @@ class MiseQuaiController extends Controller
         ]);
 
 
-        $formulaire = formulaire::create($validatedData);
+        $formulaire = formulaire::create($request->all());
 
         $formulaire->titre = 'Mise à quai';
         $formulaire->url= 'mise_a_quais';
