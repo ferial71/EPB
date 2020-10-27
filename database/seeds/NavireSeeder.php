@@ -55,8 +55,10 @@ class NavireSeeder extends Seeder
 
         for ($i=0;$i<10;$i++){
             db::table('cargaisons')->insert([
+                'nom' => $faker->randomElement(['PROFILES','BOIS ROUGE','GASOIL','BOBINES EN ACIER','SUCRE ROUX']),
                 'tonnage'=> $faker->numerify('####'),
                 'nombreColis'=> $faker->numerify('####'),
+                'navire_id' =>$faker->numberBetween(1,10),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
@@ -74,8 +76,8 @@ class NavireSeeder extends Seeder
             'navire_id'=>$faker->numberBetween(1,10),
             'user_id'=>1,
             'armateur_id'=>$faker->numberBetween(1,10),
-            'cargaison_id'=>$faker->numberBetween(1,10),
-            'date_dentree'=>$faker->date(),
+//            'cargaison_id'=>$faker->numberBetween(1,10),
+            'date_dentree'=>$faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -97,7 +99,7 @@ class NavireSeeder extends Seeder
                 //'nature'=> $faker->randomElements(['PLT', 'STC', 'JERRICANS', 'PLASTIC', 'CL', 'ONU', 'AROMES', 'FRUITS','COLIS','GENERATRICE','CSE','COMPENSATEUR']),
                 'nature'=> $faker->sentence,
                 'mode_conditionnement'=> $faker->word,
-                'cargaison_id'=> $faker->numberBetween(1,10),
+//                'cargaison_id'=> $faker->numberBetween(1,10),
                 'created_at' => Carbon::now(),
 
                 'updated_at' => Carbon::now(),
@@ -106,7 +108,7 @@ class NavireSeeder extends Seeder
         //dd($faker->numberBetween(1,10));
         for ($i=0;$i<10;$i++){
             db::table('dpquais')->insert([
-                'date'=> $faker->date(),
+                'date'=> $faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'),
                 'estimation_temps_arriver'=> $faker->time(),
                 'rade'=> $faker->numerify('#'),
 
@@ -129,11 +131,10 @@ class NavireSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ]);
         }
-        for ($i=0;$i<10;$i++){
-            db::table('cpns')->insert([
-                'heur_entree'=> $faker->dateTime,
-                'heur_sortie'=> $faker->dateTime,
-                'consignes'=> $faker->sentence,
+
+        for ($i=0;$i<21;$i++){
+            db::table('quais')->insert([
+                'numero'=> $i,
                 'created_at' => Carbon::now(),
 
                 'updated_at' => Carbon::now(),
@@ -142,15 +143,8 @@ class NavireSeeder extends Seeder
         }
         for ($i=0;$i<10;$i++){
             db::table('escales')->insert([
-                'created_at' => Carbon::now(),
-
-                'updated_at' => Carbon::now(),
-            ]);
-
-        }
-        for ($i=0;$i<10;$i++){
-            db::table('quais')->insert([
-                'numero'=> $faker->numberBetween(1,5),
+                'navire_id' => $faker->numberBetween(1,10),
+                'quai_id' => $faker->numberBetween(1,10),
                 'created_at' => Carbon::now(),
 
                 'updated_at' => Carbon::now(),
@@ -161,12 +155,12 @@ class NavireSeeder extends Seeder
         for ($i=0;$i<10;$i++){
             db::table('manifestes')->insert([
                 'natureEscale'=> $faker->word,
-                'dEstimation'=> $faker->date(),
-                'dCreation'=> $faker->date(),
-                'dValidation'=> $faker->date(),
+                'dEstimation'=> $faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'),
+                'dCreation'=> $faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'),
+                'dValidation'=> $faker->dateTimeBetween($startDate = '-30 days', $endDate = '+30 days'),
                 'valide'=> $faker->randomElement(['valide','non valide']),
                 'dpquai_id'=> $faker->numberBetween(1,10),
-                'cargaisons_id'=> $faker->numberBetween(1,10),
+//                'cargaisons_id'=> $faker->numberBetween(1,10),
                 'created_at' => Carbon::now(),
 
                 'updated_at' => Carbon::now(),
@@ -231,5 +225,18 @@ class NavireSeeder extends Seeder
         }
 
 
+        for ($i=0;$i<5;$i++){
+            db::table('cpns')->insert([
+                'heur_entree'=> $faker->dateTime,
+                'heur_sortie'=> $faker->dateTimeBetween($startDate = '-0 days', $endDate = '+30 days'),
+                'consignes'=> $faker->sentence,
+                'navire_id'=> $faker->numberBetween(1,10),
+                'quai_id'=> $faker->numberBetween(1,10),
+                'created_at' => Carbon::now(),
+
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }
     }
 }
