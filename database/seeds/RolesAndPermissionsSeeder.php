@@ -162,9 +162,15 @@ class RolesAndPermissionsSeeder extends Seeder
 
 
 
+
+
+
+
         // création de role et permission pour Chef de section de pointage
         $role = Role::create(['name' => 'CSP']);
-        $role->syncPermissions('bon_a_enlever-list',
+        $role->syncPermissions(
+            'bon_a_enlever-create',
+            'bon_a_enlever-list',
             'bon_a_enlever-validate',
             'bon_a_enlever-delete',
 
@@ -172,7 +178,12 @@ class RolesAndPermissionsSeeder extends Seeder
             'bon_a_delivrer-validate',
 
             'demande_de_mise_a_quai-list',
-            'demande_de_mise_a_quai-validate');
+            'demande_de_mise_a_quai-validate',
+            'constat_de_vue_a_quais-list',
+            'constat_de_vue_a_quais-create',
+            'constat_de_vue_a_quais-validate',
+            'constat_de_vue_a_quais-delete'
+        );
 
 
         /** @var \App\User $user */
@@ -182,6 +193,7 @@ class RolesAndPermissionsSeeder extends Seeder
         ]);
 
         $admin->assignRole('CSP');
+
 
 
 
