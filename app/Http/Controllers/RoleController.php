@@ -14,7 +14,7 @@ use Session;
 class RoleController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth');//isAdmin middleware lets only users with a //specific permission permission to access these resources
+        $this->middleware(['auth','admin']);//isAdmin middleware lets only users with a //specific permission permission to access these resources
     }
 
     /**
@@ -101,7 +101,7 @@ class RoleController extends Controller {
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id) {
 
