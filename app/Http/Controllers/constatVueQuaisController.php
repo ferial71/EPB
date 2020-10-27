@@ -63,7 +63,7 @@ class constatVueQuaisController extends Controller
         $formulaire->titre ='Constat de vue à quais';
         $formulaire->url= 'constat_de_vue_a_quais';
         $formulaire->save();
-        $users = User::permission('constat_de_vue_a_quais-validate')->get();
+        $users = User::role('Transitaire')->get();
         foreach ($users as $user){
             $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
         }
