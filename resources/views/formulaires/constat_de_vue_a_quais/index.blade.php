@@ -25,29 +25,11 @@
                     <div class="card border-light mb-3"  >
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-6">
-                                    <div class="dataTables_length" id="example1_length">
-                                        <label>Show
-                                            <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm">
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>
-                                            entries
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="example1_filter" class="dataTables_filter">
-                                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="row">
                                 <div class="col-md-11 col-md-offset-2 ">
-                                    <table id="example1" class="table table-bordered table-striped ">
+                                    <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered  table-striped ">
                                         <thead>
                                             <tr>
 
@@ -57,7 +39,6 @@
                                                 <th>Ligne </th>
                                                 <th>Collone </th>
                                                 <th>Altitude </th>
-                                                <th>Date d’entrée </th>
                                                 <th>Valide</th>
                                                 <th></th>
 
@@ -66,11 +47,11 @@
                                         @foreach($formulaires as $formulaire)
                                             <tbody>
                                                 <?php $array =array_keys( $formulaire->champs );?>
-                                                <td>    {{$formulaire->champs[$array[0]]}} </td>
-                                                    @for( $i=1;$i<5;$i++)
-                                                        <td>{{$formulaire->champs[$array[$i]]}}</td>
-                                                    @endfor
-
+                                                <td>{{$formulaire->champs["nature"]}}</td>
+                                                <td>{{$formulaire->champs["poids"]}}</td>
+                                                <td>{{$formulaire->champs["ligne"]}}</td>
+                                                <td>{{$formulaire->champs["collone"]}}</td>
+                                                <td>{{$formulaire->champs["altitude"]}}</td>
                                                 <td>
                                                     @if($formulaire->valide)
                                                         <span class="badge badge-success">valide</span>
@@ -95,7 +76,7 @@
 
                                     </table>
                                 </div>
-
+                                </div>
                             </div>
                         </div>
                     </div>

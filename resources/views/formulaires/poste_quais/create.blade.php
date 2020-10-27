@@ -43,6 +43,7 @@
                                                         <option value="{{$navire->nom}}">{{$navire->nom}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.nom_navire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
@@ -58,9 +59,10 @@
                                                 <label for="champs">Transitaire</label>
                                                 <select id="champs[transitaire]" name="champs[transitaire]"class="form-control">
                                                     @foreach($users_trans as $users_tran)
-                                                        <option value={{$users_tran->name}}>{{$users_tran->name}}</option>
+                                                        <option value="{{$users_tran->name}}">{{$users_tran->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.transitaire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
@@ -75,9 +77,10 @@
                                                 <label for="champs">Nom de l'armateur</label>
                                                 <select id="armateur" name="champs[armateur]"class="form-control">
                                                     @foreach($armateurs as $armateur)
-                                                        <option value={{$armateur->nom}}>{{$armateur->nom}}</option>
+                                                        <option value="{{$armateur->nom}}">{{$armateur->nom}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.armateur') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[nom_armateur]" class="form-control" placeholder="Entrer le nom de l armateur" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
@@ -95,9 +98,10 @@
                                                 <label for="champs">consignataire</label>
                                                 <select id="champs[consignataire]" name="champs[consignataire]"class="form-control">
                                                     @foreach($users_cons as $users_con)
-                                                        <option value={{$users_con->name}}>{{$users_con->name}}</option>
+                                                        <option value="{{$users_con->name}}">{{$users_con->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.consignataire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[consignataire]" class="form-control" placeholder="Entrer le nom du consignataire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
                                             </div>
@@ -130,8 +134,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                                                     </div>
-                                                    <input type="text" data-provide="datepicker"  id="datepicker"name="champs[date]" class="form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
-
+                                                    <input type="text" data-provide="datepicker"  id="datepicker" name="champs[date]" class=" datetimepicker form-control"  data-inputmask-alias = "datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask >
                                                 </div>
                                                 <!-- /.input group -->
                                             </div>
@@ -141,7 +144,7 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label for="champs">Cargaisone</label>
+                                            <label for="champs">Cargaison</label>
                                             <input type="text" name="champs[cargaison]" class="form-control"  data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
 
                                         </div>

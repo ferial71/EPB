@@ -37,7 +37,7 @@
             {{ Form::label('name', 'Name') }}
             {{ Form::text('name', '', array('class' => 'form-control')) }}
         </div><br>
-        @if(!$roles->isEmpty()) //If no roles exist yet
+        @if(!$roles->isEmpty())
         <h4>Assign Permission to Roles</h4>
 
         @foreach ($roles as $role)
@@ -47,10 +47,13 @@
         @endforeach
         @endif
         <br>
-        {{ Form::submit('Add', array('class' => 'btn btn-primary')) }}
+        {{ Form::submit('Ajouter', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}
 
     </div>
-
+                </div>
+            </div>
+        </section>
+    </div>
 @endsection

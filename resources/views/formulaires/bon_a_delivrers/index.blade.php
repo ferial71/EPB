@@ -47,13 +47,13 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-11 col-md-offset-2 ">
-                                    <table id="example1" class="table table-bordered table-striped ">
+                                    <div class="table-responsive">
+                                    <table id="example1" class="table table-bordered  table-striped ">
                                         <thead>
                                             <tr>
                                                 <th>Navire</th>
                                                 <th>Transitaire</th>
                                                 <th>Client</th>
-                                                <th>Adresse du client</th>
                                                 <th>Provenance</th>
                                                 <th>Valide</th>
                                                 <th></th>
@@ -62,11 +62,10 @@
                                         </thead>
                                         @foreach($formulaires as $formulaire)
                                             <tbody>
-                                                <?php $array =array_keys( $formulaire->champs );?>
-                                                <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs[$array[0]]}} </a></td>
-                                                    @for( $i=1;$i<5;$i++)
-                                                        <td>{{$formulaire->champs[$array[$i]]}}</td>
-                                                    @endfor
+                                                <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs["nom_navire"]}} </a></td>
+                                                <td>{{$formulaire->champs["transitaire"]}}</td>
+                                                <td>{{$formulaire->champs["client"]}}</td>
+                                                <td>{{$formulaire->champs["provenance"]}}</td>
                                                 <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
@@ -80,16 +79,16 @@
                                                                     </style>
                                                                     <div >
                                                                         <ul class="list-group">
-                                                                            <li class="list-group-item">Date d’entrée du navire :<span class="label label-default"> {{$formulaire->champs[$array[5]]}}  </span></li>
-                                                                            <li class="list-group-item">Marchandises délivrée :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
-                                                                            <li class="list-group-item">Quantité de la marchandise :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
-                                                                            <li class="list-group-item">Poids de la marchandise  :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
-                                                                            <li class="list-group-item">Numero BL :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
-                                                                            <li class="list-group-item">Date d’escale  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
-                                                                            <li class="list-group-item">Lieux de chargement  :<span class="label label-default"> {{$formulaire->champs[$array[11]]}}  </span></li>
-                                                                            <li class="list-group-item">Lieux de déchargement  :<span class="label label-default"> {{$formulaire->champs[$array[12]]}}  </span></li>
-                                                                            <li class="list-group-item">Nombre d’unité :<span class="label label-default"> {{$formulaire->champs[$array[13]]}}  </span></li>
-                                                                            <li class="list-group-item">Numéro du poste  :<span class="label label-default"> {{$formulaire->champs[$array[14]]}}  </span></li>
+                                                                            <li class="list-group-item">Date d’entrée du navire :<span class="label label-default" style="float: right;" style="float: right;"> {{$formulaire->champs["date"]}}  </span></li>
+                                                                            <li class="list-group-item">Marchandises délivrée :<span class="label label-default" style="float: right;"> {{$formulaire->champs["marchandise"]}}  </span></li>
+                                                                            <li class="list-group-item">Quantité de la marchandise :<span class="label label-default" style="float: right;"> {{$formulaire->champs["q_marchandise"]}}  </span></li>
+                                                                            <li class="list-group-item">Poids de la marchandise  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["p_marchandise"]}}  </span></li>
+                                                                            <li class="list-group-item">Numero BL :<span class="label label-default" style="float: right;"> {{$formulaire->champs["num_bl"]}}  </span></li>
+                                                                            <li class="list-group-item">Date d’escale  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["date_escale"]}}  </span></li>
+                                                                            <li class="list-group-item">Lieux de chargement  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["l_chargement"]}}  </span></li>
+                                                                            <li class="list-group-item">Lieux de déchargement  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["l_dechargement"]}}  </span></li>
+                                                                            <li class="list-group-item">Nombre d’unité :<span class="label label-default" style="float: right;"> {{$formulaire->champs["nb_unite"]}}  </span></li>
+                                                                            <li class="list-group-item">Numéro du poste  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["nb_poste"]}}  </span></li>
                                                                         </ul>
                                                                     </div>
 
@@ -127,6 +126,7 @@
                                         @endforeach
 
                                     </table>
+                                </div>
                                 </div>
 
                             </div>

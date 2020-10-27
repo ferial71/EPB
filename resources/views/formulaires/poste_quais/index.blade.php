@@ -38,11 +38,15 @@
                                     </thead>
                                     @foreach($formulaires as $formulaire)
                                         <tbody>
-                                            <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs[$array[0]]}} </a></td>
-                                                @for( $i=1;$i<6;$i++)
-                                                    <td>{{$formulaire->champs[$array[$i]]}}</td>
-                                                @endfor
-                                                 <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
+                                            <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs['nom_navire']}} </a></td>
+                                            <td>{{$formulaire->champs['transitaire']}}</td>
+                                            <td>{{$formulaire->champs['armateur']}}</td>
+                                            <td>{{$formulaire->champs['consignataire']}}</td>
+                                            <td>{{$formulaire->champs['provenance']}}</td>
+                                            <td>{{$formulaire->champs['date']}}</td>
+
+
+                                        <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
                                                      <div class="modal-dialog modal-lg">
                                                          <div class="modal-content">
                                                              <div class="modal-content">
@@ -50,20 +54,20 @@
                                                                      <h4 class="modal-title" id="myModalLabel">Information sur la navire</h4>
                                                                  </div>
                                                                  <div class="modal-body">
-                                                                         <style type="text/css">
-                                                                             .label{ float: right;}
-                                                                         </style>
+
                                                                          <div >
                                                                              <ul class="list-group">
-                                                                                     <li class="list-group-item">Cargaison  :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
-                                                                                     <li class="list-group-item">Nature du marchandise :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
-                                                                                     <li class="list-group-item">Mode de conditionnement  :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
-                                                                                     <li class="list-group-item">Tonnage  :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
-                                                                                     <li class="list-group-item">Type du navire  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
-                                                                                     <li class="list-group-item">IMO  :<span class="label label-default"> {{$formulaire->champs[$array[11]]}}  </span></li>
-                                                                                     <li class="list-group-item">La rade actuelle  :<span class="label label-default"> {{$formulaire->champs[$array[12]]}}  </span></li>
-                                                                                     <li class="list-group-item">Paviollon du navire  :<span class="label label-default"> {{$formulaire->champs[$array[13]]}}  </span></li>
-                                                                                     <li class="list-group-item">Longeur du navire  :<span class="label label-default"> {{$formulaire->champs[$array[14]]}}  </span></li>
+                                                                                    <li class="list-group-item">IMO  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['imo']}}  </span></li>
+                                                                                     <li class="list-group-item">Cargaison  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['cargaison']}}  </span></li>
+                                                                                     <li class="list-group-item">Nature du marchandise :<span class="label label-default" style="float: right;"> {{$formulaire->champs['marchandise']}}  </span></li>
+                                                                                     <li class="list-group-item">Mode de conditionnement  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['m_conditionnement']}}  </span></li>
+                                                                                     <li class="list-group-item">Tonnage  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['tonnage']}}  </span></li>
+                                                                                     <li class="list-group-item">Type du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['type']}}  </span></li>
+                                                                                     <li class="list-group-item">La rade actuelle  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['rade']}}  </span></li>
+                                                                                     <li class="list-group-item">Paviollon du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['pavillon']}}  </span></li>
+                                                                                     <li class="list-group-item">Longeur du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['longeur_navire']}}  </span></li>
+                                                                                 <li class="list-group-item">Longeur du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['largeur_navire']}}  </span></li>
+                                                                                 <li class="list-group-item">Longeur du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['tirant_eau']}}  </span></li>
                                                                              </ul>
                                                                          </div>
 
@@ -82,17 +86,16 @@
                                                    <span class="badge badge-dark">non valide</span>
                                                    @endif
                                                </td>
-                                            <td>
-                                                {!! Form::open(['method' => 'DELETE', 'route' => ['poste_quais.destroy', $formulaire->id] ]) !!}
+                                            <td style="display: flex;" >
                                                 @can('demande_de_poste_a_quai-validate')
-                                                    <a href="{{ route('poste_quais.show', $formulaire->id) }}" class="btn btn-primary" role="button">Consulter</a>
+                                                    <a href="{{ route('poste_quais.show', $formulaire->id) }}" class="btn btn-sm btn-primary" role="button" style="margin-right: 3px;">Consulter</a>
                                                 @endcan
                                                 @can('demande_de_poste_a_quai-create')
-                                                    <a href="{{ route('poste_quais.edit', $formulaire->id) }}" class="btn btn-info" role="button">Modifier</a>
+                                                    <a href="{{ route('poste_quais.edit', $formulaire->id) }}" class="btn btn-sm btn-info" role="button" style="margin-right: 3px;">Modifier</a>
                                                 @endcan
-                                                {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+                                                    {!! Form::open(['method' => 'DELETE', 'route' => ['poste_quais.destroy', $formulaire->id] ]) !!}
+                                                {!! Form::submit('Supprimer', ['class' => 'btn btn-sm btn-danger']) !!}
                                                 {!! Form::close() !!}
-
                                             </td>
                                         </tbody>
                                     @endforeach

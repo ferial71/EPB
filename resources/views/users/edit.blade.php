@@ -67,7 +67,7 @@
     </div>
                 </div>
             </div>
-            {{ Form::submit('Ajouter', array('class' => 'btn btn-primary')) }}
+            {{ Form::submit('Modifier', array('class' => 'btn btn-primary')) }}
 
             {{ Form::close() }}
         </section>

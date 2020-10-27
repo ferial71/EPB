@@ -1,7 +1,6 @@
 @extends('layouts.profile')
 
 @section('content')
-
     <section>
         <div class="wrapper" style="padding-left: 4%; padding-right: 4%;">
             <section class="content">
@@ -25,7 +24,9 @@
                     <!-- /.card-header -->
                     <div class="card">
                         <div class="card-body col-md-12">
-                            <table id="example1" class="table table-bordered table-hover col-md-12">
+                            <div class="table-responsive">
+                            <table id="example1" class="table table-bordered  table-hover">
+
                                 <thead>
                                 <tr>
                                     <th>Navire</th>
@@ -39,6 +40,7 @@
                                 </thead>
                                 @foreach($formulaires as $formulaire)
                                     <tbody>
+
                                     <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs['nom_navire']}}</a></td>
                                     <td>{{$formulaire->champs['transitaire']}}</td>
                                     <td>{{$formulaire->champs['armateur']}}</td>
@@ -58,14 +60,14 @@
                                                         </style>
                                                         <div >
                                                             <ul class="list-group">
-                                                                    <li class="list-group-item">IMO  :<span class="label label-default"> {{$formulaire->champs['imo']}}  </span></li>
-                                                                    <li class="list-group-item">Type du navire  :<span class="label label-default"> {{$formulaire->champs['type']}}  </span></li>
-                                                                    <li class="list-group-item">Tonnage :<span class="label label-default"> {{$formulaire->champs['tonnage']}}  </span></li>
-                                                                    <li class="list-group-item">Pavillon du navire  :<span class="label label-default"> {{$formulaire->champs['pavillon']}}  </span></li>
-                                                                    <li class="list-group-item">Longeur du navire  :<span class="label label-default"> {{$formulaire->champs['longeur_navire']}}  </span></li>
-                                                                    <li class="list-group-item">Largeur du navire  :<span class="label label-default"> {{$formulaire->champs['largeur_navire']}}  </span></li>
-                                                                    <li class="list-group-item">Le port en lourd  :<span class="label label-default"> {{$formulaire->champs['port_lourd']}}  </span></li>
-                                                                    <li class="list-group-item">Le tirant d'eau  :<span class="label label-default"> {{$formulaire->champs['tirant_eau']}}  </span></li>
+                                                                    <li class="list-group-item">IMO  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['imo']}}  </span></li>
+                                                                    <li class="list-group-item">Type du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['type']}}  </span></li>
+                                                                    <li class="list-group-item">Tonnage :<span class="label label-default" style="float: right;"> {{$formulaire->champs['tonnage']}}  </span></li>
+                                                                    <li class="list-group-item">Pavillon du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['pavillon']}}  </span></li>
+                                                                    <li class="list-group-item">Longeur du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['longeur_navire']}}  </span></li>
+                                                                    <li class="list-group-item">Largeur du navire  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['largeur_navire']}}  </span></li>
+                                                                    <li class="list-group-item">Le port en lourd  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['port_lourd']}}  </span></li>
+                                                                    <li class="list-group-item">Le tirant d'eau  :<span class="label label-default" style="float: right;"> {{$formulaire->champs['tirant_eau']}}  </span></li>
                                                             </ul>
                                                         </div>
 
@@ -100,6 +102,7 @@
                                 @endforeach
 
                             </table>
+                            </div>
                         </div>
                     </div>
                     @can('annonce_navire-create')
@@ -111,31 +114,5 @@
                 </div>
             </section>
         </div>
-
-    @endsection
-
-{{--    @section('scripts')--}}
-{{--        <!-- DataTables -->--}}
-{{--            <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>--}}
-{{--            <script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>--}}
-{{--            <script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>--}}
-{{--            <script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>--}}
-{{--            <script>--}}
-{{--                $(function () {--}}
-{{--                    $("#example1").DataTable({--}}
-{{--                        "responsive": true,--}}
-{{--                        "autoWidth": false,--}}
-{{--                    });--}}
-{{--                    $('#example2').DataTable({--}}
-{{--                        "paging": true,--}}
-{{--                        "lengthChange": false,--}}
-{{--                        "searching": false,--}}
-{{--                        "ordering": true,--}}
-{{--                        "info": true,--}}
-{{--                        "autoWidth": false,--}}
-{{--                        "responsive": true,--}}
-{{--                    });--}}
-{{--                });--}}
-{{--            </script>--}}
-{{--@endsection--}}
-
+    </section>
+@stop

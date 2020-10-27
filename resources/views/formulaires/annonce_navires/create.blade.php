@@ -38,7 +38,7 @@
                                                     <label for="champs">Nom du navire</label>
                                                     <select id="nom_navire" name="champs[nom_navire]"class="form-control">
                                                         @foreach($navires as $navire)
-                                                            <option value="{{$navire->nom}}">{{$navire->nom}}</option>
+                                                            <option value="{{$navire->nom}}" selected >{{$navire->nom}}</option>
                                                         @endforeach
                                                     </select>
 
@@ -54,7 +54,7 @@
                                                     <label for="champs">Transitaire</label>
                                                     <select id="champs[transitaire]" name="champs[transitaire]"class="form-control">
                                                         @foreach($users_trans as $users_tran)
-                                                            <option value={{$users_tran->name}}>{{$users_tran->name}}</option>
+                                                            <option value="{{$users_tran->name}}">{{$users_tran->name}}</option>
                                                         @endforeach
                                                     </select>
 {{--                                                    <input type="text" autocomplete="off" name="champs[transitaire]" class="form-control" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >--}}
@@ -68,7 +68,7 @@
                                                     <label for="champs">Armateur</label>
                                                     <select id="champs[armateur]" name="champs[armateur]"class="form-control">
                                                         @foreach($armateurs as $armateur)
-                                                            <option value={{$armateur->nom}}>{{$armateur->nom}}</option>
+                                                            <option value="{{$armateur->nom}}">{{$armateur->nom}}</option>
                                                         @endforeach
                                                     </select>
 {{--                                                    <input type="text" autocomplete="off" name="champs[armateur]" class="form-control" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
@@ -82,7 +82,7 @@
                                                     <label for="champs">Consignataire</label>
                                                     <select id="champs[consignataire]" name="champs[consignataire]"class="form-control">
                                                         @foreach($users_cons as $users_con)
-                                                            <option value={{$users_con->name}}>{{$users_con->name}}</option>
+                                                            <option value="{{$users_con->name}}">{{$users_con->name}}</option>
                                                         @endforeach
                                                     </select>
 {{--                                                    <input type="text" autocomplete="off" name="champs[consignataire]" class="form-control" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}

@@ -43,6 +43,7 @@
                                                         <option value="{{$navire->nom}}">{{$navire->nom}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.nom_navire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >--}}
 
 
@@ -61,6 +62,7 @@
                                                         <option value="{{$users_tran->name}}">{{$users_tran->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.transitaire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
@@ -78,6 +80,7 @@
                                                         <option value="{{$client->nom}}">{{$client->nom}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.client') {{$message}} @enderror</p>
 
 {{--                                                <input type="text" name="champs[client]" class="form-control" placeholder="Entrer le nom du client" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
@@ -115,6 +118,7 @@
                                                         <option value="{{$countrie}}">{{$countrie}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.provenance') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[provenance]" class="form-control" placeholder="Entrer la provenance du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
                                             </div>
@@ -145,6 +149,7 @@
                                         <div class="form-group">
                                             <label for="champs">Marchandise délivrée</label>
                                             <input type="text" name="champs[marchandise]" class="form-control" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                            <p class="text-danger">@error('champs.marchandise') {{$message}} @enderror</p>
 
                                         </div>
                                     </div>
@@ -153,13 +158,14 @@
                                             <label for="champs">Quantité de la marchandise</label>
 
                                             <input type="text" name="champs[q_marchandise]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
-
+                                            <p class="text-danger">@error('champs.q_marchandise') {{$message}} @enderror</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Poids de la marchandise</label>
                                             <input type="text" name="champs[p_marchandise]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                            <p class="text-danger">@error('champs.p_marchandise') {{$message}} @enderror</p>
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +181,7 @@
                                                 <label for="champs">Numéro de BL </label>
 
                                                 <input type="text" name="champs[num_bl]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
-
+                                                <p class="text-danger">@error('champs.num_bl') {{$message}} @enderror</p>
                                             </div>
                                         </div>
                                     </div>
@@ -202,6 +208,7 @@
 
                                                 <label for="champs">Lieux du chargement </label>
                                                 <input type="text" name="champs[l_chargement]" class="form-control"  data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <p class="text-danger">@error('champs.l_chargement') {{$message}} @enderror</p>
                                             </div>
                                         </div>
                                     </div>
@@ -213,6 +220,7 @@
 
                                                 <label for="champs">Lieux du déchargement </label>
                                                 <input type="text" name="champs[l_dechargement]" class="form-control"  data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>
+                                                <p class="text-danger">@error('champs.l_dechargement') {{$message}} @enderror</p>
                                             </div>
                                         </div>
                                     </div>
@@ -225,6 +233,7 @@
                                                 <label for="champs">Nombre d’unité </label>
 
                                                 <input type="text" name="champs[nb_unite]" class="form-control"  data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                                <p class="text-danger">@error('champs.nb_unite') {{$message}} @enderror</p>
                                             </div>
                                         </div>
                                     </div>
@@ -238,6 +247,7 @@
 
                                             </div>
                                             <input type="text" name="champs[nb_poste]" class="form-control" data-parsley-pattern="[0-9]*(\.?[0-9]*)?" data-parsley-trigger="keyup" required>
+                                            <p class="text-danger">@error('champs.nb_poste') {{$message}} @enderror</p>
                                         </div>
                                     </div>
 

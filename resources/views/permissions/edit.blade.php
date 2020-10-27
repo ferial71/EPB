@@ -28,7 +28,8 @@
                 <div class="card">
                     <div class="card-body">
 
-        {{ Form::model($permission, array('route' => array('permissions.update', $permission->id), 'method' => 'PUT')) }}{{-- Form model binding to automatically populate our fields with permission data --}}
+        {{ Form::model($permission, array('route' => array('permissions.update', $permission->id), 'method' => 'PUT')) }}
+                        {{-- Form model binding to automatically populate our fields with permission data --}}
 
         <div class="form-group">
             {{ Form::label('name', 'Nom du permission ') }}

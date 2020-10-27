@@ -11,10 +11,10 @@
                     <section class="content-header">
                         <div class="container-fluid">
                             <div class="row mb-2">
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <h1>Bon à enlever</h1>
                                 </div>
-                                <div class="col-sm-4">
+                                <div class="col-sm-6">
                                     <ol class="breadcrumb float-sm-right">
                                         <li class="breadcrumb-item"><a href="#">Page d'accueil</a></li>
                                         <li class="breadcrumb-item active">Bon à enlever</li>
@@ -43,6 +43,7 @@
                                                         <option value="{{$navire->nom}}">{{$navire->nom}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.nom_navire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[nom_navire]" class="form-control" placeholder="Entrer le nom du navire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required >--}}
 
 
@@ -61,6 +62,7 @@
                                                         <option value="{{$users_tran->name}}">{{$users_tran->name}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.transitaire') {{$message}} @enderror</p>
 {{--                                                <input type="text" name="champs[transitaire]" class="form-control" placeholder="Entrer le nom du transitaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
 
@@ -78,6 +80,7 @@
                                                         <option value="{{$client->nom}}">{{$client->nom}}</option>
                                                     @endforeach
                                                 </select>
+                                                <p class="text-danger">@error('champs.client') {{$message}} @enderror</p>
 {{--                                                <label for="champs">Nom du réceptionnaire</label>--}}
 {{--                                                <input type="text" name="champs[receptionnaire]" class="form-control" placeholder="Entrer le nom de réceptionnaire" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
@@ -92,11 +95,12 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="champs">Marchandise à enlever </label>
-                                            <select id="client" name="champs[client]"class="form-control">
+                                            <select id="client" name="champs[marchandise]"class="form-control">
                                                 @foreach($marchandise as $marchandis)
                                                     <option value="{{$marchandis->name}}">{{$marchandis->name}}</option>
                                                 @endforeach
                                             </select>
+                                            <p class="text-danger">@error('champs.marchandise') {{$message}} @enderror</p>
                                             {{--                                            <input type="text" name="champs[marchandise]" class="form-control" placeholder="Entrer la marchandise à enlever" data-parsley-pattern="/^[a-zA-Z0-9 ]*$/" data-parsley-trigger="keyup" required>--}}
 
                                         </div>

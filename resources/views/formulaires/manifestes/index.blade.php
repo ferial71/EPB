@@ -24,34 +24,14 @@
 
                     <div class="card border-light mb-3"  >
                         <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6 col-md-6">
-                                    <div class="dataTables_length" id="example1_length">
-                                        <label>Show
-                                            <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm">
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>
-                                            entries
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="example1_filter" class="dataTables_filter">
-                                        <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example1"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
+                            <div class="card-body col-md-12">
+                                <div class="table-responsive">
                                 <div class="col-md-11 col-md-offset-2 ">
-                                    <table id="example1" class="table table-bordered table-striped ">
+                                    <table id="example1" class="table table-bordered table-responsive  table-striped ">
                                         <thead>
                                             <tr>
                                                 <th>Navire</th>
-                                                <th>escale </th>
+                                                <th>Escale </th>
                                                 <th>Provenance </th>
                                                 <th>E.T.D </th>
                                                 <th>réceptionnaire</th>
@@ -64,10 +44,15 @@
                                         @foreach($formulaires as $formulaire)
                                             <tbody>
                                                 <?php $array =array_keys( $formulaire->champs );?>
-                                                <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs[$array[0]]}} </a></td>
-                                                    @for( $i=1;$i<6;$i++)
-                                                        <td>{{$formulaire->champs[$array[$i]]}}</td>
-                                                    @endfor
+                                                <td> <a href="#bannerformmodal" data-toggle="modal" data-target="#modal-<?php echo $formulaire->id;?>">{{$formulaire->champs["nom_navire"]}} </a></td>
+
+                                                        <td>{{$formulaire->champs["nature_escale"]}}</td>
+                                                <td>{{$formulaire->champs["provenance"]}}</td>
+                                                <td>{{$formulaire->champs["date"]}}</td>
+                                                <td>{{$formulaire->champs["receptionnaire"]}}</td>
+                                                <td>{{$formulaire->champs["marchandise"]}}</td>
+
+
                                                 <div class="modal fade bannerformmodal" tabindex="-1" role="dialog" aria-labelledby="modal-<?php echo $formulaire->id;?>" aria-hidden="true" id="modal-<?php echo $formulaire->id;?>">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
@@ -81,11 +66,11 @@
                                                                     </style>
                                                                     <div >
                                                                         <ul class="list-group">
-                                                                                <li class="list-group-item">Nature des marchandises  :<span class="label label-default"> {{$formulaire->champs[$array[6]]}}  </span></li>
-                                                                                <li class="list-group-item">mode de conditionnement :<span class="label label-default"> {{$formulaire->champs[$array[7]]}}  </span></li>
-                                                                                <li class="list-group-item">Poids total de la marchandise  :<span class="label label-default"> {{$formulaire->champs[$array[8]]}}  </span></li>
-                                                                                <li class="list-group-item">Poids du BL  :<span class="label label-default"> {{$formulaire->champs[$array[9]]}}  </span></li>
-                                                                                <li class="list-group-item">Nombre de colis transportés  :<span class="label label-default"> {{$formulaire->champs[$array[10]]}}  </span></li>
+                                                                                <li class="list-group-item">Nature des marchandises  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["n_marchandise"]}}  </span></li>
+                                                                                <li class="list-group-item">mode de conditionnement :<span class="label label-default" style="float: right;"> {{$formulaire->champs["m_conditionnement"]}}  </span></li>
+                                                                                <li class="list-group-item">Poids total de la marchandise  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["poids"]}}  </span></li>
+                                                                                <li class="list-group-item">Poids du BL  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["poids_bl"]}}  </span></li>
+                                                                                <li class="list-group-item">Nombre de colis transportés  :<span class="label label-default" style="float: right;"> {{$formulaire->champs["nb_colis"]}}  </span></li>
                                                                         </ul>
                                                                     </div>
 
@@ -123,8 +108,9 @@
 
                                     </table>
                                 </div>
+                                </div>
 
-                            </div>
+
                         </div>
                     </div>
                     @can('manifeste-create')
