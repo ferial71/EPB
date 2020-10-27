@@ -49,14 +49,14 @@ class AnnonceNavireController extends Controller
 
         //test si il y a au moins une formulaire si oui récupérer les index dans le tableau array
         //sinon tableau array est null
-        if ($formulaires->total()==0){
-            $array=null;
-        }
-        else{
-            $array=array_keys($formulaires[0]->champs);
-        }
+//        if ($formulaires->total()==0){
+//            $array=null;
+//        }
+//        else{
+//            $array=array_keys($formulaires[0]->champs);
+//        }
 
-        return view('formulaires/annonce_navires.index', compact('formulaires','array'));
+        return view('formulaires/annonce_navires.index', compact('formulaires'));
     }
 
     public function createNouveauNavire()
@@ -117,12 +117,12 @@ class AnnonceNavireController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/', //<<<>>!!
             'champs.imo' => 'required|numeric',
-            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.armateur' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.consignataire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/',
+//            'champs.armateur' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/',
+//            'champs.consignataire' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/',
+            'champs.provenance' => 'required|alpha_dash',
             'champs.date' => 'required|date',
             'champs.type' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.tonnage' => 'required|numeric',
@@ -319,6 +319,42 @@ class AnnonceNavireController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validatedData = $request->validate([
+            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/', //<<<>>!!
+            'champs.imo' => 'required|numeric',
+            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/',
+            'champs.armateur' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/',
+            'champs.consignataire' => 'required|regex:/^[a-zA-Z0-9]+[,\s_-]?[a-zA-Z0-9]*$/',
+            'champs.provenance' => 'required|alpha_dash',
+            'champs.date' => 'required|date',
+            'champs.type' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.tonnage' => 'required|numeric',
+            'champs.pavillon' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.longeur_navire' => 'required|numeric',
+            'champs.largeur_navire' => 'required|numeric',
+            'champs.port_lourd' => 'required|numeric',
+            'champs.tirant_eau' => 'required|numeric',
+        ]);
+
+
+        $formulaire = formulaire::findOrFail($id);
+//        $annonce_navire->navire_id = $request->input('navire_id');
+//        $annonce_navire->date_dentree = $request->input('date_dentree');
+//        $annonce_navire->IMO = $request->input('IMO');
+//        $annonce_navire->LOA = $request->input('LOA');
+//        $annonce_navire->BEAM = $request->input('BEAM');
+//        $annonce_navire->DWT = $request->input('DWT');
+//        $annonce_navire->DRAFT = $request->input('DRAFT');
+//        $annonce_navire->save();
+
+        $formulaire = formulaire::update($request->all());
+        $navires = navire::all();
+        $users_trans = User::role('transitaire')->get();
+        $users_cons = User::role('consignataire')->get();
+        $armateurs =armateur::all();
+        $countries = Countries::getList('en');
+
+
 //        $this->validate($request, [
 //            'navire_id'  => 'required',
 //            'date_dentree' => 'required',
