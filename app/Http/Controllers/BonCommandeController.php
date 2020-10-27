@@ -59,7 +59,7 @@ class BonCommandeController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             //'champs.imo' => 'required|numeric',
             'champs.poids' => 'required|numeric',
             'champs.objet' => 'required|regex:/^[a-zA-Z0-9 ]*$/',

@@ -57,11 +57,11 @@ class BonDelivrerController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.client' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.client_adr' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+////            'champs.client' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+////            'champs.client_adr' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.date' => 'required|date',
             'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.q_marchandise' => 'required|numeric',
@@ -75,7 +75,7 @@ class BonDelivrerController extends Controller
         ]);
 
 
-        $formulaire = formulaire::create($validatedData);
+        $formulaire = formulaire::create($request->all());
         $formulaire->titre = 'Bon à delivrer';
         $formulaire->url= 'bon_a_delivrers';
         $formulaire->user_id=Auth::id() ;

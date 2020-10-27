@@ -56,11 +56,11 @@ class BonEnleverController extends Controller
     {
 
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.date' => 'required|date',
+//            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.receptionnaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+//            'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.date_entrer' => 'required|date',
             'champs.date_enlever' => 'required|date',
             'champs.date_declaration' => 'required|date',
             'champs.m_conditionnement' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
@@ -73,7 +73,7 @@ class BonEnleverController extends Controller
         $formulaire->titre ='Bon à enlever';
         $formulaire->url= 'bon_a_enlevers';
         $formulaire->save();
-        $users = User::permission('bon_a_enlever-validate')->get();
+        $users = User::role('Transitaire')->get();
         foreach ($users as $user){
             $user->notify(new NouveauFormulaire(Auth::id(),$formulaire));
         }
@@ -155,7 +155,7 @@ class BonEnleverController extends Controller
         $formulaire = formulaire::findOrFail($id);
         $formulaire->delete();
 
-        return redirect()->route('formulaires/bon_a_enlevers.index')
+        return redirect()->route('bon_a_enlevers.index')
             ->with('flash_message',
                 'formulaires/bon_a_enlevers successfully deleted');
     }
