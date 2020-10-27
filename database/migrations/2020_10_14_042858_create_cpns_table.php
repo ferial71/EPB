@@ -18,7 +18,12 @@ class CreateCpnsTable extends Migration
             $table->dateTime('heur_entree');
             $table->dateTime('heur_sortie');
             $table->text('consignes');
+            $table->unsignedBigInteger('navire_id');
+            $table->unsignedBigInteger('quai_id');
             $table->timestamps();
+
+            $table->foreign('navire_id')->references('id')->on('navires');
+            $table->foreign('quai_id')->references('id')->on('quais');
         });
     }
 

@@ -19,10 +19,10 @@ class CreateMarchandisesTable extends Migration
             $table->string('poids')->nullable();
             $table->string('nature')->nullable();
             $table->string('mode_conditionnement')->nullable();
-            $table->unsignedBigInteger('cargaison_id');
+//            $table->unsignedBigInteger('cargaison_id');
             $table->timestamps();
 
-            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
+//            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
         });
     }
 

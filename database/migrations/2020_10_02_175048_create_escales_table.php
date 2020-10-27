@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCargaisonsTable extends Migration
+class CreateEscalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateCargaisonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargaisons', function (Blueprint $table) {
+        Schema::create('escales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('tonnage')->nullable();
-            $table->integer('nombreColis')->nullable();
+            $table->unsignedBigInteger('navire_id');
+            $table->unsignedBigInteger('quai_id');
             $table->timestamps();
+
+            $table->foreign('navire_id')->references('id')->on('navires');
+            $table->foreign('quai_id')->references('id')->on('quais');
+
         });
     }
 
@@ -28,6 +32,6 @@ class CreateCargaisonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargaisons');
+        Schema::dropIfExists('escales');
     }
 }

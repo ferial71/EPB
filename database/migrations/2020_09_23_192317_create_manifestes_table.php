@@ -21,12 +21,12 @@ class CreateManifestesTable extends Migration
             $table->date('dValidation')->nullable();
             $table->string('valide')->nullable();
             $table->unsignedBigInteger('dpquai_id');
-            $table->unsignedBigInteger('cargaisons_id');
+//            $table->unsignedBigInteger('cargaisons_id');
 
             $table->timestamps();
 
             $table->foreign('dpquai_id')->references('id')->on('dpquais');
-            $table->foreign('cargaisons_id')->references('id')->on('cargaisons');
+//            $table->foreign('cargaisons_id')->references('id')->on('cargaisons');
         });
     }
 

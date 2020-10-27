@@ -18,14 +18,14 @@ class CreateAnnonceNavsTable extends Migration
             $table->unsignedBigInteger('navire_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('armateur_id');
-            $table->unsignedBigInteger('cargaison_id');
+//            $table->unsignedBigInteger('cargaison_id');
             $table->date('date_dentree');
             $table->timestamps();
 
             $table->foreign('navire_id')->references('id')->on('navires');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('armateur_id')->references('id')->on('armateurs');
-            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
+//            $table->foreign('cargaison_id')->references('id')->on('cargaisons');
         });
     }
 
