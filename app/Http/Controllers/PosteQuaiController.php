@@ -83,10 +83,10 @@ class PosteQuaiController extends Controller
     {
 
         $validatedData = $request->validate([
-            'champs.nom_navire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.transitaire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.nom_armateur' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
-            'champs.consignataire' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
+            'champs.nom_navire' => ['required', 'regex:/^([\w0-9]+(,|[\._-])?\s?)*\s?[\w0-9]*$/'],
+            'champs.transitaire' => ['required', 'regex:/^([\w0-9]+(,|[\._-])?\s?)*\s?[\w0-9]*$/'],
+            'champs.armateur' => ['required', 'regex:/^([\w0-9]+(,|[\._-])?\s?)*\s?[\w0-9]*$/'],
+            'champs.consignataire' => ['required', 'regex:/^([\w0-9]+(,|[\._-])?\s?)*\s?[\w0-9]*$/'],
             'champs.provenance' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
             'champs.date' => 'required|date',
             'champs.marchandise' => 'required|regex:/^[a-zA-Z0-9 ]*$/',
@@ -172,6 +172,8 @@ class PosteQuaiController extends Controller
             $formulaire->update();
             $user = User::findOrFail($formulaire->user_id);
             $user->notify(new FormulaireValider(Auth::id(),$formulaire));
+
+
 
             return redirect()->route('poste_quais.index')->with('alert', 'Formulaire validé!');
         }
